@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+task deploy (type:Copy, dependsOn: build) {
+
+    from('build/libs'){
+        rename 'jarm-gui.war', 'jarm.war'
+    }
+    into "${project.property('tomcat.home')}/webapps/"
+    println "kopiere rs.war nach ${project.property('tomcat.home')}/webapps/"
+}

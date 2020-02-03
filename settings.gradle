@@ -1,0 +1,3 @@
+rootProject.name = 'jarm'
+include 'jarm-main', 'jarm-gui'
+
