@@ -12,8 +12,9 @@ public class DBCreation {
 	
 	public static final String CREATE_PROJECT_TABLE = "CREATE TABLE IF NOT EXISTS project ("
 			+ "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-			+ "owner_id INTEGER,"
+			+ "owner_id INTEGER, "
 			+ "created INTEGER, "
+			+ "name TEXT, "
 			+ "FOREIGN KEY (owner_id) REFERENCES user (id) "
 			+ ");";
 	
@@ -32,6 +33,7 @@ public class DBCreation {
 			+ "name TEXT NOT NULL, "
 			+ "description TEXT, "
 			+ "project_id INTEGER, "
+			+ "in_progress INTEGER, "
 			+ "FOREIGN KEY (project_id) REFERENCES project (id) "
 			+ ");";
 	
@@ -49,7 +51,6 @@ public class DBCreation {
 			+ "user_id INTEGER, "
 			+ "message TEXT, "
 			+ "project_id INTEGER, "
-			+ "name TEXT NOT NULL, "
 			+ "FOREIGN KEY (user_id) REFERENCES user (id), "
 			+ "FOREIGN KEY (project_id) REFERENCES project (id) "
 			+ ");";
