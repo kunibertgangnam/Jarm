@@ -6,14 +6,14 @@ public class DBCreation {
 			+ "id INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ "name TEXT NOT NULL UNIQUE, "
 			+ "password TEXT NOT NULL, "
-			+ "created INTEGER NOT NULL, "
+			+ "created TEXT NOT NULL, "
 			+ "email TEXT NOT NULL"
 			+ ");";
 	
 	public static final String CREATE_PROJECT_TABLE = "CREATE TABLE IF NOT EXISTS project ("
 			+ "id INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ "owner_id INTEGER, "
-			+ "created INTEGER, "
+			+ "created TEXT NOT NULL, "
 			+ "name TEXT, "
 			+ "FOREIGN KEY (owner_id) REFERENCES user (id) "
 			+ ");";
@@ -28,7 +28,7 @@ public class DBCreation {
 	
 	public static final String CREATE_PROJECT_TODO_TABLE = "CREATE TABLE IF NOT EXISTS project_todo ("
 			+ "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-			+ "created INTEGER NOT NULL, "
+			+ "created TEXT NOT NULL, "
 			+ "done INTEGER NOT NULL, "
 			+ "name TEXT NOT NULL, "
 			+ "description TEXT, "
@@ -47,7 +47,7 @@ public class DBCreation {
 	
 	public static final String CREATE_PROJECT_MESSAGE_TABLE = "CREATE TABLE IF NOT EXISTS project_message ("
 			+ "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-			+ "created INTEGER NOT NULL, "
+			+ "created TEXT NOT NULL, "
 			+ "user_id INTEGER, "
 			+ "message TEXT, "
 			+ "project_id INTEGER, "
