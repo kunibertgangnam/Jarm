@@ -2,10 +2,12 @@ package database.user;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
+import classes.User;
 import database.DBController;
 import database.DBStatements;
 import utils.DateUtils;
@@ -17,11 +19,16 @@ public class UserDAO {
 	public void loadUsers() {
 		users = new HashMap<String, User>();
 		
-		Statement stmt = DBController.getInstance().getConnection().createStatement();
-		ResultSet rs = stmt.executeQuery(DBStatements.SELECT_ALL_USERS);
-		
-		while (rs.next()) {
-			// user objekt zusammenbauen
+		Statement stmt;
+		try {
+			stmt = DBController.getInstance().getConnection().createStatement();
+			ResultSet rs = stmt.executeQuery(DBStatements.SELECT_ALL_USERS);
+			
+			while (rs.next()) {
+				// user objekt zusammenbauen
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 	
