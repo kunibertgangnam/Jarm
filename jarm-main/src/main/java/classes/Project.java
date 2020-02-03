@@ -6,26 +6,29 @@ import java.util.List;
 public class Project {
 		
 	private long iD;
-	private String projectTitle;
+	private String title;
 	private User owner;
-	private LocalDate creatDate;
+	private LocalDate creationDate;
 	private List<ProjectToDo> toDos;
 	private List<User> subscribers;
 	private List<Message> Messages;
 	
-	public Project(long projectID, String projectTitle, User owner, LocalDate creatDate) {
-		
-		this.iD = projectID;
-		this.projectTitle = projectTitle;
-		this.owner = owner;
-		this.creatDate = creatDate;
+	public Project(long iD, String title, User owner, LocalDate creationDate) {
+		setID(iD);
+		setTitle(title);
+		setOwner(owner);
+		setCreationDate(creationDate);
+	}
+	
+	public Project(long iD, String title, User owner) {
+		this(iD, title, owner, LocalDate.now());
 	}
 	
 	public void newToDo(String name, String description, User instructedUser) {
 		toDos.add(new ProjectToDo(toDos.size(), name, description, instructedUser));
 	}
 	
-	public void newMessage(long iD, String message, User author) {
+	public void writeMessage(long iD, String message, User author) {
 		Messages.add(new Message(iD, message, author));
 	}
 	
@@ -37,14 +40,18 @@ public class Project {
 	public long getProjectID() {
 		return iD;
 	}
-
-
-	public String getProjectTitle() {
-		return projectTitle;
+	
+	private void setID(long iD) {
+		this.iD = iD;
 	}
 
-	public void setProjectTitle(String projectTitle) {
-		this.projectTitle = projectTitle;
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public User getOwner() {
@@ -55,12 +62,12 @@ public class Project {
 		this.owner = owner;
 	}
 
-	public LocalDate getCreatDate() {
-		return creatDate;
+	public LocalDate getCreationDate() {
+		return creationDate;
 	}
 
-	public void setCreatDate(LocalDate creatDate) {
-		this.creatDate = creatDate;
+	public void setCreationDate(LocalDate creatDate) {
+		this.creationDate = creatDate;
 	}
 
 
