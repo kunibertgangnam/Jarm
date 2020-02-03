@@ -1,6 +1,6 @@
 package interfaces;
 
-public class Benutzer {
+public class User {
 	private String username;
 	private String password;
 	
@@ -8,6 +8,11 @@ public class Benutzer {
 		this.password = password;
 	}
 	
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
 	void changeName(String username) {
 		this.username = username;
 	}
