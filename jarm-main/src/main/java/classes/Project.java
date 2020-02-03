@@ -5,31 +5,31 @@ import java.util.List;
 
 public class Project {
 		
-	private long iD;
+	private int id;
 	private String title;
 	private User owner;
 	private LocalDate creationDate;
-	private List<ProjectToDo> toDos;
+	private List<ProjectToDo> todos;
 	private List<User> subscribers;
-	private List<Message> Messages;
+	private List<Message> messages;
 	
-	public Project(long iD, String title, User owner, LocalDate creationDate) {
-		setID(iD);
+	public Project(int id, String title, User owner, LocalDate creationDate) {
+		setID(id);
 		setTitle(title);
 		setOwner(owner);
 		setCreationDate(creationDate);
 	}
 	
-	public Project(long iD, String title, User owner) {
-		this(iD, title, owner, LocalDate.now());
+	public Project(int id, String title, User owner) {
+		this(id, title, owner, LocalDate.now());
 	}
 	
-	public void newToDo(String name, String description, User instructedUser) {
-		toDos.add(new ProjectToDo(toDos.size(), name, description, instructedUser));
+	public void addTodo(String name, String description, User instructedUser) {
+		todos.add(new ProjectToDo(todos.size(), name, description, instructedUser));
 	}
 	
-	public void writeMessage(long iD, String message, User author) {
-		Messages.add(new Message(iD, message, author));
+	public void addMessage(int id, String message, User author) {
+		messages.add(new Message(id, message, author));
 	}
 	
 	public void addSubscriber(User subscriber) {
@@ -37,12 +37,12 @@ public class Project {
 		subscriber.newProject(this);
 	}
 
-	public long getProjectID() {
-		return iD;
+	public int getId() {
+		return id;
 	}
 	
-	private void setID(long iD) {
-		this.iD = iD;
+	private void setID(int id) {
+		this.id = id;
 	}
 
 

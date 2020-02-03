@@ -3,17 +3,17 @@ package classes;
 import java.time.LocalDate;
 
 public class Message {
-	private long iD;
+	private int id;
 	private String message;
-	private LocalDate crationDate;
+	private LocalDate creationDate;
 	private User author;
 	
-	public long getID() {
-		return iD;
+	public int getId() {
+		return id;
 	}
 
-	private void setID(long iD) {
-		this.iD = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getMessage() {
@@ -25,27 +25,27 @@ public class Message {
 	}
 
 	public LocalDate getCreationDate() {
-		return crationDate;
+		return creationDate;
 	}
 
 	public void setCreationDate(LocalDate crationDate) {
-		this.crationDate = crationDate;
+		this.creationDate = crationDate;
 	}
 
 	public User getAuthor() {
 		return author;
 	}
 
-	private void setAuthor(User author) {
+	public void setAuthor(User author) {
 		this.author = author;
 	}
 	
-	public Message(long iD, String message, User author) {
-		this(iD, message, LocalDate.now(), author);
+	public Message(int id, String message, User author) {
+		this(id, message, LocalDate.now(), author);
 	}
 
-	public Message(long iD, String message, LocalDate creationDate, User author) {
-		setID(iD);
+	public Message(int id, String message, LocalDate creationDate, User author) {
+		setId(id);
 		setMessage(message);
 		setCreationDate(creationDate);
 		setAuthor(author);
