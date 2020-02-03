@@ -31,7 +31,7 @@
 					  </c:if>
 					  <c:if test="${eingeloggt != null}">
 						  <li class="nav-item">
-							<a class="nav-link" href="<c:url value='/login.do?logout=true"'/>">Logout</a>
+							<a class="nav-link" href="<c:url value='/login.do?logout=true'/>">Logout</a>
 						  </li>
 				  	</c:if>
 					</ul>
