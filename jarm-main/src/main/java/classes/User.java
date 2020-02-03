@@ -1,9 +1,10 @@
 package classes;
 
 public class User {
+	private long userID;
 	private String username;
 	private String password;
-	private long userID;
+
 	
 	void changePassword(String password) {
 		this.password = password;

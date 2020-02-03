@@ -1,8 +1,14 @@
 package interfaces;
 
+import java.time.LocalDate;
+import classes.Project;
+
+import classes.User;
+
 public interface ProjectService {
 
-//	void newProject(String projectname);
+	Project create(long projectID, String projectTitle, User owner, LocalDate created);
+	
 //	void loadMessages();
 //	void loadUser();
 //	void loadToDo();
