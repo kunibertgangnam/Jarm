@@ -11,6 +11,8 @@ repositories {
 
 dependencies {
 
+	compile project(':jarm-main')
+
     providedCompile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0'
     providedCompile group: 'javax.servlet', name: 'jsp-api', version: '2.0'
