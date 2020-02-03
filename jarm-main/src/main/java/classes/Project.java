@@ -1,6 +1,7 @@
 package classes;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
@@ -9,9 +10,9 @@ public class Project {
 	private String title;
 	private User owner;
 	private LocalDate creationDate;
-	private List<ProjectToDo> todos;
-	private List<User> subscribers;
-	private List<Message> messages;
+	private List<ProjectToDo> todos = new ArrayList<ProjectToDo>();
+	private List<User> subscribers = new ArrayList<User>();
+	private List<Message> messages = new ArrayList<Message>();
 	
 	public Project(int id, String title, User owner, LocalDate creationDate) {
 		setID(id);
