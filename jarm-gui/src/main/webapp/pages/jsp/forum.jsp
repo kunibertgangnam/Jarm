@@ -23,17 +23,17 @@ Map<String, String> nachrichtenListe = new HashMap<>();
   <h1 style= "background-color: #c0c0c0">Projektinternes Forum</h1>
      <div style= "margin-left: 10px; margin-right: 10px;">
 		<table>
-		<% for (Entry<String,String> e : nachrichtenListe.entrySet()){ %>
+		<% for (Entry <String,String> e : nachrichtenListe.entrySet()){ %>
 			<tr>
-				<td> <font color= red> <% e.getKey()%></font> </td>
-				<td> <% e.getValue()%></td>
+				<td> <font color= red> <% e.getKey() %></font> </td>
+				<td> <% e.getValue() %></td>
 			</tr>
 		<% }%>
 		</table>
      </div>
 	 <div style = "position:absolute; bottom: 0; background-color: gray;"> 
 		 <form action="<c:url value='/senden.do'/>" method="post">
-				<table style= "margin-left: 10px; margin-right: 10px; margin-bottom: 80px;">
+				<table style= "margin-left: 10px; margin-right: 10px; margin-bottom: 60px;">
 					<tr>
 						<td style="width:99%">
 							<input type = "text" name = "nachricht" placeholder="Eine Nachricht schreiben..." style="width:100%">
