@@ -4,21 +4,21 @@ import java.time.LocalDate;
 
 public class Project {
 		
-	private long projectID;
+	private long iD;
 	private String projectTitle;
 	private User owner;
 	private LocalDate creatDate;
 	
 	public Project(long projectID, String projectTitle, User owner, LocalDate creatDate) {
 		
-		this.projectID = projectID;
+		this.iD = projectID;
 		this.projectTitle = projectTitle;
 		this.owner = owner;
 		this.creatDate = creatDate;
 	}
 
 	public long getProjectID() {
-		return projectID;
+		return iD;
 	}
 
 

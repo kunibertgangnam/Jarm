@@ -7,7 +7,7 @@ import classes.User;
 
 public interface ProjectService {
 
-	Project create(long projectID, String projectTitle, User owner, LocalDate created);
+	Project create(long projectID, String projectTitle, User projectOwner, LocalDate createDate);
 	
 //	void loadMessages();
 //	void loadUser();
