@@ -17,5 +17,34 @@ public class Project {
 		this.creatDate = creatDate;
 	}
 
+	public long getProjectID() {
+		return projectID;
+	}
+
+
+	public String getProjectTitle() {
+		return projectTitle;
+	}
+
+	public void setProjectTitle(String projectTitle) {
+		this.projectTitle = projectTitle;
+	}
+
+	public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+
+	public LocalDate getCreatDate() {
+		return creatDate;
+	}
+
+	public void setCreatDate(LocalDate creatDate) {
+		this.creatDate = creatDate;
+	}
+
 
 }
