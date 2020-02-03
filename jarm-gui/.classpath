@@ -9,6 +9,24 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="output" path="bin/default"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/javax.servlet/jsp-api/2.0/e6def06602b51b1d9be51f6c3fcdf163ecd01644/jsp-api-2.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/javax.servlet/servlet-api/2.5/21599814ad9a605b86f3e6381571beccd861a32/servlet-api-2.5-sources.jar" kind="lib" path="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/javax.servlet/servlet-api/2.5/5959582d97d8b61f4d154ca9e495aafd16726e34/servlet-api-2.5.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/4.0.0/7e86e161fc98650d829983fc874332b0f9954cfd/javax.servlet-api-4.0.0-sources.jar" kind="lib" path="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/4.0.0/60200affc2fe0165136ed3690faf00b66aed581a/javax.servlet-api-4.0.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
 	<classpathentry sourcepath="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar" kind="lib" path="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="test"/>
