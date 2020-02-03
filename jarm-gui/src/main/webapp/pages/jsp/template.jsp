@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+    pageEncoding="utf-8"%>    
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,12 +13,9 @@
   <body> 
 <div id="oben">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <a class="navbar-brand">Jarm</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	  </button>
+	  <span class="navbar-brand mb-0 h1">Jarm</span>
 	  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-		<ul class="navbar-nav">
+		<ul class="nav nav-tabs">
 		  <li class="nav-item active">
 			<a class="nav-link" href="<c:url value='/home.do'/>">Home <span class="sr-only">(current)</span></a>
 		  </li>
