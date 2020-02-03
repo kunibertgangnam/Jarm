@@ -11,6 +11,7 @@ public class Project {
 	private LocalDate creatDate;
 	private List<ProjectToDo> toDos;
 	private List<User> subscribers;
+	private List<Message> Messages;
 	
 	public Project(long projectID, String projectTitle, User owner, LocalDate creatDate) {
 		
@@ -22,6 +23,10 @@ public class Project {
 	
 	public void newToDo(String name, String description, User instructedUser) {
 		toDos.add(new ProjectToDo(toDos.size(), name, description, instructedUser));
+	}
+	
+	public void newMessage(long iD, String message, User author) {
+		Messages.add(new Message(iD, message, author));
 	}
 	
 	public void addSubscriber(User subscriber) {
