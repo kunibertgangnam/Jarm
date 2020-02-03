@@ -6,20 +6,21 @@ public class ProjectToDo {
 	long iD;
 	String name;
 	String description;
-	byte state; //0 == unbearbeitet, 1 == in Arbei, 2 == fertig
+	int state; //0 == unbearbeitet, 1 == in Arbei, 2 == fertig
+	//Automatisch
 	User instructedUser;
 	LocalDate crationDate;
-	long projectID;
 	
-	public ProjectToDo(long iD, String name, String description, byte state, User instructedUser, LocalDate crationDate,
-			long projectID) {
+	public ProjectToDo(long iD, String name, String description, User instructedUser, int state, LocalDate crationDate) {
 		setID(iD);
 		setName(name);
 		setDescription(description);
 		setState(state);
 		setInstructedUser(instructedUser);
 		setCrationDate(crationDate);
-		setProjectID(projectID);
+	}
+	public ProjectToDo(long iD, String name, String description, User instructedUser) {
+		this(iD, name, description, instructedUser, 0, LocalDate.now());
 	}
 
 	public long getID() {
@@ -46,11 +47,11 @@ public class ProjectToDo {
 		this.description = description;
 	}
 
-	public byte getState() {
+	public int getState() {
 		return state;
 	}
 
-	public void setState(byte state) {
+	public void setState(int state) {
 		this.state = state;
 	}
 
@@ -70,12 +71,5 @@ public class ProjectToDo {
 		this.crationDate = crationDate;
 	}
 
-	public long getProjectID() {
-		return projectID;
-	}
-
-	private void setProjectID(long projectID) {
-		this.projectID = projectID;
-	}
 
 }

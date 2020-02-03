@@ -1,6 +1,7 @@
 package classes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Project {
 		
@@ -8,6 +9,8 @@ public class Project {
 	private String projectTitle;
 	private User owner;
 	private LocalDate creatDate;
+	private List<ProjectToDo> toDos;
+	private List<User> subscribers;
 	
 	public Project(long projectID, String projectTitle, User owner, LocalDate creatDate) {
 		
@@ -15,6 +18,15 @@ public class Project {
 		this.projectTitle = projectTitle;
 		this.owner = owner;
 		this.creatDate = creatDate;
+	}
+	
+	public void newToDo(String name, String description, User instructedUser) {
+		toDos.add(new ProjectToDo(toDos.size(), name, description, instructedUser));
+	}
+	
+	public void addSubscriber(User subscriber) {
+		subscribers.add(subscriber);
+		subscriber.newProject(this);
 	}
 
 	public long getProjectID() {
