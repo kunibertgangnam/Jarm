@@ -30,9 +30,6 @@ public class FrontController extends HttpServlet
 		controller = new HashMap<String, Controller>();
 		controller.put("/test/main", new UserAreaController());
 		controller.put("/bv/gui/forum", new ForumController());
-//		controller.put("/bv/login", new LoginController());
-//		controller.put("/bv/logout", new LogoutController());
-//		controller.put("/secured/userArea", new UserAreaController());
 
 		System.out.println("Frontcontroller initialisiert");
 		System.out.println(LAYOUT_SEITE);
