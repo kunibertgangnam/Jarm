@@ -14,10 +14,19 @@ public class ForumController implements Controller {
 			String nachricht = request.getParameter("nachricht");
 			nachrichtPruefen(nachricht);
 			request.setAttribute("nachricht", null);
-			String projektname = (String) request.getSession().getAttribute("projektName");
+			nachrichtEinfuegen(nachricht);
+			nachrichtenAusgeben();
 			//Nachrichten müssn noch iwie aus der Datenbank geholt werden und angezeigt werden
 		}
 		return null;
+	}
+
+	private void nachrichtenAusgeben() {
+		// TODO Auto-generated method stub
+	}
+
+	private void nachrichtEinfuegen(String nachricht) {
+		// TODO Auto-generated method stub
 	}
 
 	private void nachrichtPruefen(String nachricht) throws Exception {
