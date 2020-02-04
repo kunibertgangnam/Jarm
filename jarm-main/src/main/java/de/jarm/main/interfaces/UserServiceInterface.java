@@ -12,4 +12,8 @@ public interface UserServiceInterface {
 	public User login(String user, String password);
 	
 	public void remove(User user);
+
+	public User getUser(String string);
+	
+	public User getUser(int id);
 }

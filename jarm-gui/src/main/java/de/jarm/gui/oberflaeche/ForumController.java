@@ -1,4 +1,4 @@
-package bv.gui;
+package de.jarm.gui.oberflaeche;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,8 +8,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import de.jarm.gui.navi.Controller;
 import de.jarm.main.data.DataController;
-import navi.Controller;
 
 public class ForumController implements Controller {
 

@@ -1,4 +1,4 @@
-package navi;
+package de.jarm.gui.navi;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bv.gui.ForumController;
-import bv.gui.UserAreaController;
+import de.jarm.gui.navi.Controller;
+import de.jarm.gui.oberflaeche.ForumController;
+import de.jarm.gui.oberflaeche.UserAreaController;
 
 
 
