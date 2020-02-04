@@ -6,9 +6,14 @@ public class TestDatenBestand {
 	
 	public static void main(String[] args) {
 		try {
-			DataController.getInstance().getUserService().create(0, "Manni", "Manfred");
+			DataController.getInstance().getUserService().create("Manni0", "Manfred");
+			DataController.getInstance().getUserService().create("Manni1", "Manfred");
+			DataController.getInstance().getUserService().create("Manni2", "Manfred");
+			DataController.getInstance().getUserService().create("Manni3", "Manfred");
+			DataController.getInstance().getUserService().create("Manni4", "Manfred");
+			DataController.getInstance().getUserService().create("Manni5", "Manfred");
+			DataController.getInstance().getUserService().create("Manni6", "Manfred");
 		} catch (ValidierungsException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
