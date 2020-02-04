@@ -5,6 +5,7 @@ import java.util.List;
 
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Message;
+import de.jarm.main.data.User;
 
 public class TestDatenBestand {
 	private static DataController data = DataController.getInstance();
@@ -35,6 +36,15 @@ public class TestDatenBestand {
 			data.getProjectService().getProjectList().get(2).setMessages(messages1);
 			data.getProjectService().getProjectList().get(3).setMessages(messages1);
 			data.getProjectService().getProjectList().get(4).setMessages(messages1);
+			List<User> subscriber = new ArrayList<>();
+			subscriber.add(data.getUserService().getUser("Manni0"));
+			subscriber.add(data.getUserService().getUser("Manni1"));
+			subscriber.add(data.getUserService().getUser("Manni2"));
+			subscriber.add(data.getUserService().getUser("Manni3"));
+			subscriber.add(data.getUserService().getUser("Manni4"));
+			subscriber.add(data.getUserService().getUser("Manni5"));
+			subscriber.add(data.getUserService().getUser("Manni6"));
+			data.getProjectService().getProjectList().get(0).setSubscribers(subscriber);
 			
 		} catch (ValidierungsException e) {
 			e.printStackTrace();
