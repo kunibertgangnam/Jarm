@@ -9,5 +9,5 @@ public interface UserServiceInterface {
 	
 	public User login(String user, String password);
 	
-	void remove(User user);
+	public void remove(User user);
 }

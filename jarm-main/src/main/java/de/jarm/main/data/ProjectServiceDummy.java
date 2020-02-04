@@ -18,6 +18,14 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 		return newProject;
 	}
 	
+	public List<Project> getProjectList() {
+		return projectList;
+	}
+
+	public void setProjectList(List<Project> projectList) {
+		this.projectList = projectList;
+	}
+
 	@Override
 	public Project create(int projectId, String projectTitle, User projectOwner)
 			throws ValidierungsException {

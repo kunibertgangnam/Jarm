@@ -42,6 +42,14 @@ public class UserServiceDummy implements UserServiceInterface {
 		return null;
 	}
 
+	public List<User> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(List<User> userList) {
+		this.userList = userList;
+	}
+
 	@Override
 	public void remove(User user) {
 		userList.remove(user);
