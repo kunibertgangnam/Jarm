@@ -8,7 +8,7 @@ import de.jarm.main.data.Message;
 
 public class TestDatenBestand {
 	private static DataController data = DataController.getInstance();
-	
+	//ignoriert diese Datei einfach :)
 	public static void test() {
 		try {
 			data.getUserService().create("Manni0", "Manfred");
