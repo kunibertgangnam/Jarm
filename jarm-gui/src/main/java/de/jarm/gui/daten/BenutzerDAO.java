@@ -1,4 +1,4 @@
-package bv.daten;
+package de.jarm.gui.daten;
 
 import java.io.IOException;
 import java.util.HashMap;

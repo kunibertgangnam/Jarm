@@ -1,9 +1,9 @@
-package bv.gui;
+package de.jarm.gui.oberflaeche;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import navi.Controller;
+import de.jarm.gui.navi.Controller;
 
 public class ForumController implements Controller {
 
