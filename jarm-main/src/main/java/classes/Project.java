@@ -11,13 +11,19 @@ public class Project {
 	private LocalDate creationDate;
 	private List<ProjectToDo> toDos;
 	private List<User> subscribers;
-	private List<Message> Messages;
+	private List<Message> messages;
 	
 	public Project(long iD, String title, User owner, LocalDate creationDate) {
 		setID(iD);
 		setTitle(title);
 		setOwner(owner);
 		setCreationDate(creationDate);
+	}
+	
+	public void removeMessage(Message messageToRemove) {
+		if(messages.contains(messageToRemove)) {
+			messages.remove(messageToRemove);
+		}
 	}
 	
 	public void removeSubscriber(User subscriberToRemove) {
@@ -35,7 +41,7 @@ public class Project {
 	}
 	
 	public void writeMessage(long iD, String message, User author) {
-		Messages.add(new Message(iD, message, author));
+		messages.add(new Message(iD, message, author));
 	}
 	
 	public void addSubscriber(User subscriber) {
