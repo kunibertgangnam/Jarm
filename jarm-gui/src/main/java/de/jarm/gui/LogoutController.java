@@ -1,4 +1,4 @@
-package de.jarm.gui.gui;
+package de.jarm.gui;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

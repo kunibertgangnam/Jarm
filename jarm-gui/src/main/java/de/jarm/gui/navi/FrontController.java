@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.jarm.gui.gui.ForumController;
-import de.jarm.gui.gui.UserAreaController;
+import de.jarm.gui.ForumController;
+import de.jarm.gui.UserAreaController;
 
 
 
