@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class DBController {
 	
-    private static final DBController dbcontroller = new DBController();
+    private static DBController dbcontroller;
     private static final String DB_PATH = System.getProperty("user.home") + "/" + "jarmdb.db";
 
     static {
@@ -20,15 +20,17 @@ public class DBController {
         }
     }
     
-    private DBController(){
-    	try {
-			initDBConnection();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+    private DBController() throws Exception{
+
+		createTables();
+
     }
     
-    public static DBController getInstance(){
+    public static DBController getInstance() throws Exception{
+    	
+    	if (dbcontroller == null ) {
+    		dbcontroller = new DBController();
+    	}
         return dbcontroller;
     }
     
@@ -36,11 +38,7 @@ public class DBController {
 		return DriverManager.getConnection("jdbc:sqlite:" + DB_PATH);
     }
     
-    private void initDBConnection() throws SQLException {
-    	createTables();
-    }
-    
-    private void createTables() throws SQLException{
+    private void createTables() throws Exception{
     	try (Connection con = getConnection(); 
     			Statement stmt = con.createStatement()){
 			
@@ -53,7 +51,7 @@ public class DBController {
 			
 			System.out.println("Tables created");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new Exception(e);
 		}
     }
     

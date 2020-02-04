@@ -12,13 +12,13 @@ import java.util.List;
 import database.DBController;
 import database.DBStatements;
 import de.jarm.main.data.User;
+import de.jarm.main.database.exceptions.UserExistsException;
 import utils.DateUtils;
 
 public class UserDAO {
 	
 	public List<User> loadUsers() {
-		List<User> users = new ArrayList<User>();
-		
+		List<User> users = new ArrayList<User>();		
 
 		try (Connection con = DBController.getInstance().getConnection();
 				Statement stmt = con.createStatement();){
@@ -41,8 +41,8 @@ public class UserDAO {
 		try (Connection con = DBController.getInstance().getConnection();
 				PreparedStatement pstmt = con.prepareStatement(DBStatements.SELECT_USER_LOGIN)){
 			
-			pstmt.setString(0, email);
-			pstmt.setString(1, password);
+			pstmt.setString(1, email);
+			pstmt.setString(2, password);
 			
 			ResultSet rs = pstmt.executeQuery();
 			User u = new User(rs.getInt("id"), rs.getString("name"), rs.getString("password"), rs.getString("email"));
@@ -73,24 +73,25 @@ public class UserDAO {
 	
 	
 	
-	public User addUser(User u) {
+	public User addUser(User u) throws UserExistsException {
 		
 		try (Connection con = DBController.getInstance().getConnection();
 				PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_USER)){
 			
-			pstmt.setString(0, u.getName());
-			pstmt.setString(0, u.getPassword());
-			pstmt.setString(0, DateUtils.toString(LocalDate.now()));
-			pstmt.setString(0, u.getEmail());
-			
-			pstmt.execute();
+			pstmt.setString(1, u.getName());
+			pstmt.setString(2, u.getPassword());
+			pstmt.setString(3, DateUtils.toString(LocalDate.now()));
+			pstmt.setString(4, u.getEmail());	
+			pstmt.executeUpdate();
 			
 			return u;
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new UserExistsException("Unter dieser Email-Adresse ist bereits ein Benutzer registriert");
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 	
 }
