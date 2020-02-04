@@ -28,7 +28,7 @@ public class Message {
 		return crationDate;
 	}
 
-	public void setCreationDate(LocalDate crationDate) {
+	private void setCreationDate(LocalDate crationDate) {
 		this.crationDate = crationDate;
 	}
 
@@ -44,7 +44,7 @@ public class Message {
 		this(message, LocalDate.now(), author);
 	}
 
-	public Message(String message, LocalDate creationDate, User author) {
+	private Message(String message, LocalDate creationDate, User author) {
 		setMessage(message);
 		setCreationDate(creationDate);
 		setAuthor(author);

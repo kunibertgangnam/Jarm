@@ -16,6 +16,15 @@ public class Project {
 	public List<ProjectToDo> getToDos() {
 		return toDos;
 	}
+	
+	public Message getMessage(int id) {
+		for (Message message : messages) {
+			if(message.getId() == id) {
+				return message;
+			}
+		}
+		return null;
+	}
 
 	public void setToDos(List<ProjectToDo> toDos) {
 		this.toDos = toDos;
@@ -37,7 +46,7 @@ public class Project {
 		this.messages = messages;
 	}
 
-	public Project(String title, User owner, LocalDate creationDate) {
+	private Project(String title, User owner, LocalDate creationDate) {
 		setTitle(title);
 		setOwner(owner);
 		setCreationDate(creationDate);
@@ -78,7 +87,7 @@ public class Project {
 		return creationDate;
 	}
 
-	public void setCreationDate(LocalDate creatDate) {
+	private void setCreationDate(LocalDate creatDate) {
 		this.creationDate = creatDate;
 	}
 
