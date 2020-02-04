@@ -29,7 +29,7 @@ public class FrontController extends HttpServlet
 	public void init() throws ServletException {
 		controller = new HashMap<String, Controller>();
 		controller.put("/test/main", new UserAreaController());
-		controller.put("/bv/gui/forum", new ForumController());
+		controller.put("/forum/forum", new ForumController());
 
 		System.out.println("Frontcontroller initialisiert");
 		System.out.println(LAYOUT_SEITE);
