@@ -49,6 +49,10 @@ public class Project {
 		this(id, title, owner, LocalDate.now());
 	}
 	
+	public Project(String title, User owner) {
+		this.title = title;
+		this.owner = owner;
+	}
 
 	public int getId() {
 		return id;
