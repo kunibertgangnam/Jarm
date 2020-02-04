@@ -9,8 +9,7 @@ import java.sql.Statement;
 public class DBController {
 	
     private static final DBController dbcontroller = new DBController();
-    //private static Connection connection;
-    private static final String DB_PATH = System.getProperty("user.home") + "\\" + "jarmdb.db";
+    private static final String DB_PATH = System.getProperty("user.home") + "/" + "jarmdb.db";
 
     static {
         try {
@@ -22,56 +21,29 @@ public class DBController {
     }
     
     private DBController(){
-    	initDBConnection();
+    	try {
+			initDBConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     }
     
     public static DBController getInstance(){
         return dbcontroller;
     }
     
-    public Connection getConnection() {
-    	Connection connection;
-    	try {
-			connection = DriverManager.getConnection("jdbc:sqlite:" + DB_PATH);
-			return connection;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-    	return null;
+    public Connection getConnection() throws SQLException {
+		return DriverManager.getConnection("jdbc:sqlite:" + DB_PATH);
     }
     
-    private void initDBConnection() {
-        try {
-//            if (connection != null)
-//                return;
-//            System.out.println("Creating Connection to Database...");
-//            connection = DriverManager.getConnection("jdbc:sqlite:" + DB_PATH);
-//            if (!connection.isClosed())
-//                System.out.println("...Connection established");
-            
-            createTables();
-        } catch (SQLException e) {
-        	e.printStackTrace();
-        }
-
-//        Runtime.getRuntime().addShutdownHook(new Thread() {
-//            public void run() {
-//                try {
-//                    if (!connection.isClosed() && connection != null) {
-//                        connection.close();
-//                        if (connection.isClosed())
-//                            System.out.println("Connection to Database closed");
-//                    }
-//                } catch (SQLException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
+    private void initDBConnection() throws SQLException {
+    	createTables();
     }
     
     private void createTables() throws SQLException{
-    	try {
-			Statement stmt = getConnection().createStatement();
+    	try (Connection con = getConnection(); 
+    			Statement stmt = con.createStatement()){
+			
 			stmt.execute(DBCreation.CREATE_USER_TABLE);
 			stmt.execute(DBCreation.CREATE_PROJECT_TABLE);
 			stmt.execute(DBCreation.CREATE_PROJECT_USER_TABLE);

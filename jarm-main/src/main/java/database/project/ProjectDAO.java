@@ -50,17 +50,8 @@ public class ProjectDAO {
 			
 			pstmt.setInt(0, u.getId());
 			pstmt.setString(1, DateUtils.toString(LocalDate.now()));
-			pstmt.setString(2, p.getTitle());
-			
+			pstmt.setString(2, p.getTitle());		
 			pstmt.execute();
-//			ResultSet rs = stmt.executeQuery(DBStatements.ADD_PROJECT);				
-//			while (rs.next()) {
-//				int ownerId = rs.getInt("id");			
-//				User u = getUserById(ownerId);
-//				Project p = new Project(rs.getInt("id"), rs.getString("name"), u, DateUtils.toDate(rs.getString("created")));
-//			}
-//			
-//			rs.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -93,7 +84,9 @@ public class ProjectDAO {
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				ProjectToDo d = new ProjectToDo(rs.getInt("id"), rs.getString("name"), rs.getString("description"));
+				int todoId = rs.getInt("id");
+				List<User> attachedUsers = getProjectTodoUsers(todoId);
+				ProjectToDo d = new ProjectToDo(todoId, rs.getString("name"), rs.getString("description"), attachedUsers, rs.getInt("state"), DateUtils.toDate(rs.getString("created")));
 			}
 			
 			rs.close();

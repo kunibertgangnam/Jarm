@@ -17,7 +17,7 @@ public class User {
 		this.email = email;
 	}
 
-	void setPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 	
@@ -32,9 +32,15 @@ public class User {
 		setEmail(email);
 		
 	}
+	
+	public User(String name, String password, String email) {
+		this.name = name;
+		this.password = password;
+		this.email = email;
+	}
 
 
-	void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	
@@ -42,15 +48,15 @@ public class User {
 		return id;
 	}
 	
-	private void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	
-	String getPassword() {
+	public String getPassword() {
 		return password;
 	}
 	
-	String getName() {
+	public String getName() {
 		return name;
 	}
 }
