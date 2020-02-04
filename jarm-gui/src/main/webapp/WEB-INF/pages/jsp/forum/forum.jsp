@@ -21,7 +21,7 @@
 		<table>
 			<c:forEach var="entry" items="${nachrichten}">
 			  <tr>
-			  	  <td><font color="red"><c:out value="${entry.key}"/></font>:</td>
+			  	  <td><font color=red><c:out value="${entry.key}"/></font>:</td>
 			  	  <td> <c:out value="${entry.value}"/></td>
 			  </tr>
 			</c:forEach>
