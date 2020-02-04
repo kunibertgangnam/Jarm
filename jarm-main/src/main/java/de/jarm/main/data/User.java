@@ -1,13 +1,10 @@
-package classes;
+package de.jarm.main.data;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class User {
-	private long iD;
+	private int id;
 	private String name;
 	private String password;
-	private List<Project> projects = new ArrayList<Project>();
 	//Unnecessary
 	private String email;
 
@@ -24,32 +21,29 @@ public class User {
 		this.password = password;
 	}
 	
-	public User(long iD, String name, String password) {
-		this(iD, name, password, null);
+	public User(int id, String name, String password) {
+		this(id, name, password, null);
 	}
 	
-	public User(long iD, String name, String password, String email) {
-		setiD(iD);
+	public User(int id, String name, String password, String email) {
+		setId(id);
 		setName(name);
 		setPassword(password);
 		setEmail(email);
 		
 	}
 
-	public void newProject(Project project) {
-		projects.add(project);
-	}
 
 	void setName(String name) {
 		this.name = name;
 	}
 	
-	long getUserID() {
-		return iD;
+	int getId() {
+		return id;
 	}
 	
-	private void setiD(long iD) {
-		this.iD = iD;
+	private void setId(int id) {
+		this.id = id;
 	}
 	
 	String getPassword() {

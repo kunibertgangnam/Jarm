@@ -1,19 +1,19 @@
-package classes;
+package de.jarm.main.data;
 
 import java.time.LocalDate;
 
 public class Message {
 	private int id;
 	private String message;
-	private LocalDate creationDate;
+	private LocalDate crationDate;
 	private User author;
 	
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	private void setId(int iD) {
+		this.id = iD;
 	}
 
 	public String getMessage() {
@@ -25,27 +25,27 @@ public class Message {
 	}
 
 	public LocalDate getCreationDate() {
-		return creationDate;
+		return crationDate;
 	}
 
 	public void setCreationDate(LocalDate crationDate) {
-		this.creationDate = crationDate;
+		this.crationDate = crationDate;
 	}
 
 	public User getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(User author) {
+	private void setAuthor(User author) {
 		this.author = author;
 	}
 	
-	public Message(int id, String message, User author) {
-		this(id, message, LocalDate.now(), author);
+	public Message(int iD, String message, User author) {
+		this(iD, message, LocalDate.now(), author);
 	}
 
-	public Message(int id, String message, LocalDate creationDate, User author) {
-		setId(id);
+	public Message(int iD, String message, LocalDate creationDate, User author) {
+		setId(iD);
 		setMessage(message);
 		setCreationDate(creationDate);
 		setAuthor(author);

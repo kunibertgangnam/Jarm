@@ -16,6 +16,10 @@ public class LoginController implements Controller {
 		if (request.getMethod().equals("POST")) {
 			String email = request.getParameter("Email");
 			String passwort = request.getParameter("Passwort");
+			// wenn man sich erfolgreich eingeloggt hat ---> damit der Header richtig angezeigt wird
+			request.getSession().setAttribute("eingeloggt", true);
+			
+			
 			
 //			Benutzer b = BenutzerServiceImpl.getInstance().login(email, passwort);
 //			

@@ -1,7 +1,6 @@
-package classes;
+package de.jarm.main.data;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
@@ -10,39 +9,52 @@ public class Project {
 	private String title;
 	private User owner;
 	private LocalDate creationDate;
-	private List<ProjectToDo> todos = new ArrayList<ProjectToDo>();
-	private List<User> subscribers = new ArrayList<User>();
-	private List<Message> messages = new ArrayList<Message>();
+	private List<ProjectToDo> toDos;
+	private List<User> subscribers;
+	private List<Message> messages;
 	
+	public List<ProjectToDo> getToDos() {
+		return toDos;
+	}
+
+	public void setToDos(List<ProjectToDo> toDos) {
+		this.toDos = toDos;
+	}
+
+	public List<User> getSubscribers() {
+		return subscribers;
+	}
+
+	public void setSubscribers(List<User> subscribers) {
+		this.subscribers = subscribers;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+
 	public Project(int id, String title, User owner, LocalDate creationDate) {
-		setID(id);
+		setId(id);
 		setTitle(title);
 		setOwner(owner);
 		setCreationDate(creationDate);
 	}
 	
+	
 	public Project(int id, String title, User owner) {
 		this(id, title, owner, LocalDate.now());
 	}
 	
-	public void addTodo(String name, String description, User instructedUser) {
-		todos.add(new ProjectToDo(todos.size(), name, description, instructedUser));
-	}
-	
-	public void addMessage(int id, String message, User author) {
-		messages.add(new Message(id, message, author));
-	}
-	
-	public void addSubscriber(User subscriber) {
-		subscribers.add(subscriber);
-		subscriber.newProject(this);
-	}
 
 	public int getId() {
 		return id;
 	}
 	
-	private void setID(int id) {
+	private void setId(int id) {
 		this.id = id;
 	}
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bv.gui.ForumController;
 import bv.gui.UserAreaController;
 
 
@@ -28,8 +29,7 @@ public class FrontController extends HttpServlet
 	public void init() throws ServletException {
 		controller = new HashMap<String, Controller>();
 		controller.put("/test/main", new UserAreaController());
-//		controller.put("/test/info", new InfoController());
-//		controller.put("/bv/register", new RegisterController());
+		controller.put("/bv/gui/forum", new ForumController());
 //		controller.put("/bv/login", new LoginController());
 //		controller.put("/bv/logout", new LogoutController());
 //		controller.put("/secured/userArea", new UserAreaController());
