@@ -1,18 +1,17 @@
 package classes;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
 		
-	private int iD;
+	private int id;
 	private String title;
 	private User owner;
 	private LocalDate creationDate;
-	private List<ProjectToDo> toDos = new ArrayList<>();
-	private List<User> subscribers = new ArrayList<>();
-	private List<Message> messages = new ArrayList<>();
+	private List<ProjectToDo> toDos;
+	private List<User> subscribers;
+	private List<Message> messages;
 	
 	public List<ProjectToDo> getToDos() {
 		return toDos;
@@ -38,25 +37,25 @@ public class Project {
 		this.messages = messages;
 	}
 
-	public Project(int iD, String title, User owner, LocalDate creationDate) {
-		setID(iD);
+	public Project(int id, String title, User owner, LocalDate creationDate) {
+		setId(id);
 		setTitle(title);
 		setOwner(owner);
 		setCreationDate(creationDate);
 	}
 	
 	
-	public Project(int iD, String title, User owner) {
-		this(iD, title, owner, LocalDate.now());
+	public Project(int id, String title, User owner) {
+		this(id, title, owner, LocalDate.now());
 	}
 	
 
-	public int getID() {
-		return iD;
+	public int getId() {
+		return id;
 	}
 	
-	private void setID(int iD) {
-		this.iD = iD;
+	private void setId(int id) {
+		this.id = id;
 	}
 
 

@@ -2,7 +2,7 @@ package classes;
 
 
 public class User {
-	private int iD;
+	private int id;
 	private String name;
 	private String password;
 	//Unnecessary
@@ -21,12 +21,12 @@ public class User {
 		this.password = password;
 	}
 	
-	public User(int iD, String name, String password) {
-		this(iD, name, password, null);
+	public User(int id, String name, String password) {
+		this(id, name, password, null);
 	}
 	
-	public User(int iD, String name, String password, String email) {
-		setID(iD);
+	public User(int id, String name, String password, String email) {
+		setId(id);
 		setName(name);
 		setPassword(password);
 		setEmail(email);
@@ -38,12 +38,12 @@ public class User {
 		this.name = name;
 	}
 	
-	int getID() {
-		return iD;
+	int getId() {
+		return id;
 	}
 	
-	private void setID(int iD) {
-		this.iD = iD;
+	private void setId(int id) {
+		this.id = id;
 	}
 	
 	String getPassword() {

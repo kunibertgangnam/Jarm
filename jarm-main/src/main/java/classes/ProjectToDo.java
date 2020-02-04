@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class ProjectToDo {
-	int iD;
+	int id;
 	String name;
 	String description;
 	int state; //0 == unbearbeitet, 1 == in Arbei, 2 == fertig
@@ -15,16 +15,16 @@ public class ProjectToDo {
 	List<User> instructedUsers;
 	LocalDate crationDate;
 	
-	public ProjectToDo(int iD, String name, String description, List<User> instructedUsers, int state, LocalDate crationDate) {
-		setID(iD);
+	public ProjectToDo(int id, String name, String description, List<User> instructedUsers, int state, LocalDate crationDate) {
+		setId(id);
 		setName(name);
 		setDescription(description);
 		setState(state);
 		setInstructedUsers(instructedUsers);
 		setCrationDate(crationDate);
 	}
-	public ProjectToDo(int iD, String name, String description, List<User> instructedUsers) {
-		this(iD, name, description, instructedUsers, 0, LocalDate.now());
+	public ProjectToDo(int id, String name, String description, List<User> instructedUsers) {
+		this(id, name, description, instructedUsers, 0, LocalDate.now());
 	}
 
 	public List<User> getInstructedUsers() {
@@ -37,12 +37,12 @@ public class ProjectToDo {
 		this.instructedUsers = instructedUsers;
 	}
 	
-	public int getID() {
-		return iD;
+	public int getId() {
+		return id;
 	}
 
-	private void setID(int iD) {
-		this.iD = iD;
+	private void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
