@@ -1,10 +1,10 @@
-package bv.gui;
+package de.jarm.gui.oberflaeche;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bv.daten.Benutzer;
-import navi.Controller;
+import de.jarm.gui.daten.Benutzer;
+import de.jarm.gui.navi.Controller;
 
 public class LoginController implements Controller {
 

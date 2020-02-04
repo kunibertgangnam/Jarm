@@ -1,4 +1,4 @@
-package navi;
+package de.jarm.gui.navi;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bv.gui.ForumController;
-import bv.gui.UserAreaController;
+import de.jarm.gui.oberflaeche.ForumController;
+import de.jarm.gui.oberflaeche.UserAreaController;
 
 
 
@@ -29,7 +29,10 @@ public class FrontController extends HttpServlet
 	public void init() throws ServletException {
 		controller = new HashMap<String, Controller>();
 		controller.put("/test/main", new UserAreaController());
-		controller.put("/forum/forum", new ForumController());
+		controller.put("/de/jarm/gui/forum", new ForumController());
+//		controller.put("/bv/login", new LoginController());
+//		controller.put("/bv/logout", new LogoutController());
+//		controller.put("/secured/userArea", new UserAreaController());
 
 		System.out.println("Frontcontroller initialisiert");
 		System.out.println(LAYOUT_SEITE);

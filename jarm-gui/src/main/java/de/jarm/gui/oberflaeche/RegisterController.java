@@ -1,10 +1,10 @@
-package bv.gui;
+package de.jarm.gui.oberflaeche;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import navi.Controller;
-import utils.ValidierungsException;
+import de.jarm.gui.navi.Controller;
+import de.jarm.gui.utils.ValidierungsException;
 
 public class RegisterController implements Controller {
 
