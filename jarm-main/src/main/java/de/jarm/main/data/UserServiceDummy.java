@@ -15,7 +15,7 @@ public class UserServiceDummy implements UserServiceInterface {
 		try {
 			create(0, "Mami", "Nani");
 			create(1, "Manni", "Manfred");
-			create(2, "Manno", "Manfred");
+			create(2, "Manno", "Manfred", "h@gmx.de");
 		} catch (ValidierungsException e) {
 			e.printStackTrace();
 		}
