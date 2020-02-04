@@ -1,10 +1,10 @@
-package de.jarm.gui;
+package de.jarm.gui.oberflaeche;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.jarm.gui.daten.Benutzer;
-import de.jarm.gui.navi.Controller;
+import de.jarm.gui.oberflaeche.daten.Benutzer;
+import de.jarm.gui.oberflaeche.navi.Controller;
 
 public class LoginController implements Controller {
 

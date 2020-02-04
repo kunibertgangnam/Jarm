@@ -1,4 +1,4 @@
-package de.jarm.gui.daten;
+package de.jarm.gui.oberflaeche.daten;
 
 public class Benutzer {
 	
