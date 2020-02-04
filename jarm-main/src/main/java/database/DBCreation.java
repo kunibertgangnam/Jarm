@@ -29,11 +29,10 @@ public class DBCreation {
 	public static final String CREATE_PROJECT_TODO_TABLE = "CREATE TABLE IF NOT EXISTS project_todo ("
 			+ "id INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ "created TEXT NOT NULL, "
-			+ "done INTEGER NOT NULL, "
 			+ "name TEXT NOT NULL, "
 			+ "description TEXT, "
 			+ "project_id INTEGER, "
-			+ "in_progress INTEGER, "
+			+ "state INTEGER, "
 			+ "FOREIGN KEY (project_id) REFERENCES project (id) "
 			+ ");";
 	

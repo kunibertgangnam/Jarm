@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class DBController {
 	
     private static final DBController dbcontroller = new DBController();
-    private static Connection connection;
+    //private static Connection connection;
     private static final String DB_PATH = System.getProperty("user.home") + "\\" + "jarmdb.db";
 
     static {
@@ -30,42 +30,48 @@ public class DBController {
     }
     
     public Connection getConnection() {
-    	if (connection == null) throw new RuntimeException("no valid db connection");
-    	return connection;
+    	Connection connection;
+    	try {
+			connection = DriverManager.getConnection("jdbc:sqlite:" + DB_PATH);
+			return connection;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	return null;
     }
     
     private void initDBConnection() {
         try {
-            if (connection != null)
-                return;
-            System.out.println("Creating Connection to Database...");
-            connection = DriverManager.getConnection("jdbc:sqlite:" + DB_PATH);
-            if (!connection.isClosed())
-                System.out.println("...Connection established");
+//            if (connection != null)
+//                return;
+//            System.out.println("Creating Connection to Database...");
+//            connection = DriverManager.getConnection("jdbc:sqlite:" + DB_PATH);
+//            if (!connection.isClosed())
+//                System.out.println("...Connection established");
             
             createTables();
         } catch (SQLException e) {
         	e.printStackTrace();
         }
 
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            public void run() {
-                try {
-                    if (!connection.isClosed() && connection != null) {
-                        connection.close();
-                        if (connection.isClosed())
-                            System.out.println("Connection to Database closed");
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+//        Runtime.getRuntime().addShutdownHook(new Thread() {
+//            public void run() {
+//                try {
+//                    if (!connection.isClosed() && connection != null) {
+//                        connection.close();
+//                        if (connection.isClosed())
+//                            System.out.println("Connection to Database closed");
+//                    }
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
     }
     
-    private void createTables() {
+    private void createTables() throws SQLException{
     	try {
-			Statement stmt = connection.createStatement();
+			Statement stmt = getConnection().createStatement();
 			stmt.execute(DBCreation.CREATE_USER_TABLE);
 			stmt.execute(DBCreation.CREATE_PROJECT_TABLE);
 			stmt.execute(DBCreation.CREATE_PROJECT_USER_TABLE);

@@ -8,15 +8,19 @@ public class DBStatements {
 	
 	public static final String SELECT_PROJECTS = "SELECT * FROM project;";
 	
-	public static final String SELECT_PROJECT_USERS_BY_PROJECT_ID = "SELECT * FROM project_user WHERE project_id = ?;";
+	//public static final String SELECT_PROJECT_USERS_BY_PROJECT_ID = "SELECT * FROM project_user WHERE project_id = ?;";
+	
+	public static final String SELECT_PROJECT_USERS_BY_PROJECT_ID = "SELECT * FROM user WHERE (SELECT user_id FROM project_user WHERE project_id = ?) = id;";
 	
 	public static final String SELECT_PROJECT_TODOS_BY_PROJECT_ID = "SELECT * FROM project_todo WHERE project_id = ?;";
 	
-	public static final String SELECT_PROJECT_TODO_USERS_BY_PROJECT_TODO_ID = "SELECT * FROM project_todo_user WHERE project_todo_id = ?;";
+	public static final String SELECT_PROJECT_TODO_USERS_BY_PROJECT_TODO_ID = "SELECT * FROM user WHERE (SELECT user_id FROM project_todo_user WHERE project_todo_id = ?) = id;";
 	
 	public static final String SELECT_PROJECT_MESSAGES_BY_PROJECT_ID = "SELECT * FROM project_message WHERE project_id = ?;";
 	
 	public static final String SELECT_ALL_USERS = "SELECT * FROM user;";
+	
+	public static final String SELECT_USER_BY_ID = "SELECT * FROM user WHERE id = ?;";
 	
 	//INSERT
 	
