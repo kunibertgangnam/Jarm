@@ -25,13 +25,13 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 	}
 	
 	public ProjectServiceDummy() {//List<Project> projectList) {
+		//TODO
 		this.projectList = new ArrayList<Project>();//projectList;
 		try {
 			create(0, "Projekt 1", new User(0, "Name", "Passwort"));
 			create(1, "Projekt 2", new User(1, "Na", "Passrt"));
 			create(2, "Projekt 3", new User(2, "Ne", "Passwort"));
 		} catch (ValidierungsException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
