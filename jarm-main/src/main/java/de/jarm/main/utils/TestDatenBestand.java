@@ -30,7 +30,11 @@ public class TestDatenBestand {
 			messages1.add(new Message("hi Manni 1", data.getUserService().getUser("Manni4")));
 			messages1.add(new Message("hi guys", data.getUserService().getUser("Manni3")));
 			messages1.add(new Message("hi, how are you??", data.getUserService().getUser("Manni0")));
-			data.getProjectService().getProjectList().get(4).setMessages(messages1);;
+			data.getProjectService().getProjectList().get(0).setMessages(messages1);
+			data.getProjectService().getProjectList().get(1).setMessages(messages1);
+			data.getProjectService().getProjectList().get(2).setMessages(messages1);
+			data.getProjectService().getProjectList().get(3).setMessages(messages1);
+			data.getProjectService().getProjectList().get(4).setMessages(messages1);
 			
 		} catch (ValidierungsException e) {
 			e.printStackTrace();
