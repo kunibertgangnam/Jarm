@@ -1,4 +1,4 @@
-package bv.daten;
+package de.jarm.gui.daten;
 
 public class Benutzer {
 	
