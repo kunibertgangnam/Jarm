@@ -1,6 +1,8 @@
 package de.jarm.main.interfaces;
 
 
+import java.util.List;
+
 import de.jarm.main.data.Message;
 import de.jarm.main.data.Project;
 import de.jarm.main.data.ProjectToDo;
@@ -17,6 +19,7 @@ public interface ProjectServiceInterface {
 	public void removeToDo(Project project, ProjectToDo toDo);
 	public void deletProject(Project project);
 	public void removeMessage(Project project, Message message);
-	
+	public Project getProject(int id);
+	public List<Project> getProjectList();
 	
 }
