@@ -35,6 +35,15 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 		this.projectList = projectList;
 		
 	}
+	
+	public Project getProject(int id) {
+		for (Project project : projectList) {
+			if(project.getId() == id) {
+				return project;
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public void writeMessage(Project project, String message, User author) {
