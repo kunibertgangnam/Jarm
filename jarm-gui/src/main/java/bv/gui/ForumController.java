@@ -14,6 +14,7 @@ public class ForumController implements Controller {
 			String nachricht = request.getParameter("nachricht");
 			nachrichtPruefen(nachricht);
 			request.setAttribute("nachricht", null);
+			String projektname = (String) request.getSession().getAttribute("projektName");
 			//Nachrichten müssn noch iwie aus der Datenbank geholt werden und angezeigt werden
 		}
 		return null;
