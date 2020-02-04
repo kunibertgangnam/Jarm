@@ -1,4 +1,4 @@
-package de.jarm.gui.oberflaeche.utils;
+package de.jarm.gui.utils;
 
 public class ValidierungsException extends Exception {
 

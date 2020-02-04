@@ -3,7 +3,7 @@ package de.jarm.gui.oberflaeche;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.jarm.gui.oberflaeche.navi.Controller;
+import de.jarm.gui.navi.Controller;
 
 public class UserAreaController implements Controller {
 

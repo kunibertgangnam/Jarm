@@ -1,4 +1,4 @@
-package de.jarm.gui.oberflaeche.navi;
+package de.jarm.gui.navi;
 
 import java.io.IOException;
 import java.util.HashMap;
