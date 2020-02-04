@@ -1,12 +1,13 @@
 package classes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
 	private long iD;
 	private String name;
 	private String password;
-	private List<Project> projects;
+	private List<Project> projects = new ArrayList<Project>();
 	//Unnecessary
 	private String email;
 
@@ -55,7 +56,7 @@ public class User {
 		return password;
 	}
 	
-	String getUser() {
+	String getName() {
 		return name;
 	}
 }

@@ -3,32 +3,32 @@ package classes;
 import java.time.LocalDate;
 
 public class ProjectToDo {
-	long iD;
+	int id;
 	String name;
 	String description;
 	int state; //0 == unbearbeitet, 1 == in Arbei, 2 == fertig
 	//Automatisch
 	User instructedUser;
-	LocalDate crationDate;
+	LocalDate creationDate;
 	
-	public ProjectToDo(long iD, String name, String description, User instructedUser, int state, LocalDate crationDate) {
-		setID(iD);
+	public ProjectToDo(int id, String name, String description, User instructedUser, int state, LocalDate crationDate) {
+		setID(id);
 		setName(name);
 		setDescription(description);
 		setState(state);
 		setInstructedUser(instructedUser);
 		setCrationDate(crationDate);
 	}
-	public ProjectToDo(long iD, String name, String description, User instructedUser) {
-		this(iD, name, description, instructedUser, 0, LocalDate.now());
+	public ProjectToDo(int id, String name, String description, User instructedUser) {
+		this(id, name, description, instructedUser, 0, LocalDate.now());
 	}
 
 	public long getID() {
-		return iD;
+		return id;
 	}
 
-	private void setID(long iD) {
-		this.iD = iD;
+	private void setID(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -64,11 +64,11 @@ public class ProjectToDo {
 	}
 
 	public LocalDate getCrationDate() {
-		return crationDate;
+		return creationDate;
 	}
 
 	private void setCrationDate(LocalDate crationDate) {
-		this.crationDate = crationDate;
+		this.creationDate = crationDate;
 	}
 
 

@@ -1,32 +1,36 @@
 package classes;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
 		
-	private long iD;
-	private String projectTitle;
+	private int id;
+	private String title;
 	private User owner;
-	private LocalDate creatDate;
-	private List<ProjectToDo> toDos;
-	private List<User> subscribers;
-	private List<Message> Messages;
+	private LocalDate creationDate;
+	private List<ProjectToDo> todos = new ArrayList<ProjectToDo>();
+	private List<User> subscribers = new ArrayList<User>();
+	private List<Message> messages = new ArrayList<Message>();
 	
-	public Project(long projectID, String projectTitle, User owner, LocalDate creatDate) {
-		
-		this.iD = projectID;
-		this.projectTitle = projectTitle;
-		this.owner = owner;
-		this.creatDate = creatDate;
+	public Project(int id, String title, User owner, LocalDate creationDate) {
+		setID(id);
+		setTitle(title);
+		setOwner(owner);
+		setCreationDate(creationDate);
 	}
 	
-	public void newToDo(String name, String description, User instructedUser) {
-		toDos.add(new ProjectToDo(toDos.size(), name, description, instructedUser));
+	public Project(int id, String title, User owner) {
+		this(id, title, owner, LocalDate.now());
 	}
 	
-	public void newMessage(long iD, String message, User author) {
-		Messages.add(new Message(iD, message, author));
+	public void addTodo(String name, String description, User instructedUser) {
+		todos.add(new ProjectToDo(todos.size(), name, description, instructedUser));
+	}
+	
+	public void addMessage(int id, String message, User author) {
+		messages.add(new Message(id, message, author));
 	}
 	
 	public void addSubscriber(User subscriber) {
@@ -34,17 +38,21 @@ public class Project {
 		subscriber.newProject(this);
 	}
 
-	public long getProjectID() {
-		return iD;
+	public int getId() {
+		return id;
+	}
+	
+	private void setID(int id) {
+		this.id = id;
 	}
 
 
-	public String getProjectTitle() {
-		return projectTitle;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setProjectTitle(String projectTitle) {
-		this.projectTitle = projectTitle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public User getOwner() {
@@ -55,12 +63,12 @@ public class Project {
 		this.owner = owner;
 	}
 
-	public LocalDate getCreatDate() {
-		return creatDate;
+	public LocalDate getCreationDate() {
+		return creationDate;
 	}
 
-	public void setCreatDate(LocalDate creatDate) {
-		this.creatDate = creatDate;
+	public void setCreationDate(LocalDate creatDate) {
+		this.creationDate = creatDate;
 	}
 
 
