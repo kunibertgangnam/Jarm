@@ -19,15 +19,11 @@
   <body>
   <h1 style= "background-color: #c0c0c0">Projektinternes Forum</h1>
      <div style= "margin-left: 10px; margin-right: 10px;">
-		<table>
-			<%for(Message m : projekt.getMessages()){%>
-				<tr>
-				<td><c:out value ="<%=m[3]%>"></c:out></td>
-				<td><c:out value ="<%=m[1]%>"></c:out></td>
-				<td><c:out value ="<%=m[2]%>"></c:out></td>
-				</tr>
-			<%}%>
-		</table>
+		<ul>
+			<c:forEach var="entry" items="${nachrichten}">
+			  <li><font color="red"><c:out value="${entry.key}"/></font>: <c:out value="${entry.value}"/></li>
+			</c:forEach>
+		</ul>
      </div>
 	 <div style = "position:absolute; bottom: 0; background-color: gray;"> 
 		 <form action="<c:url value='/forum.do'/>" method="post">
