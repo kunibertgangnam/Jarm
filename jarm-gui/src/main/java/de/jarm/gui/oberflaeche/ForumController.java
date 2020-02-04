@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
 import de.jarm.main.data.DataController;
+import de.jarm.main.data.Message;
+import de.jarm.main.data.Project;
+import de.jarm.main.data.User;
 
 public class ForumController implements Controller {
 
@@ -28,13 +31,16 @@ public class ForumController implements Controller {
 
 	private Map<String, String> nachrichtenAusgeben() {
 		Map<String, String> nachrichtenMitName = new HashMap<String, String>();
-		List <Object> ausgelesen = new ArrayList<>();
-		//noch net fertig
+		List<Message> ausgelesen = new ArrayList<>();
+		ausgelesen = DataController.getInstance().getProjectService().getProjectList().get(2).getMessages();
+		//nur zu Testzwecken
+		nachrichtenMitName.put(ausgelesen.get(ausgelesen.size()-1).getAuthor().toString(),ausgelesen.get(ausgelesen.size()-1).getMessage());
+		
 		return nachrichtenMitName;
 	}
 
 	private void nachrichtEinfuegen(String nachricht, HttpServletRequest request) {
-		DataController.getInstance().getProjectService().writeMessage(request.getSession().getAttribute("projektName"), nachricht, request.getSession().getAttribute("eingeloggt"));
+		DataController.getInstance().getProjectService().writeMessage((Project)request.getSession().getAttribute("projektName"), nachricht, (User) request.getSession().getAttribute("eingeloggt"));
 	}
 
 	private void nachrichtPruefen(String nachricht) throws Exception {
