@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Project {
 		
-	private long iD;
+	private int iD;
 	private String title;
 	private User owner;
 	private LocalDate creationDate;
@@ -14,7 +14,31 @@ public class Project {
 	private List<User> subscribers = new ArrayList<>();
 	private List<Message> messages = new ArrayList<>();
 	
-	public Project(long iD, String title, User owner, LocalDate creationDate) {
+	public List<ProjectToDo> getToDos() {
+		return toDos;
+	}
+
+	public void setToDos(List<ProjectToDo> toDos) {
+		this.toDos = toDos;
+	}
+
+	public List<User> getSubscribers() {
+		return subscribers;
+	}
+
+	public void setSubscribers(List<User> subscribers) {
+		this.subscribers = subscribers;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+
+	public Project(int iD, String title, User owner, LocalDate creationDate) {
 		setID(iD);
 		setTitle(title);
 		setOwner(owner);
@@ -33,7 +57,7 @@ public class Project {
 		}
 	}
 	
-	public Project(long iD, String title, User owner) {
+	public Project(int iD, String title, User owner) {
 		this(iD, title, owner, LocalDate.now());
 	}
 	
@@ -41,7 +65,7 @@ public class Project {
 		toDos.add(new ProjectToDo(toDos.size(), name, description, instructedUser));
 	}
 	
-	public void writeMessage(long iD, String message, User author) {
+	public void writeMessage(int iD, String message, User author) {
 		messages.add(new Message(iD, message, author));
 	}
 	
@@ -50,11 +74,11 @@ public class Project {
 		subscriber.newProject(this);
 	}
 
-	public long getProjectID() {
+	public int getProjectID() {
 		return iD;
 	}
 	
-	private void setID(long iD) {
+	private void setID(int iD) {
 		this.iD = iD;
 	}
 

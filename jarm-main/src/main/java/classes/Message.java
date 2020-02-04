@@ -3,16 +3,16 @@ package classes;
 import java.time.LocalDate;
 
 public class Message {
-	private long iD;
+	private int iD;
 	private String message;
 	private LocalDate crationDate;
 	private User author;
 	
-	public long getID() {
+	public int getID() {
 		return iD;
 	}
 
-	private void setID(long iD) {
+	private void setID(int iD) {
 		this.iD = iD;
 	}
 
@@ -40,11 +40,11 @@ public class Message {
 		this.author = author;
 	}
 	
-	public Message(long iD, String message, User author) {
+	public Message(int iD, String message, User author) {
 		this(iD, message, LocalDate.now(), author);
 	}
 
-	public Message(long iD, String message, LocalDate creationDate, User author) {
+	public Message(int iD, String message, LocalDate creationDate, User author) {
 		setID(iD);
 		setMessage(message);
 		setCreationDate(creationDate);

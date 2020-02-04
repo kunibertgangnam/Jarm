@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-	private long iD;
+	private int iD;
 	private String name;
 	private String password;
 	private List<Project> projects = new ArrayList<>();
@@ -24,11 +24,11 @@ public class User {
 		this.password = password;
 	}
 	
-	public User(long iD, String name, String password) {
+	public User(int iD, String name, String password) {
 		this(iD, name, password, null);
 	}
 	
-	public User(long iD, String name, String password, String email) {
+	public User(int iD, String name, String password, String email) {
 		setiD(iD);
 		setName(name);
 		setPassword(password);
@@ -44,11 +44,11 @@ public class User {
 		this.name = name;
 	}
 	
-	long getUserID() {
+	int getUserID() {
 		return iD;
 	}
 	
-	private void setiD(long iD) {
+	private void setiD(int iD) {
 		this.iD = iD;
 	}
 	

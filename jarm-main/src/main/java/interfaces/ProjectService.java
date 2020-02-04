@@ -9,8 +9,8 @@ import classes.User;
 
 public interface ProjectService {
 
-	Project create(long projectID, String projectTitle, User projectOwner, LocalDate createDate);
-	void writeMessage(long iD, String message, User author);
+	Project create(int projectID, String projectTitle, User projectOwner, LocalDate createDate);
+	void writeMessage(int iD, String message, User author);
 	void addSubscriber(User subscriber);
 	void removeSubscriber(User subscriber);
 	void changeToDoState(Project project, ProjectToDo toDo);

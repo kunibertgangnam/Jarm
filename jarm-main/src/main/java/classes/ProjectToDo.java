@@ -3,7 +3,7 @@ package classes;
 import java.time.LocalDate;
 
 public class ProjectToDo {
-	long iD;
+	int iD;
 	String name;
 	String description;
 	int state; //0 == unbearbeitet, 1 == in Arbei, 2 == fertig
@@ -11,7 +11,7 @@ public class ProjectToDo {
 	User instructedUser;
 	LocalDate crationDate;
 	
-	public ProjectToDo(long iD, String name, String description, User instructedUser, int state, LocalDate crationDate) {
+	public ProjectToDo(int iD, String name, String description, User instructedUser, int state, LocalDate crationDate) {
 		setID(iD);
 		setName(name);
 		setDescription(description);
@@ -19,15 +19,15 @@ public class ProjectToDo {
 		setInstructedUser(instructedUser);
 		setCrationDate(crationDate);
 	}
-	public ProjectToDo(long iD, String name, String description, User instructedUser) {
+	public ProjectToDo(int iD, String name, String description, User instructedUser) {
 		this(iD, name, description, instructedUser, 0, LocalDate.now());
 	}
 
-	public long getID() {
+	public int getID() {
 		return iD;
 	}
 
-	private void setID(long iD) {
+	private void setID(int iD) {
 		this.iD = iD;
 	}
 
