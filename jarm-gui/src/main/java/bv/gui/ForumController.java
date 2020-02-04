@@ -3,6 +3,7 @@ package bv.gui;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import de.jarm.main.data.DataController;
 import navi.Controller;
 
 public class ForumController implements Controller {
@@ -14,7 +15,7 @@ public class ForumController implements Controller {
 			String nachricht = request.getParameter("nachricht");
 			nachrichtPruefen(nachricht);
 			request.setAttribute("nachricht", null);
-			nachrichtEinfuegen(nachricht);
+			nachrichtEinfuegen(nachricht, request);
 			nachrichtenAusgeben();
 			//Nachrichten müssn noch iwie aus der Datenbank geholt werden und angezeigt werden
 		}
@@ -22,11 +23,11 @@ public class ForumController implements Controller {
 	}
 
 	private void nachrichtenAusgeben() {
-		// TODO Auto-generated method stub
+		//DataController.getInstance().getProjectService()
 	}
 
-	private void nachrichtEinfuegen(String nachricht) {
-		// TODO Auto-generated method stub
+	private void nachrichtEinfuegen(String nachricht, HttpServletRequest request) {
+		DataController.getInstance().getProjectService().writeMessage(request.getSession().getAttribute("projektName"), id, nachricht, request.getSession().getAttribute("eingeloggt"));
 	}
 
 	private void nachrichtPruefen(String nachricht) throws Exception {
