@@ -23,7 +23,7 @@ public class ProjectDAO {
 	
 	private Map<String, Project> projects;
 	
-	public void loadProjects() {
+	public void loadProjects() throws Exception {
 		projects = new HashMap<String, Project>();
 		
 		try (Connection con = DBController.getInstance().getConnection();
@@ -38,12 +38,12 @@ public class ProjectDAO {
 			
 			rs.close();
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			throw e;
 		}
 	}
 	
-	public void addProject(Project p, User u) {
+	public void addProject(Project p, User u) throws Exception {
 		
 		try (Connection con = DBController.getInstance().getConnection();
 		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_PROJECT)) {
@@ -54,12 +54,12 @@ public class ProjectDAO {
 			pstmt.execute();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw e;
 		}
 		
 	}
 	
-	private User getUserById(int userId) throws SQLException{
+	private User getUserById(int userId) throws Exception{
 		try (Connection con = DBController.getInstance().getConnection();
 		         PreparedStatement pstmt = con.prepareStatement(DBStatements.SELECT_USER_BY_ID)) {
 			
@@ -69,12 +69,11 @@ public class ProjectDAO {
 			rs.close();
 			return u;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw e;
 		}
-		return null;
 	}
 	
-	private List<ProjectToDo> getProjectTodos(int projectId) throws SQLException{
+	private List<ProjectToDo> getProjectTodos(int projectId) throws Exception{
 		List<ProjectToDo> todos = new ArrayList<>();
 		
 		try (Connection con = DBController.getInstance().getConnection();
@@ -90,13 +89,15 @@ public class ProjectDAO {
 			}
 			
 			rs.close();
+		} catch (Exception e) {
+			throw e;
 		}
 		
 		
 		return todos;
 	}
 	
-	private List<User> getProjectTodoUsers(int todoId) throws SQLException{
+	private List<User> getProjectTodoUsers(int todoId) throws Exception{
 		List<User> projectTodoUsers = new ArrayList<User>();
 		
 		try (Connection con = DBController.getInstance().getConnection();
@@ -112,13 +113,12 @@ public class ProjectDAO {
 			}
 			rs.close();
 			return projectTodoUsers; 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			throw e;
 		}
-		return null;
 	}
 	
-	private List<User> getProjectUsers(int projectId) throws SQLException{
+	private List<User> getProjectUsers(int projectId) throws Exception{
 		List<User> projectUsers = new ArrayList<User>();
 		
 		try (Connection con = DBController.getInstance().getConnection();
@@ -133,13 +133,11 @@ public class ProjectDAO {
 			rs.close();
 			return projectUsers;
 		} catch(SQLException e) {
-			e.printStackTrace();
+			throw e;
 		}
-		
-		return null;
 	}
 	
-	private List<Message> getProjectMessages(int projectId) throws SQLException {
+	private List<Message> getProjectMessages(int projectId) throws Exception {
 		List<Message> projectMessages = new ArrayList<Message>();
 		
 		try (Connection con = DBController.getInstance().getConnection();
@@ -157,10 +155,8 @@ public class ProjectDAO {
 			return projectMessages;
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw e;
 		}
-		return null;
-		
 		
 	}
 }

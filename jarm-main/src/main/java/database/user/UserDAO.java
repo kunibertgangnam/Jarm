@@ -17,7 +17,7 @@ import utils.DateUtils;
 
 public class UserDAO {
 	
-	public List<User> loadUsers() {
+	public List<User> loadUsers() throws Exception {
 		List<User> users = new ArrayList<User>();		
 
 		try (Connection con = DBController.getInstance().getConnection();
@@ -31,13 +31,12 @@ public class UserDAO {
 			}
 			
 			return users;
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			throw e;
 		}
-		return null;
 	}
 	
-	public User logIn(String email, String password) {
+	public User logIn(String email, String password) throws Exception {
 		try (Connection con = DBController.getInstance().getConnection();
 				PreparedStatement pstmt = con.prepareStatement(DBStatements.SELECT_USER_LOGIN)){
 			
@@ -48,10 +47,9 @@ public class UserDAO {
 			User u = new User(rs.getInt("id"), rs.getString("name"), rs.getString("password"), rs.getString("email"));
 			return u;
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			throw e;
 		}
-		return null;
 	}
 	
 //	public User findUserByEmail(String email) {
@@ -73,7 +71,7 @@ public class UserDAO {
 	
 	
 	
-	public User addUser(User u) throws UserExistsException {
+	public User addUser(User u) throws UserExistsException, Exception {
 		
 		try (Connection con = DBController.getInstance().getConnection();
 				PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_USER)){
@@ -88,9 +86,8 @@ public class UserDAO {
 			
 		} catch (SQLException e) {
 			throw new UserExistsException("Unter dieser Email-Adresse ist bereits ein Benutzer registriert");
-		} catch (Exception e1) {
-			e1.printStackTrace();
-			return null;
+		} catch (Exception e) {
+			throw e;
 		}
 	}
 	
