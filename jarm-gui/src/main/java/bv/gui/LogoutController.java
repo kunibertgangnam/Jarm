@@ -13,6 +13,7 @@ public class LogoutController implements Controller {
 		
 		//NotificationBuilder.createNotification("Sie haben sich erfolgreich ausgeloggt!", request);
 		request.getSession().invalidate();
+		request.getSession().setAttribute("eingeloggt", null);
 		//new InfoController().execute(request, response, message);
 		return "/test/info";
 	}
