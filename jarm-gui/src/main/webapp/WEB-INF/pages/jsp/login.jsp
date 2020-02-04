@@ -11,7 +11,7 @@
 					</p>
 					<label for="formGroupExampleInput">Benutzername:</label> <input
 						type="text" class="form-control" id="formGroupExampleInput"
-						placeholder="Benutzername oder E-Mail" value="<c:out value="${EmailValue}"/>">
+						placeholder="Benutzername oder E-Mail" value="<c:out value="${NameValue}"/>">
 				</div>
 			</div>
 			<div class="form-group">
