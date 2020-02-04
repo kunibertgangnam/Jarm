@@ -1,6 +1,5 @@
 package de.jarm.main.data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import de.jarm.main.interfaces.UserServiceInterface;
@@ -9,16 +8,9 @@ import de.jarm.main.utils.ValidierungsException;
 public class UserServiceDummy implements UserServiceInterface {
 	private List<User> userList;
 	
-	public UserServiceDummy() {//List<User> userList) {
-		this.userList = new ArrayList<>();
-		//TODO
-		try {
-			create(0, "Mami", "Nani");
-			create(1, "Manni", "Manfred");
-			create(2, "Manno", "Manfred", "h@gmx.de");
-		} catch (ValidierungsException e) {
-			e.printStackTrace();
-		}
+	public UserServiceDummy(List<User> userList) {
+		this.userList = userList;
+
 	}
 
 	@Override

@@ -32,16 +32,9 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 		return create(projectId, projectTitle, projectOwner, LocalDate.now());
 	}
 	
-	public ProjectServiceDummy() {//List<Project> projectList) {
-		//TODO
-		this.projectList = new ArrayList<Project>();//projectList;
-		try {
-			create(0, "Projekt 1", new User(0, "Name", "Passwort"));
-			create(1, "Projekt 2", new User(1, "Na", "Passrt"));
-			create(2, "Projekt 3", new User(2, "Ne", "Passwort"));
-		} catch (ValidierungsException e) {
-			e.printStackTrace();
-		}
+	public ProjectServiceDummy(List<Project> projectList) {
+		this.projectList = projectList;
+		
 	}
 
 	@Override
