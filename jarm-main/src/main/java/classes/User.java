@@ -1,13 +1,10 @@
 package classes;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class User {
 	private int iD;
 	private String name;
 	private String password;
-	private List<Project> projects = new ArrayList<>();
 	//Unnecessary
 	private String email;
 
@@ -29,26 +26,23 @@ public class User {
 	}
 	
 	public User(int iD, String name, String password, String email) {
-		setiD(iD);
+		setID(iD);
 		setName(name);
 		setPassword(password);
 		setEmail(email);
 		
 	}
 
-	public void newProject(Project project) {
-		projects.add(project);
-	}
 
 	void setName(String name) {
 		this.name = name;
 	}
 	
-	int getUserID() {
+	int getID() {
 		return iD;
 	}
 	
-	private void setiD(int iD) {
+	private void setID(int iD) {
 		this.iD = iD;
 	}
 	
@@ -56,7 +50,7 @@ public class User {
 		return password;
 	}
 	
-	String getUser() {
+	String getName() {
 		return name;
 	}
 }

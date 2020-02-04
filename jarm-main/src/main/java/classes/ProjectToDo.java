@@ -8,6 +8,9 @@ public class ProjectToDo {
 	String description;
 	int state; //0 == unbearbeitet, 1 == in Arbei, 2 == fertig
 	//Automatisch
+	public static final int UNBEARBEITET = 0;
+	public static final int IN_ARBEIT = 1;
+	public static final int FERTIG = 2;
 	User instructedUser;
 	LocalDate crationDate;
 	

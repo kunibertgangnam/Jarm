@@ -45,36 +45,13 @@ public class Project {
 		setCreationDate(creationDate);
 	}
 	
-	public void removeMessage(Message messageToRemove) {
-		if(messages.contains(messageToRemove)) {
-			messages.remove(messageToRemove);
-		}
-	}
-	
-	public void removeSubscriber(User subscriberToRemove) {
-		if(subscribers.contains(subscriberToRemove)) {
-			subscribers.remove(subscriberToRemove);
-		}
-	}
 	
 	public Project(int iD, String title, User owner) {
 		this(iD, title, owner, LocalDate.now());
 	}
 	
-	public void newToDo(String name, String description, User instructedUser) {
-		toDos.add(new ProjectToDo(toDos.size(), name, description, instructedUser));
-	}
-	
-	public void writeMessage(int iD, String message, User author) {
-		messages.add(new Message(iD, message, author));
-	}
-	
-	public void addSubscriber(User subscriber) {
-		subscribers.add(subscriber);
-		subscriber.newProject(this);
-	}
 
-	public int getProjectID() {
+	public int getID() {
 		return iD;
 	}
 	
