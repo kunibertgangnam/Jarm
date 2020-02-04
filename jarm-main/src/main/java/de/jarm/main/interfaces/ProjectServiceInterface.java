@@ -10,11 +10,11 @@ import de.jarm.main.utils.ValidierungsException;
 
 public interface ProjectServiceInterface {
 
-	Project create(int projectId, String projectTitle, User projectOwner, LocalDate createDate) throws ValidierungsException;
-	void writeMessage(int id, String message, User author);
-	void addSubscriber(User subscriber);
-	void removeSubscriber(User subscriber);
-	void changeToDoState(Project project, ProjectToDo toDo);
+	Project create(int projectId, String projectTitle, User projectOwner, LocalDate creationDate) throws ValidierungsException;
+	void writeMessage(Project project, int id, String message, User author);
+	void addSubscriber(Project project, User subscriber);
+	void removeSubscriber(Project project, User subscriber);
+	void changeToDoState(ProjectToDo toDo, int newToDoState);
 	void removeToDo(Project project, ProjectToDo toDo);
 	void deletProject(Project project);
 	void removeMessage(Project project, Message message);
