@@ -1,6 +1,7 @@
 package de.jarm.main.data;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import de.jarm.main.interfaces.ProjectServiceInterface;
@@ -9,12 +10,30 @@ import de.jarm.main.utils.ValidierungsException;
 public class ProjectServiceDummy implements ProjectServiceInterface{
 	private List<Project> projectList;
 
-	@Override
-	public Project create(int projectId, String projectTitle, User projectOwner, LocalDate creationDate)
+	
+	private Project create(int projectId, String projectTitle, User projectOwner, LocalDate creationDate)
 			throws ValidierungsException {
 		Project newProject = new Project(projectId, projectTitle, projectOwner, creationDate);
 		projectList.add(newProject);
 		return newProject;
+	}
+	
+	@Override
+	public Project create(int projectId, String projectTitle, User projectOwner)
+			throws ValidierungsException {
+		return create(projectId, projectTitle, projectOwner, LocalDate.now());
+	}
+	
+	public ProjectServiceDummy() {//List<Project> projectList) {
+		this.projectList = new ArrayList<Project>();//projectList;
+		try {
+			create(0, "Projekt 1", new User(0, "Name", "Passwort"));
+			create(1, "Projekt 2", new User(1, "Na", "Passrt"));
+			create(2, "Projekt 3", new User(2, "Ne", "Passwort"));
+		} catch (ValidierungsException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
