@@ -9,6 +9,11 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="output" path="bin/default"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/"/>
+	<classpathentry kind="src" path="/jarm-main">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/javax.servlet/jsp-api/2.0/e6def06602b51b1d9be51f6c3fcdf163ecd01644/jsp-api-2.0.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
