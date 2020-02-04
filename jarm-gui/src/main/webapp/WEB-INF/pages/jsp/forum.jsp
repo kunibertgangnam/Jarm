@@ -19,11 +19,14 @@
   <body>
   <h1 style= "background-color: #c0c0c0">Projektinternes Forum</h1>
      <div style= "margin-left: 10px; margin-right: 10px;">
-		<ul>
+		<table>
 			<c:forEach var="entry" items="${nachrichten}">
-			  <li><font color="red"><c:out value="${entry.key}"/></font>: <c:out value="${entry.value}"/></li>
+			  <tr>
+			  	  <td><font color="red"><c:out value="${entry.key}"/></font>:</td>
+			  	  <td> <c:out value="${entry.value}"/></td>
+			  </tr>
 			</c:forEach>
-		</ul>
+		</table>
      </div>
 	 <div style = "position:absolute; bottom: 0; background-color: gray;"> 
 		 <form action="<c:url value='/forum.do'/>" method="post">
