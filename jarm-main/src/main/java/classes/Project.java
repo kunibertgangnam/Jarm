@@ -20,6 +20,12 @@ public class Project {
 		setCreationDate(creationDate);
 	}
 	
+	public void removeSubscriber(User subscriberToRemove) {
+		if(subscribers.contains(subscriberToRemove)) {
+			subscribers.remove(subscriberToRemove);
+		}
+	}
+	
 	public Project(long iD, String title, User owner) {
 		this(iD, title, owner, LocalDate.now());
 	}
