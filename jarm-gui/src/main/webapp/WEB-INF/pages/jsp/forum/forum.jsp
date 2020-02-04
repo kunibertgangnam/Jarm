@@ -1,9 +1,8 @@
 <%@page import="java.util.Map.Entry"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-   
+<%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,12 +19,12 @@
   <h1 style= "background-color: #c0c0c0">Projektinternes Forum</h1>
      <div style= "margin-left: 10px; margin-right: 10px;">
 		<table>
-		<% for (Entry<String,String> e : nachrichtenListe.entrySet()){ %>
-			<tr>
-				<td> <font color= red> <% e.getKey()%></font> </td>
-				<td> <% e.getValue()%></td>
-			</tr>
-		<% }%>
+			<c:forEach var="entry" items="${nachrichten}">
+			  <tr>
+			  	  <td><font color=red><c:out value="${entry.key}"/></font>:</td>
+			  	  <td> <c:out value="${entry.value}"/></td>
+			  </tr>
+			</c:forEach>
 		</table>
      </div>
 	 <div style = "position:absolute; bottom: 0; background-color: gray;"> 
