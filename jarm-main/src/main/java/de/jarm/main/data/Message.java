@@ -40,12 +40,11 @@ public class Message {
 		this.author = author;
 	}
 	
-	public Message(int iD, String message, User author) {
-		this(iD, message, LocalDate.now(), author);
+	public Message(String message, User author) {
+		this(message, LocalDate.now(), author);
 	}
 
-	public Message(int iD, String message, LocalDate creationDate, User author) {
-		setId(iD);
+	public Message(String message, LocalDate creationDate, User author) {
 		setMessage(message);
 		setCreationDate(creationDate);
 		setAuthor(author);

@@ -1,4 +1,4 @@
-package navi;
+package de.jarm.gui.navi;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
