@@ -17,7 +17,6 @@ public class ForumController implements Controller {
 			request.setAttribute("nachricht", null);
 			nachrichtEinfuegen(nachricht, request);
 			nachrichtenAusgeben();
-			//Nachrichten müssn noch iwie aus der Datenbank geholt werden und angezeigt werden
 		}
 		return null;
 	}
