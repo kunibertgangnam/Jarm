@@ -1,6 +1,7 @@
 package classes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class ProjectToDo {
 	int iD;
@@ -11,21 +12,31 @@ public class ProjectToDo {
 	public static final int UNBEARBEITET = 0;
 	public static final int IN_ARBEIT = 1;
 	public static final int FERTIG = 2;
-	User instructedUser;
+	List<User> instructedUsers;
 	LocalDate crationDate;
 	
-	public ProjectToDo(int iD, String name, String description, User instructedUser, int state, LocalDate crationDate) {
+	public ProjectToDo(int iD, String name, String description, List<User> instructedUsers, int state, LocalDate crationDate) {
 		setID(iD);
 		setName(name);
 		setDescription(description);
 		setState(state);
-		setInstructedUser(instructedUser);
+		setInstructedUsers(instructedUsers);
 		setCrationDate(crationDate);
 	}
-	public ProjectToDo(int iD, String name, String description, User instructedUser) {
-		this(iD, name, description, instructedUser, 0, LocalDate.now());
+	public ProjectToDo(int iD, String name, String description, List<User> instructedUsers) {
+		this(iD, name, description, instructedUsers, 0, LocalDate.now());
 	}
 
+	public List<User> getInstructedUsers() {
+		return instructedUsers;
+	}
+	public void setInstructedUsers(List<User> instructedUsers) {
+		this.instructedUsers = instructedUsers;
+	}
+	public ProjectToDo(List<User> instructedUsers) {
+		this.instructedUsers = instructedUsers;
+	}
+	
 	public int getID() {
 		return iD;
 	}
@@ -58,13 +69,6 @@ public class ProjectToDo {
 		this.state = state;
 	}
 
-	public User getInstructedUser() {
-		return instructedUser;
-	}
-
-	public void setInstructedUser(User instructedUser) {
-		this.instructedUser = instructedUser;
-	}
 
 	public LocalDate getCrationDate() {
 		return crationDate;
