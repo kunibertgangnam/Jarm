@@ -37,22 +37,17 @@ public class Project {
 		this.messages = messages;
 	}
 
-	public Project(int id, String title, User owner, LocalDate creationDate) {
-		setId(id);
+	public Project(String title, User owner, LocalDate creationDate) {
 		setTitle(title);
 		setOwner(owner);
 		setCreationDate(creationDate);
 	}
 	
 	
-	public Project(int id, String title, User owner) {
-		this(id, title, owner, LocalDate.now());
+	public Project(String title, User owner) {
+		this(title, owner, LocalDate.now());
 	}
 	
-	public Project(String title, User owner) {
-		this.title = title;
-		this.owner = owner;
-	}
 
 	public int getId() {
 		return id;

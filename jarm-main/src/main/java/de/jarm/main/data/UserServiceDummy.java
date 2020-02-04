@@ -14,15 +14,15 @@ public class UserServiceDummy implements UserServiceInterface {
 	}
 
 	@Override
-	public User create(int id, String name, String password, String email) throws ValidierungsException {
-		User newUser = new User(id, name, password, email);
+	public User create(String name, String password, String email) throws ValidierungsException {
+		User newUser = new User(name, password, email);
 		userList.add(newUser);
 		return newUser;
 	}
 	
 	@Override
-	public User create(int id, String name, String password) throws ValidierungsException {
-		return create(id, name, password, null);
+	public User create(String name, String password) throws ValidierungsException {
+		return create(name, password, null);
 	}
 
 	@Override
@@ -43,6 +43,24 @@ public class UserServiceDummy implements UserServiceInterface {
 		this.userList = userList;
 	}
 
+	public User getUser(String name) {
+		for (User user : userList) {
+			if(user.getName().equals(name)) {
+				return user;
+			}
+		}
+		return null;
+		
+	}
+	public User getUser(int id) {
+		for (User user : userList) {
+			if(user.getId() == id) {
+				return user;
+			}
+		}
+		return null;
+	}
+	
 	@Override
 	public void remove(User user) {
 		userList.remove(user);
