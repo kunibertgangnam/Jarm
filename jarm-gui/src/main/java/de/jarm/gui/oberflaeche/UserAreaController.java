@@ -15,6 +15,7 @@ public class UserAreaController implements Controller {
 		User u = (User) request.getSession().getAttribute("user");
 		
 		if (u == null) {
+			new LoginController().execute(request, response, message);
 			return "/bv/login";
 		}
 		
