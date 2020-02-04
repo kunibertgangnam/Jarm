@@ -29,7 +29,7 @@ public class Message {
 		return id;
 	}
 
-	private void setId(int iD) {
+	public void setId(int iD) {
 		this.id = iD;
 	}
 
@@ -53,7 +53,7 @@ public class Message {
 		return author;
 	}
 
-	private void setAuthor(User author) {
+	public void setAuthor(User author) {
 		this.author = author;
 	}
 	

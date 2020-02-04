@@ -75,7 +75,7 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 	}
 
 	@Override
-	public void deletProject(Project project) {
+	public void deleteProject(Project project) {
 		projectList.remove(project);
 		
 	}
@@ -83,6 +83,12 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 	@Override
 	public void removeMessage(Project project, Message message) {
 		project.getMessages().remove(message);
+		
+	}
+
+	@Override
+	public void addToDo(Project project, ProjectToDo toDo) throws ValidierungsException {
+		// TODO Auto-generated method stub
 		
 	}
 

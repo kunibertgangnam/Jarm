@@ -27,9 +27,14 @@ public class UserService implements UserServiceInterface {
 	}
 
 	@Override
-	public User login(String user, String password) {
-		// TODO Auto-generated method stub
-		return null;
+	public User login(String email, String password) throws ValidierungsException {
+		validateInput(email, "name", password);
+		try {
+			User u = userDAO.logIn(email, password);
+			return u;
+		} catch(Exception e) {
+			throw new ValidierungsException(e.getMessage());
+		}
 	}
 
 	@Override

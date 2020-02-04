@@ -49,7 +49,7 @@ public class ProjectToDo {
 		return id;
 	}
 
-	private void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -82,7 +82,7 @@ public class ProjectToDo {
 		return creationDate;
 	}
 
-	private void setCrationDate(LocalDate crationDate) {
+	public void setCrationDate(LocalDate crationDate) {
 		this.creationDate = crationDate;
 	}
 

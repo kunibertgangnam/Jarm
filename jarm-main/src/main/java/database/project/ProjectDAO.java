@@ -73,15 +73,20 @@ public class ProjectDAO {
 		}
 	}	
 	
-	public void addProject(Project p) throws Exception {
+	public Project addProject(Project p) throws Exception {
 		
 		try (Connection con = DBController.getInstance().getConnection();
-		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_PROJECT)) {
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_PROJECT,Statement.RETURN_GENERATED_KEYS)) {
 			
 			pstmt.setInt(1, p.getOwner().getId());
 			pstmt.setString(2, DateUtils.toString(LocalDate.now()));
 			pstmt.setString(3, p.getTitle());		
 			pstmt.execute();
+			
+			ResultSet generatedKey = pstmt.getGeneratedKeys();
+			p.setId(generatedKey.getInt(1));
+			
+			return p;
 			
 		} catch (SQLException e) {
 			throw e;
@@ -102,10 +107,10 @@ public class ProjectDAO {
 		}		
 	}
 	
-	public void addTodoToProject(Project p, ProjectToDo t) throws Exception {
+	public ProjectToDo addTodoToProject(Project p, ProjectToDo t) throws Exception {
 		
 		try (Connection con = DBController.getInstance().getConnection();
-		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_TODO)) {
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_TODO, Statement.RETURN_GENERATED_KEYS)) {
 			
 			pstmt.setString(1, DateUtils.toString(LocalDate.now()));
 			pstmt.setInt(2, t.getState());
@@ -113,6 +118,11 @@ public class ProjectDAO {
 			pstmt.setString(4, t.getDescription());
 			pstmt.setInt(5, p.getId());
 			pstmt.execute();
+			
+			ResultSet generatedKey = pstmt.getGeneratedKeys();
+			t.setId(generatedKey.getInt(1));
+			
+			return t;
 			
 		} catch (SQLException e) {
 			throw e;
@@ -133,16 +143,21 @@ public class ProjectDAO {
 		}		
 	}
 	
-	public void addMessageToProject(Project p, Message m) throws Exception {
+	public Message addMessageToProject(Project p, Message m) throws Exception {
 		
 		try (Connection con = DBController.getInstance().getConnection();
-		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_MESSAGE)) {
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_MESSAGE, Statement.RETURN_GENERATED_KEYS)) {
 			
 			pstmt.setString(1, DateUtils.toString(LocalDate.now()));
 			pstmt.setInt(2, m.getAuthor().getId());
 			pstmt.setString(3, m.getMessage());
 			pstmt.setInt(4, p.getId());
 			pstmt.execute();
+			
+			ResultSet generatedKey = pstmt.getGeneratedKeys();
+			m.setId(generatedKey.getInt(1));
+			
+			return m;
 			
 		} catch (SQLException e) {
 			throw e;

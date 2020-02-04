@@ -73,13 +73,17 @@ public class UserDAO {
 	public User addUser(User u) throws UserExistsException {
 		
 		try (Connection con = DBController.getInstance().getConnection();
-				PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_USER)){
+				PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_USER,
+                        Statement.RETURN_GENERATED_KEYS)){
 			
 			pstmt.setString(1, u.getName());
 			pstmt.setString(2, u.getPassword());
 			pstmt.setString(3, DateUtils.toString(LocalDate.now()));
 			pstmt.setString(4, u.getEmail());	
 			pstmt.executeUpdate();
+			
+			ResultSet generatedKey = pstmt.getGeneratedKeys();
+			u.setId(generatedKey.getInt(1));
 			
 			return u;
 			
