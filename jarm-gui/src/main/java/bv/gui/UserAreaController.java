@@ -3,8 +3,8 @@ package bv.gui;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import de.jarm.gui.navi.Controller;
 import de.jarm.main.data.User;
-import navi.Controller;
 
 public class UserAreaController implements Controller {
 

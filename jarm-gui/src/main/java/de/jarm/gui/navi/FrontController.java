@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bv.gui.LoginController;
+import bv.gui.RegisterController;
 import de.jarm.gui.oberflaeche.ForumController;
 import de.jarm.gui.oberflaeche.UserAreaController;
 
@@ -22,14 +24,16 @@ public class FrontController extends HttpServlet
 {
 
 	private static final long serialVersionUID = 1L;
-	private static final String LAYOUT_SEITE = "/pages/jsp/template.jsp";
+	private static final String LAYOUT_SEITE = "/WEB-INF/pages/jsp/template.jsp";
 	private Map<String, Controller> controller;
 	
 	@Override
 	public void init() throws ServletException {
 		controller = new HashMap<String, Controller>();
-		controller.put("/test/main", new UserAreaController());
+		controller.put("/secured/projekt", new UserAreaController());
 		controller.put("/de/jarm/gui/forum", new ForumController());
+		controller.put("/bv/login", new LoginController());
+		controller.put("/bv/register", new RegisterController());
 //		controller.put("/bv/login", new LoginController());
 //		controller.put("/bv/logout", new LogoutController());
 //		controller.put("/secured/userArea", new UserAreaController());
@@ -64,12 +68,12 @@ public class FrontController extends HttpServlet
 		}
 
 		//request.setAttribute("meldung", meldung.toString());
-		String requestedUrl = "/pages/jsp" + navi + ".jsp";
+		String requestedUrl = "/WEB-INF/pages/jsp" + navi + ".jsp";
 		
 		if (isValidUrl(navi)) {
 			request.setAttribute("url", requestedUrl);
 		} else {
-			request.setAttribute("url", "/pages/jsp/error/error.jsp");
+			request.setAttribute("url", "/WEB-INF/pages/jsp/error/error.jsp");
 		}
 
 		RequestDispatcher rd = request.getRequestDispatcher(LAYOUT_SEITE);

@@ -3,8 +3,7 @@ package bv.gui;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import navi.Controller;
-import utils.ValidierungsException;
+import de.jarm.gui.navi.Controller;
 
 public class RegisterController implements Controller {
 

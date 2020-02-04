@@ -3,10 +3,9 @@ package bv.gui;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bv.daten.Benutzer;
+import de.jarm.gui.navi.Controller;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.User;
-import navi.Controller;
 
 public class LoginController implements Controller {
 
