@@ -32,7 +32,7 @@ Map<String, String> nachrichtenListe = new HashMap<>();
 		</table>
      </div>
 	 <div style = "position:absolute; bottom: 0; background-color: gray;"> 
-		 <form action="<c:url value='/senden.do'/>" method="post">
+		 <form action="<c:url value='/forum.do'/>" method="post">
 				<table style= "margin-left: 10px; margin-right: 10px; margin-bottom: 80px;">
 					<tr>
 						<td style="width:99%">
