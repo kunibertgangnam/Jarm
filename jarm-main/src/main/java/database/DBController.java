@@ -50,7 +50,7 @@ public class DBController {
 			stmt.execute(DBCreation.CREATE_PROJECT_MESSAGE_TABLE);
 			
 			System.out.println("Tables created");
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			throw new Exception(e);
 		}
     }
