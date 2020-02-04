@@ -3,7 +3,7 @@ package de.jarm.main.interfaces;
 import de.jarm.main.data.User;
 import de.jarm.main.utils.ValidierungsException;
 
-public interface UserService {
+public interface UserServiceInterface {
 
 	User create(User user) throws ValidierungsException;
 	
