@@ -5,8 +5,25 @@ import java.time.LocalDate;
 public class Message {
 	private int id;
 	private String message;
-	private LocalDate crationDate;
+	private LocalDate creationDate;
 	private User author;
+	
+	public Message(String message, User author) {
+		this(message, LocalDate.now(), author);
+	}
+
+	public Message(String message, LocalDate creationDate, User author) {
+		setMessage(message);
+		setCreationDate(creationDate);
+		setAuthor(author);
+	}
+	
+	public Message(int id, String message, LocalDate creationDate, User author) {
+		this.id = id;
+		this.message = message;
+		this.creationDate = creationDate;
+		this.author = author;
+	}
 	
 	public int getId() {
 		return id;
@@ -25,11 +42,11 @@ public class Message {
 	}
 
 	public LocalDate getCreationDate() {
-		return crationDate;
+		return creationDate;
 	}
 
 	public void setCreationDate(LocalDate crationDate) {
-		this.crationDate = crationDate;
+		this.creationDate = crationDate;
 	}
 
 	public User getAuthor() {
@@ -40,15 +57,7 @@ public class Message {
 		this.author = author;
 	}
 	
-	public Message(String message, User author) {
-		this(message, LocalDate.now(), author);
-	}
 
-	public Message(String message, LocalDate creationDate, User author) {
-		setMessage(message);
-		setCreationDate(creationDate);
-		setAuthor(author);
-	}
 	
 	
 	

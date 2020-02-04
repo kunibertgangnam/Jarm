@@ -21,43 +21,149 @@ import utils.DateUtils;
 
 public class ProjectDAO {
 	
-	private Map<String, Project> projects;
 	
-	public void loadProjects() throws Exception {
-		projects = new HashMap<String, Project>();
+	public List<Project> loadAllProjects() throws Exception {
+		List<Project> projects = new ArrayList<Project>();
 		
 		try (Connection con = DBController.getInstance().getConnection();
 		         Statement stmt = con.createStatement()) {
 
 			ResultSet rs = stmt.executeQuery(DBStatements.SELECT_PROJECTS);				
 			while (rs.next()) {
-				int ownerId = rs.getInt("id");			
+				int ownerId = rs.getInt("owner_id");	
+				int projectId = rs.getInt("id");
 				User u = getUserById(ownerId);
-				Project p = new Project(rs.getInt("id"), rs.getString("name"), u, DateUtils.toDate(rs.getString("created")));
+				Project p = new Project(projectId, rs.getString("name"), u, DateUtils.toDate(rs.getString("created")));
+				
+				p.setMessages(getProjectMessages(projectId));
+				p.setToDos(getProjectTodos(projectId));
+				p.setSubscribers(getProjectUsers(projectId));
+				projects.add(p);
 			}
 			
 			rs.close();
+			return projects;
 			
 		} catch (Exception e) {
 			throw e;
 		}
 	}
 	
-	public void addProject(Project p, User u) throws Exception {
+	public Project loadProjectById(int projectId) throws Exception {
+		
+		try (Connection con = DBController.getInstance().getConnection();
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.SELECT_PROJECT_BY_ID)) {
+			
+			pstmt.setInt(1, projectId);
+			ResultSet rs = pstmt.executeQuery();
+			
+			int ownerId = rs.getInt("owner_id");			
+			User u = getUserById(ownerId);
+			Project p = new Project(projectId, rs.getString("name"), u, DateUtils.toDate(rs.getString("created")));
+			
+			p.setMessages(getProjectMessages(projectId));
+			p.setToDos(getProjectTodos(projectId));
+			p.setSubscribers(getProjectUsers(projectId));
+			
+			rs.close();
+			return p;
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}	
+	
+	public void addProject(Project p) throws Exception {
 		
 		try (Connection con = DBController.getInstance().getConnection();
 		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_PROJECT)) {
 			
-			pstmt.setInt(1, u.getId());
+			pstmt.setInt(1, p.getOwner().getId());
 			pstmt.setString(2, DateUtils.toString(LocalDate.now()));
 			pstmt.setString(3, p.getTitle());		
 			pstmt.execute();
 			
 		} catch (SQLException e) {
 			throw e;
-		}
-		
+		}		
 	}
+	
+	public void addUserToProject(Project p, User u) throws Exception {
+		
+		try (Connection con = DBController.getInstance().getConnection();
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_USER_TO_PROJECT)) {
+			
+			pstmt.setInt(1, u.getId());
+			pstmt.setInt(2, p.getId());		
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			throw e;
+		}		
+	}
+	
+	public void addTodoToProject(Project p, ProjectToDo t) throws Exception {
+		
+		try (Connection con = DBController.getInstance().getConnection();
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_TODO)) {
+			
+			pstmt.setString(1, DateUtils.toString(LocalDate.now()));
+			pstmt.setInt(2, t.getState());
+			pstmt.setString(3, t.getName());
+			pstmt.setString(4, t.getDescription());
+			pstmt.setInt(5, p.getId());
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			throw e;
+		}		
+	}
+	
+	public void addUserToTodo(ProjectToDo t, User u) throws Exception {
+		
+		try (Connection con = DBController.getInstance().getConnection();
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_USER_TO_TODO)) {
+			
+			pstmt.setInt(1, t.getId());
+			pstmt.setInt(2, u.getId());
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			throw e;
+		}		
+	}
+	
+	public void addMessageToProject(Project p, Message m) throws Exception {
+		
+		try (Connection con = DBController.getInstance().getConnection();
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_MESSAGE)) {
+			
+			pstmt.setString(1, DateUtils.toString(LocalDate.now()));
+			pstmt.setInt(2, m.getAuthor().getId());
+			pstmt.setString(3, m.getMessage());
+			pstmt.setInt(4, p.getId());
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			throw e;
+		}		
+	}
+	
+	public void setTodoState(ProjectToDo t, int state) throws Exception {
+		
+		try (Connection con = DBController.getInstance().getConnection();
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.SET_TODO_STATE_BY_ID)) {
+			
+			pstmt.setInt(1, state);
+			pstmt.setInt(2, t.getId());
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			throw e;
+		}		
+	}
+	
+	//HELPERS
 	
 	private User getUserById(int userId) throws Exception{
 		try (Connection con = DBController.getInstance().getConnection();
@@ -86,15 +192,14 @@ public class ProjectDAO {
 				int todoId = rs.getInt("id");
 				List<User> attachedUsers = getProjectTodoUsers(todoId);
 				ProjectToDo d = new ProjectToDo(todoId, rs.getString("name"), rs.getString("description"), attachedUsers, rs.getInt("state"), DateUtils.toDate(rs.getString("created")));
+				todos.add(d);
 			}
 			
 			rs.close();
+			return todos;
 		} catch (Exception e) {
 			throw e;
 		}
-		
-		
-		return todos;
 	}
 	
 	private List<User> getProjectTodoUsers(int todoId) throws Exception{
@@ -103,7 +208,6 @@ public class ProjectDAO {
 		try (Connection con = DBController.getInstance().getConnection();
 		         PreparedStatement pstmt = con.prepareStatement(DBStatements.SELECT_PROJECT_TODO_USERS_BY_PROJECT_TODO_ID)) {
 			
-		
 			pstmt.setInt(1, todoId);
 			ResultSet rs = pstmt.executeQuery();
 			

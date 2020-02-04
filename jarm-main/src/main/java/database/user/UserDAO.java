@@ -13,6 +13,7 @@ import database.DBController;
 import database.DBStatements;
 import de.jarm.main.data.User;
 import de.jarm.main.database.exceptions.UserExistsException;
+import de.jarm.main.database.exceptions.WrongUserOrPasswordException;
 import utils.DateUtils;
 
 public class UserDAO {
@@ -48,30 +49,28 @@ public class UserDAO {
 			return u;
 			
 		} catch (Exception e) {
-			throw e;
+			throw new WrongUserOrPasswordException();
 		}
 	}
 	
-//	public User findUserByEmail(String email) {
-//		try (Connection con = DBController.getInstance().getConnection();
-//				PreparedStatement pstmt = con.prepareStatement(DBStatements.SELECT_USER_LOGIN)){
-//			
-//			pstmt.setString(0, email);
-//			pstmt.setString(1, password);
-//			
-//			ResultSet rs = pstmt.executeQuery();
-//			User u = new User(rs.getInt("id"), rs.getString("name"), rs.getString("password"), rs.getString("email"));
-//			return u;
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return null;
-//	}
+	public User loadUserById(int id) throws Exception {
+		try (Connection con = DBController.getInstance().getConnection();
+				PreparedStatement pstmt = con.prepareStatement(DBStatements.SELECT_USER_BY_ID)){
+			
+			pstmt.setInt(1, id);
+			
+			ResultSet rs = pstmt.executeQuery();
+			User u = new User(rs.getInt("id"), rs.getString("name"), rs.getString("password"), rs.getString("email"));
+			return u;
+			
+		} catch (SQLException e) {
+			throw new Exception("Kein user unter der id " + id + " gefunden");
+		}
+	}
 	
 	
 	
-	public User addUser(User u) throws UserExistsException, Exception {
+	public User addUser(User u) throws UserExistsException {
 		
 		try (Connection con = DBController.getInstance().getConnection();
 				PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_USER)){
@@ -85,10 +84,8 @@ public class UserDAO {
 			return u;
 			
 		} catch (SQLException e) {
-			throw new UserExistsException("Unter dieser Email-Adresse ist bereits ein Benutzer registriert");
-		} catch (Exception e) {
-			throw e;
-		}
+			throw new UserExistsException();
+		} 
 	}
 	
 }

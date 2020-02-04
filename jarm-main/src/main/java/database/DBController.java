@@ -1,5 +1,6 @@
 package database;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,7 +10,7 @@ import java.sql.Statement;
 public class DBController {
 	
     private static DBController dbcontroller;
-    private static final String DB_PATH = System.getProperty("user.home") + "/" + "jarmdb.db";
+    private static final String DB_PATH = System.getProperty("user.home") + "/JARM/" + "jarmdb.db";
 
     static {
         try {
@@ -20,13 +21,14 @@ public class DBController {
         }
     }
     
-    private DBController() throws Exception{
-
+    private DBController() throws SQLException{
+    	File folder = new File(System.getProperty("user.home") + "/JARM/");
+    	folder.mkdir();
 		createTables();
 
     }
     
-    public static DBController getInstance() throws Exception{
+    public static DBController getInstance() throws SQLException{
     	
     	if (dbcontroller == null ) {
     		dbcontroller = new DBController();
@@ -38,7 +40,7 @@ public class DBController {
 		return DriverManager.getConnection("jdbc:sqlite:" + DB_PATH);
     }
     
-    private void createTables() throws Exception{
+    private void createTables() throws SQLException{
     	try (Connection con = getConnection(); 
     			Statement stmt = con.createStatement()){
 			
@@ -50,8 +52,8 @@ public class DBController {
 			stmt.execute(DBCreation.CREATE_PROJECT_MESSAGE_TABLE);
 			
 			System.out.println("Tables created");
-		} catch (Exception e) {
-			throw new Exception(e);
+		} catch (SQLException e) {
+			throw e;
 		}
     }
     
