@@ -1,4 +1,4 @@
-package utils;
+package de.jarm.main.utils;
 
 public class ValidierungsException extends Exception {
 	

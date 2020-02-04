@@ -1,11 +1,11 @@
-package interfaces;
+package de.jarm.main.interfaces;
 
 import java.time.LocalDate;
 
-import data.Message;
-import data.Project;
-import data.ProjectToDo;
-import data.User;
+import de.jarm.main.data.Message;
+import de.jarm.main.data.Project;
+import de.jarm.main.data.ProjectToDo;
+import de.jarm.main.data.User;
 
 public interface ProjectService {
 

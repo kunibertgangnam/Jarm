@@ -1,4 +1,4 @@
-package data;
+package de.jarm.main.data;
 
 
 public class User {

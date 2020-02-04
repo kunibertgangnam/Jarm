@@ -1,7 +1,7 @@
-package interfaces;
+package de.jarm.main.interfaces;
 
-import data.User;
-import utils.ValidierungsException;
+import de.jarm.main.data.User;
+import de.jarm.main.utils.ValidierungsException;
 
 public interface UserService {
 
