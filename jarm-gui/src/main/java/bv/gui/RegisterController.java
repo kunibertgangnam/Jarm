@@ -17,7 +17,6 @@ public class RegisterController implements Controller {
 			String name = request.getParameter("Name");
 			String passwort = request.getParameter("Passwort");
 			String passwortNochmal = request.getParameter("Passwortwiederholung");
-			String vorname = request.getParameter("Vorname");
 					
 //			try {
 ////				BenutzerServiceImpl.getInstance().comparePasswords(passwort, passwortNochmal);

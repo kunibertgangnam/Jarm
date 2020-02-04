@@ -35,13 +35,13 @@
 					<li class="nav-item active"><a class="nav-link"
 						href="<c:url value='/home.do'/>">Home <span class="sr-only">(current)</span></a>
 					</li>
-					<c:if test="${eingeloggt == null}">
+					<c:if test="${empty user}">
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/login.do'/>">Login</a></li>
+							href="<c:url value='/bv/login.do'/>">Login</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/register.do'/>">Registrieren</a></li>
+							href="<c:url value='/bv/register.do'/>">Registrieren</a></li>
 					</c:if>
-					<c:if test="${eingeloggt != null}">
+					<c:if test="${!empty user}">
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/login.do?logout=true'/>">Logout</a></li>
 					</c:if>

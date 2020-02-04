@@ -14,7 +14,7 @@
 					</p>
 					<label for="formGroupExampleInput">Benutzername:</label> <input
 						type="text" class="form-control" id="formGroupExampleInput"
-						placeholder="Benutzername" value="<c:out value="${NameValue}"/>">
+						placeholder="Benutzername" name="Benutzername" value="<c:out value="${nameValue}"/>">
 				</div>
 			</div>
 			<div class="form-group">
@@ -22,21 +22,24 @@
 					<label for="exampleInputEmail1">E-Mail:</label> <input type="email"
 						class="form-control" id="exampleInputEmail1"
 						aria-describedby="emailHelp" placeholder="E-Mail"
-						value="<c:out value="${EmailValue}"/>">
+						 name="Email" 
+						value="<c:out value="${emailValue}"/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-5">
 					<label for="exampleInputPassword1">Passwort:</label> <input
 						type="password" class="form-control" id="exampleInputPassword1"
-						placeholder="Passwort" value="<c:out value="${PasswortValue}"/>">
+						name="Passwort" 
+						placeholder="Passwort" value="">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-5">
 					<label for="exampleInputPassword1">Passwort wiederholen:</label> <input
 						type="password" class="form-control" id="exampleInputPassword1"
-						placeholder="Passwort wiederholen" value="<c:out value="${PasswortWdhValue}"/>">
+						name="Passwortwiederholung"
+						placeholder="Passwort wiederholen" value="">
 					</p>
 					<button type="submit" class="btn btn-info">Registrieren</button>
 				</div>

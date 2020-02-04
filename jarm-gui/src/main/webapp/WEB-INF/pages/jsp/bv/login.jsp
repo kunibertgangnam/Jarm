@@ -9,16 +9,16 @@
 				<div class="col-sm-4">
 					<h2>Login</h2>
 					</p>
-					<label for="formGroupExampleInput">Benutzername:</label> <input
+					<label for="formGroupExampleInput">Email:</label> <input
 						type="text" class="form-control" id="formGroupExampleInput"
-						placeholder="Benutzername oder E-Mail" value="<c:out value="${NameValue}"/>">
+						placeholder="E-Mail" name="Email" value="<c:out value="${emailValue}"/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-4">
 					<label for="exampleInputPassword1">Passwort:</label> <input
 						type="password" class="form-control" id="exampleInputPassword1"
-						placeholder="Passwort" value="<c:out value="${PasswortValue}"/>">
+						placeholder="Passwort" name="Passwort"  value="">
 					</p>
 					<button type="submit" class="btn btn-info">Login</button>
 				</div>
