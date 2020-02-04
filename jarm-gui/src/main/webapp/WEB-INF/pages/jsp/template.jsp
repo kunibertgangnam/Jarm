@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,7 +13,7 @@
     <title>Jarm</title>
   </head>
 	   <body> 
-			<div id="oben" style = "background-color: #c0c0c0;">
+			<div style = "background-color: #c0c0c0;margin-top: 0px;margin-left: 0px;color : #ffffff;font-weight: bold;">
 				<nav class="navbar navbar-expand-lg navbar-light">
 				  <span class="navbar-brand mb-0 h1">Jarm</span>
 				  <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -52,5 +52,11 @@
 					   </div>
 				</nav>
 			</div>
+			<c:if test ="${imProjekt != null}">
+				<div style = "float:right; width:15%; margin: 10px;color : black;background-color : #c0c0c0;border-color : #ff0000; border-style : solid; border-width: thin; text-align: center;">
+					<h3>Mitglieder des Projekts</h3>
+					<c:out value="${mitglieder}"/>
+				</div>
+			</c:if>
 	</body>
 </html>
