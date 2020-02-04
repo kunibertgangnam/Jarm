@@ -4,7 +4,7 @@
 
 <div class="container">
 	</p>
-	<form>
+	<form method="POST">
 		<div class="form-group">
 			<div class="col-sm-5">
 				<div id="zentriert" class="border border-white">
