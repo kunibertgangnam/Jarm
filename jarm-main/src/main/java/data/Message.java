@@ -1,19 +1,19 @@
-package classes;
+package data;
 
 import java.time.LocalDate;
 
 public class Message {
-	private int iD;
+	private int id;
 	private String message;
 	private LocalDate crationDate;
 	private User author;
 	
-	public int getID() {
-		return iD;
+	public int getId() {
+		return id;
 	}
 
-	private void setID(int iD) {
-		this.iD = iD;
+	private void setId(int iD) {
+		this.id = iD;
 	}
 
 	public String getMessage() {
@@ -45,7 +45,7 @@ public class Message {
 	}
 
 	public Message(int iD, String message, LocalDate creationDate, User author) {
-		setID(iD);
+		setId(iD);
 		setMessage(message);
 		setCreationDate(creationDate);
 		setAuthor(author);

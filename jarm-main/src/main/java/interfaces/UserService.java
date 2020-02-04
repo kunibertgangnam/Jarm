@@ -1,6 +1,6 @@
 package interfaces;
 
-import classes.User;
+import data.User;
 import utils.ValidierungsException;
 
 public interface UserService {

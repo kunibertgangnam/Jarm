@@ -2,10 +2,10 @@ package interfaces;
 
 import java.time.LocalDate;
 
-import classes.Message;
-import classes.Project;
-import classes.ProjectToDo;
-import classes.User;
+import data.Message;
+import data.Project;
+import data.ProjectToDo;
+import data.User;
 
 public interface ProjectService {
 
