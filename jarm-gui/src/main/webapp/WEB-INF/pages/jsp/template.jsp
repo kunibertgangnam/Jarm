@@ -33,17 +33,17 @@
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="nav nav-tabs">
 					<li class="nav-item active"><a class="nav-link"
-						href="<c:url value='/home.do'/>">Home <span class="sr-only">(current)</span></a>
+						href="<c:url value='/home.do'/>"><font color="white">Home</font><span class="sr-only">(current)</span></a>
 					</li>
 					<c:if test="${eingeloggt == null}">
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/login.do'/>">Login</a></li>
+							href="<c:url value='/login.do'/>"><font color="white">Login</font></a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/register.do'/>">Registrieren</a></li>
+							href="<c:url value='/register.do'/>"><font color="white">Registrieren</font></a></li>
 					</c:if>
 					<c:if test="${eingeloggt != null}">
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/login.do?logout=true'/>">Logout</a></li>
+							href="<c:url value='/login.do?logout=true'/>"><font color="white">Logout</font></a></li>
 					</c:if>
 				</ul>
 			</div>
@@ -67,7 +67,7 @@
 	<c:if test="${imProjekt != null}">
 		<div
 			style="float: right; width: 15%; margin: 10px; color: black; background-color: #c0c0c0; border-color: #ff0000; border-style: solid; border-width: thin; text-align: center;">
-			<h3>Mitglieder des Projekts</h3>
+			<h4>Mitglieder des Projekts</h4>
 			<c:out value="${mitglieder}" />
 		</div>
 	</c:if>
