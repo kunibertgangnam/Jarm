@@ -9,11 +9,11 @@
 	<div class="form-group">
 		<div class="col-sm-7">
 			<div class="border2">
-				<c:forEach var="project" items="${myProjects}">
-					<h3>
-						<c:out value="${projects.name}" />
-					</h3>
-				</c:forEach>
+
+				<h3>
+					<c:out value="${currentProject.title}" />
+				</h3>
+
 				<br />
 				<h5>
 					Mitglieder:
@@ -65,7 +65,7 @@
 			</h6>
 
 			<ul class="list-group">
-				<c:forEach var="todo" items="${todos}">
+				<c:forEach var="todo" items="${currentProject.toDos}">
 					<li class="list list-group-item"><c:out value="${todo.name}" />
 						<div class="float-right">
 							<i class="fas fa-edit orange"></i> <i
