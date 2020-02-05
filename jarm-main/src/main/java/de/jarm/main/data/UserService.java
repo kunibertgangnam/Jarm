@@ -67,9 +67,12 @@ public class UserService implements UserServiceInterface {
 	}
 
 	@Override
-	public User getUser(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public User getUserById(int id) throws ValidierungsException {
+		try {
+			return userDAO.loadUserById(id);
+		} catch (Exception e) {
+			throw new ValidierungsException(e.getMessage());
+		}
 	}
 
 }

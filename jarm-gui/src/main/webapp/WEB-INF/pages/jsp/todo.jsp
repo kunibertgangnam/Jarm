@@ -25,6 +25,8 @@
 				<br />
 				<button type="button" class="btn btn-info" data-toggle="modal"
 					data-target="#exampleModal">Mitglied hinzufügen</button>
+				<form method="post" action="<c:url value='/projects/addUserToProject.do'/>">	
+				<input type="hidden" name="id" value="<c:out value="${currentProject.id}"/>" />
 				<div class="modal fade" id="exampleModal" tabindex="-1"
 					role="dialog" aria-labelledby="exampleModalLabel"
 					aria-hidden="true">
@@ -45,17 +47,18 @@
 											class="fas fa-search text-white" aria-hidden="true"></i></span>
 									</div>
 									<input class="form-control my-0 py-1" type="text"
-										placeholder="Search" aria-label="Search">
+										placeholder="Search" aria-label="Search" >
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-info">Hinzufügen</button>
+								<button type="submit" class="btn btn-info">Hinzufügen</button>
 								<button type="button" class="btn btn-light" data-dismiss="modal">Abbrechen</button>
 							</div>
 						</div>
 					</div>
 
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>

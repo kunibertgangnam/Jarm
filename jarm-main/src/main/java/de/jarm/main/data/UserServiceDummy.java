@@ -66,4 +66,10 @@ public class UserServiceDummy implements UserServiceInterface {
 		
 	}
 
+	@Override
+	public User getUserById(int id) throws ValidierungsException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

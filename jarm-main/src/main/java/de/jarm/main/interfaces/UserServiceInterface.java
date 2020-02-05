@@ -13,5 +13,5 @@ public interface UserServiceInterface {
 
 	public User getUser(String string);
 	
-	public User getUser(int id);
+	public User getUserById(int id) throws ValidierungsException;
 }

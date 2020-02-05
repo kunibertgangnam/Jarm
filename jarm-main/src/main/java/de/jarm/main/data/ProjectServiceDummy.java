@@ -104,4 +104,10 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 		return null;
 	}
 
+	@Override
+	public void addUserToTodo(ProjectToDo todo, User user) throws ValidierungsException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
