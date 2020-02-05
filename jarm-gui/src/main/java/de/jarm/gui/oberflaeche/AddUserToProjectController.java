@@ -12,9 +12,9 @@ public class AddUserToProjectController implements Controller{
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
 		int userId = (int) request.getAttribute("userId");
-		int projektId = (int) request.getAttribute("projektId");
+		int projectId = (int) request.getAttribute("projektId");
 		try {
-			DataController.getInstance().getProjectService().addSubscriber(DataController.getInstance().getProjectService().getProjectById(projektId), DataController.getInstance().getUserService().getUser(userId));
+			DataController.getInstance().getProjectService().addSubscriber(DataController.getInstance().getProjectService().getProjectById(projectId), DataController.getInstance().getUserService().getUser(userId));
 			new ProjectController().execute(request, response, message);
 		}catch (Exception e) {
 			message.append(e.getMessage());
