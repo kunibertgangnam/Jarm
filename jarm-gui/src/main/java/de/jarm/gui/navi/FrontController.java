@@ -37,7 +37,7 @@ public class FrontController extends HttpServlet
 		controller.put("/bv/login", new LoginController());
 		controller.put("/bv/register", new RegisterController());
 		controller.put("/bv/logout", new LogoutController());
-//		controller.put("/bv/login", new LoginController());
+		controller.put("/bv/infoPojekt", new InfokastenController());
 //		controller.put("/bv/logout", new LogoutController());
 //		controller.put("/secured/userArea", new UserAreaController());
 
@@ -80,11 +80,6 @@ public class FrontController extends HttpServlet
 			request.setAttribute("url", requestedUrl);
 		} else {
 			request.setAttribute("url", "/WEB-INF/pages/jsp/error/error.jsp");
-		}
-
-		//Damit die Infobox mit den Mitgliedern in einem Projekt angezeigt werden
-		if(request.getSession().getAttribute("imProjekt")!= null) {
-			new InfokastenController();
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher(LAYOUT_SEITE);

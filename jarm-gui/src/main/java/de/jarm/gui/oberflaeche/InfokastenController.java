@@ -17,8 +17,8 @@ public class InfokastenController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
-		String projektName = (String) request.getSession().getAttribute("imProjekt");
-		List<String> mitglieder = nutzerAuslesen(projektName, (User)request.getSession().getAttribute("eingeloggt"));
+		String projektName = (String)request.getAttribute("projekt");
+		List<String> mitglieder = nutzerAuslesen(projektName, (User)request.getSession().getAttribute("user"));
 		request.getSession().setAttribute("mitglieder", mitglieder);
 		return null;
 	}
