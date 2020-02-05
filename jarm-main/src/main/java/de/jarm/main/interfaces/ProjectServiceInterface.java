@@ -1,6 +1,8 @@
 package de.jarm.main.interfaces;
 
 
+import java.util.List;
+
 import de.jarm.main.data.Message;
 import de.jarm.main.data.Project;
 import de.jarm.main.data.ProjectToDo;
@@ -17,7 +19,12 @@ public interface ProjectServiceInterface {
 	public void removeToDo(Project project, ProjectToDo toDo);
 	public void deleteProject(Project project);
 	public void removeMessage(Project project, Message message);
+<<<<<<< HEAD
 	public void addToDo(Project project, ProjectToDo toDo) throws ValidierungsException;
 	
+=======
+	public Project getProject(int id);
+	public List<Project> getProjectList();
+>>>>>>> refs/remotes/origin/master
 	
 }

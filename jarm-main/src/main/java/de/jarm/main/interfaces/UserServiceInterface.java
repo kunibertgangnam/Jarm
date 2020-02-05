@@ -12,4 +12,8 @@ public interface UserServiceInterface {
 	public User login(String user, String password) throws ValidierungsException;
 	
 	public void remove(User user);
+
+	public User getUser(String string);
+	
+	public User getUser(int id);
 }

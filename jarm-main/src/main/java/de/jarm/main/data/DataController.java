@@ -2,6 +2,7 @@ package de.jarm.main.data;
 
 import de.jarm.main.interfaces.ProjectServiceInterface;
 import de.jarm.main.interfaces.UserServiceInterface;
+import de.jarm.main.utils.TestDatenBestand;
 
 public class DataController {
 	
@@ -10,8 +11,14 @@ public class DataController {
 	private static DataController instance;
 
 	private DataController () {
+<<<<<<< HEAD
 		projectService = new ProjectService();
 		userService = new UserService();
+=======
+		projectService = new ProjectServiceDummy(new ArrayList<Project>());
+		userService = new UserServiceDummy(new ArrayList<User>());
+		TestDatenBestand.test();
+>>>>>>> refs/remotes/origin/master
 	}
 	
 	public ProjectServiceInterface getProjectService() {
