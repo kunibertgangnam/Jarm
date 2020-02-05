@@ -20,5 +20,6 @@ public interface ProjectServiceInterface {
 	public void deleteProject(Project project);
 	public void removeMessage(Project project, Message message);
 	public void addToDo(Project project, ProjectToDo toDo) throws ValidierungsException;
+	public List<Project> getProjectsByUser(User user) throws ValidierungsException;
 	
 }
