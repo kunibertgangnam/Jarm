@@ -32,7 +32,7 @@ public class FrontController extends HttpServlet
 	public void init() throws ServletException {
 		controller = new HashMap<String, Controller>();
 		controller.put("/secured/projekt", new UserAreaController());
-		controller.put("/de/jarm/gui/forum", new ForumController());
+		controller.put("/forum/forum", new ForumController());
 		controller.put("/bv/login", new LoginController());
 		controller.put("/bv/register", new RegisterController());
 		controller.put("/bv/logout", new LogoutController());
