@@ -7,7 +7,7 @@ public class DBCreation {
 			+ "name TEXT NOT NULL UNIQUE, "
 			+ "password TEXT NOT NULL, "
 			+ "created TEXT NOT NULL, "
-			+ "email TEXT NOT NULL"
+			+ "email TEXT NOT NULL UNIQUE"
 			+ ");";
 	
 	public static final String CREATE_PROJECT_TABLE = "CREATE TABLE IF NOT EXISTS project ("
