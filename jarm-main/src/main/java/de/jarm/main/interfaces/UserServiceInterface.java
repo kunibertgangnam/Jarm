@@ -1,5 +1,7 @@
 package de.jarm.main.interfaces;
 
+import java.util.List;
+
 import de.jarm.main.data.User;
 import de.jarm.main.utils.ValidierungsException;
 

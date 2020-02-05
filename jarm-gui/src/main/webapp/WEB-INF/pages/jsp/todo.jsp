@@ -46,8 +46,11 @@
 										<span class="input-group-text cyan lighten-2" id="basic-text1"><i
 											class="fas fa-search text-white" aria-hidden="true"></i></span>
 									</div>
-									<input class="form-control my-0 py-1" type="text"
+									<input class="form-control my-0 py-1" type="text" id="query-input-user" 
 										placeholder="Search" aria-label="Search" >
+									<div id="query-output-user">
+								
+									</div>	
 								</div>
 							</div>
 							<div class="modal-footer">
@@ -111,18 +114,21 @@
 								</div>
 								<textarea class="form-control" aria-label="With textarea"  name="Description"></textarea>
 							</div>
+							<div id="todo-users-added"></div>
 							<br /> User zuweisen:
 							<div class="input-group md-form form-sm form-1 pl-0">
 								<div class="input-group-prepend">
 									<span class="input-group-text cyan lighten-2" id="basic-text1"><i
 										class="fas fa-search text-white" aria-hidden="true"></i></span>
 								</div>
-								<input id="query-input" class="form-control my-0 py-1" type="text"
-									placeholder="Search" aria-label="Search">
-							</div>
-							<div id="query-output">
+								
+								<input id="query-input-todo" class="form-control my-0 py-1" type="text"
+									placeholder="Search" aria-label="Search" autocomplete="off">
 								
 							</div>
+							<div id="query-output-todo">		
+							</div>	
+							
 						</div>
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-info">Speichern</button>
@@ -135,3 +141,4 @@
 		</div>
 	</div>
 </div>
+<span id="current-project-id" style="visibility: hidden;"><c:out value="${currentProject.id}"/></span>

@@ -74,6 +74,6 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>       
         
-    <script><c:out escapeXml="false" value="${script}"/></script>     
+    <script>$(document).ready(function() { <c:out escapeXml="false" value="${script}"/> });</script>     
     </body>
 </html>
