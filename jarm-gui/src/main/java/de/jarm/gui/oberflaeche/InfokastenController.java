@@ -23,7 +23,7 @@ public class InfokastenController implements Controller {
 	}
 
 	private List<String> nutzerAuslesen(String projektName) {
-		 List<Project> projekte = DataController.getInstance().getProjectService().getProjectList();
+		 List<Project> projekte = DataController.getInstance().getProjectService().
 		 List<String> namenMitglieder = new ArrayList<>();
 		 for (Project p : projekte) {
 			 if(p.getTitle().equals(projektName)) {
