@@ -17,8 +17,10 @@
 				<br />
 				<h5>
 					Mitglieder:
-					<c:forEach var="user" items="${users}">
-						<c:out value="${user.name}" />
+					<c:out value="${user.name}" />
+						<i class="fas fa-user-minus fa-xs darkblue"></i>(owner) ,
+					<c:forEach var="projectUser" items="${currentProject.subscribers}">
+						<c:out value="${projectUser.name}" />
 						<i class="fas fa-user-minus fa-xs darkblue"></i> , </c:forEach>
 				</h5>
 				<br />
