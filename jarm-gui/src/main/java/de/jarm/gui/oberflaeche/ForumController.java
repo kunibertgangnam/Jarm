@@ -13,6 +13,7 @@ import de.jarm.main.data.DataController;
 import de.jarm.main.data.Message;
 import de.jarm.main.data.Project;
 import de.jarm.main.data.User;
+import de.jarm.main.utils.ValidierungsException;
 
 public class ForumController implements Controller {
 
@@ -24,23 +25,23 @@ public class ForumController implements Controller {
 			nachrichtPruefen(nachricht);
 			request.setAttribute("nachricht", null);
 			nachrichtEinfuegen(nachricht, request);
-			request.getSession().setAttribute("nachrichten", nachrichtenAusgeben());
+			request.getSession().setAttribute("nachrichten", nachrichtenAuslesen(request));
 		}
 		return null;
 	}
 
-	private Map<String, String> nachrichtenAusgeben() {
+	private Map<String, String> nachrichtenAuslesen(HttpServletRequest request) {
 		Map<String, String> nachrichtenMitName = new HashMap<String, String>();
-		List<Message> ausgelesen = new ArrayList<>();
-		ausgelesen = DataController.getInstance().getProjectService().getProjectList().get(2).getMessages();
-		//nur zu Testzwecken
-		nachrichtenMitName.put(ausgelesen.get(ausgelesen.size()-1).getAuthor().toString(),ausgelesen.get(ausgelesen.size()-1).getMessage());
-		
+		Project jetzt = (Project) request.getAttribute("projekt");
+		List<Message> messages = jetzt.getMessages();
+		for (Message m : messages) {
+			nachrichtenMitName.put(m.getAuthor().getName(), m.getMessage());
+		}
 		return nachrichtenMitName;
 	}
 
-	private void nachrichtEinfuegen(String nachricht, HttpServletRequest request) {
-		DataController.getInstance().getProjectService().writeMessage((Project)request.getSession().getAttribute("projektName"), nachricht, (User) request.getSession().getAttribute("eingeloggt"));
+	private void nachrichtEinfuegen(String nachricht, HttpServletRequest request) throws ValidierungsException {
+		DataController.getInstance().getProjectService().writeMessage((Project) request.getAttribute("projekt"), nachricht, (User) request.getSession().getAttribute("user"));
 	}
 
 	private void nachrichtPruefen(String nachricht) throws Exception {
