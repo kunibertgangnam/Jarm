@@ -32,8 +32,6 @@ public class UserDAO {
 			}
 			
 			return users;
-		} catch (Exception e) {
-			throw e;
 		}
 	}
 	
@@ -45,11 +43,13 @@ public class UserDAO {
 			pstmt.setString(2, password);
 			
 			ResultSet rs = pstmt.executeQuery();
-			User u = new User(rs.getInt("id"), rs.getString("name"), rs.getString("password"), rs.getString("email"));
-			return u;
 			
-		} catch (Exception e) {
-			throw new WrongUserOrPasswordException();
+			if (rs.next()) {
+				User u = new User(rs.getInt("id"), rs.getString("name"), rs.getString("password"), rs.getString("email"));
+				return u;
+			} else {
+				throw new WrongUserOrPasswordException();
+			}
 		}
 	}
 	
@@ -58,19 +58,20 @@ public class UserDAO {
 				PreparedStatement pstmt = con.prepareStatement(DBStatements.SELECT_USER_BY_ID)){
 			
 			pstmt.setInt(1, id);
-			
 			ResultSet rs = pstmt.executeQuery();
-			User u = new User(rs.getInt("id"), rs.getString("name"), rs.getString("password"), rs.getString("email"));
-			return u;
 			
-		} catch (SQLException e) {
-			throw new Exception("Kein user unter der id " + id + " gefunden");
+			if (rs.next()) {
+				User u = new User(rs.getInt("id"), rs.getString("name"), rs.getString("password"), rs.getString("email"));
+				return u;
+			} else {
+				throw new Exception("Kein user unter der id " + id + " gefunden");
+			}
 		}
 	}
 	
 	
 	
-	public User addUser(User u) throws UserExistsException {
+	public User addUser(User u) throws Exception {
 		
 		try (Connection con = DBController.getInstance().getConnection();
 				PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_USER,
@@ -83,13 +84,12 @@ public class UserDAO {
 			pstmt.executeUpdate();
 			
 			ResultSet generatedKey = pstmt.getGeneratedKeys();
-			u.setId(generatedKey.getInt(1));
-			
-			return u;
-			
-		} catch (SQLException e) {
-			throw new UserExistsException();
-		} 
-	}
-	
+			if (generatedKey.next()) {
+				u.setId(generatedKey.getInt(1));
+				return u;
+			} else {
+				throw new UserExistsException();
+			}
+		}
+	}	
 }

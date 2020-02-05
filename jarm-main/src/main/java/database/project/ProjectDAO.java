@@ -17,6 +17,7 @@ import de.jarm.main.data.Message;
 import de.jarm.main.data.Project;
 import de.jarm.main.data.ProjectToDo;
 import de.jarm.main.data.User;
+import de.jarm.main.database.exceptions.NoDataFoundException;
 import utils.DateUtils;
 
 public class ProjectDAO {
@@ -44,8 +45,6 @@ public class ProjectDAO {
 			rs.close();
 			return projects;
 			
-		} catch (Exception e) {
-			throw e;
 		}
 	}
 	
@@ -57,19 +56,19 @@ public class ProjectDAO {
 			pstmt.setInt(1, projectId);
 			ResultSet rs = pstmt.executeQuery();
 			
-			int ownerId = rs.getInt("owner_id");			
-			User u = getUserById(ownerId);
-			Project p = new Project(projectId, rs.getString("name"), u, DateUtils.toDate(rs.getString("created")));
-			
-			p.setMessages(getProjectMessages(projectId));
-			p.setToDos(getProjectTodos(projectId));
-			p.setSubscribers(getProjectUsers(projectId));
-			
-			rs.close();
-			return p;
-			
-		} catch (Exception e) {
-			throw e;
+			if (rs.next()) {
+				int ownerId = rs.getInt("owner_id");			
+				User u = getUserById(ownerId);
+				Project p = new Project(projectId, rs.getString("name"), u, DateUtils.toDate(rs.getString("created")));
+				
+				p.setMessages(getProjectMessages(projectId));
+				p.setToDos(getProjectTodos(projectId));
+				p.setSubscribers(getProjectUsers(projectId));
+				
+				return p;
+			} else {
+				throw new NoDataFoundException();
+			}						
 		}
 	}	
 	
@@ -84,13 +83,13 @@ public class ProjectDAO {
 			pstmt.execute();
 			
 			ResultSet generatedKey = pstmt.getGeneratedKeys();
-			p.setId(generatedKey.getInt(1));
-			
-			return p;
-			
-		} catch (SQLException e) {
-			throw e;
-		}		
+			if (generatedKey.next()) {
+				p.setId(generatedKey.getInt(1));
+			} else {
+				throw new Exception("Fehler beim Erstellen des Projekts!");
+			}
+			return p;		
+		} 	
 	}
 	
 	public void addUserToProject(Project p, User u) throws Exception {
@@ -102,8 +101,6 @@ public class ProjectDAO {
 			pstmt.setInt(2, p.getId());		
 			pstmt.execute();
 			
-		} catch (SQLException e) {
-			throw e;
 		}		
 	}
 	
@@ -120,13 +117,14 @@ public class ProjectDAO {
 			pstmt.execute();
 			
 			ResultSet generatedKey = pstmt.getGeneratedKeys();
-			t.setId(generatedKey.getInt(1));
 			
-			return t;
-			
-		} catch (SQLException e) {
-			throw e;
-		}		
+			if (generatedKey.next()) {
+				t.setId(generatedKey.getInt(1));
+			} else {
+				throw new Exception("Todo konnte nicht hinzugefügt werden!");
+			}	
+			return t;			
+		} 	
 	}
 	
 	public void addUserToTodo(ProjectToDo t, User u) throws Exception {
@@ -136,10 +134,7 @@ public class ProjectDAO {
 			
 			pstmt.setInt(1, t.getId());
 			pstmt.setInt(2, u.getId());
-			pstmt.execute();
-			
-		} catch (SQLException e) {
-			throw e;
+			pstmt.execute();		
 		}		
 	}
 	
@@ -155,13 +150,13 @@ public class ProjectDAO {
 			pstmt.execute();
 			
 			ResultSet generatedKey = pstmt.getGeneratedKeys();
-			m.setId(generatedKey.getInt(1));
-			
-			return m;
-			
-		} catch (SQLException e) {
-			throw e;
-		}		
+			if (generatedKey.next()) {
+				m.setId(generatedKey.getInt(1));
+			} else {
+				throw new Exception("Nachricht konnte nicht hinzugefügt werden!");
+			}
+			return m;		
+		}	
 	}
 	
 	public void setTodoState(ProjectToDo t, int state) throws Exception {
@@ -173,9 +168,7 @@ public class ProjectDAO {
 			pstmt.setInt(2, t.getId());
 			pstmt.execute();
 			
-		} catch (SQLException e) {
-			throw e;
-		}		
+		}	
 	}
 	
 	//HELPERS
@@ -186,11 +179,13 @@ public class ProjectDAO {
 			
 			pstmt.setInt(1, userId);
 			ResultSet rs = pstmt.executeQuery();
-			User u = new User(userId, rs.getString("name"), rs.getString("password"), rs.getString("email"));
-			rs.close();
-			return u;
-		} catch (SQLException e) {
-			throw e;
+			
+			if (rs.next()) {
+				User u = new User(userId, rs.getString("name"), rs.getString("password"), rs.getString("email"));
+				return u;
+			} else {
+				throw new NoDataFoundException();
+			}	
 		}
 	}
 	
@@ -199,8 +194,8 @@ public class ProjectDAO {
 		
 		try (Connection con = DBController.getInstance().getConnection();
 		         PreparedStatement pstmt = con.prepareStatement(DBStatements.SELECT_PROJECT_TODOS_BY_PROJECT_ID)) {
-			pstmt.setInt(1, projectId);
 			
+			pstmt.setInt(1, projectId);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -209,11 +204,7 @@ public class ProjectDAO {
 				ProjectToDo d = new ProjectToDo(todoId, rs.getString("name"), rs.getString("description"), attachedUsers, rs.getInt("state"), DateUtils.toDate(rs.getString("created")));
 				todos.add(d);
 			}
-			
-			rs.close();
 			return todos;
-		} catch (Exception e) {
-			throw e;
 		}
 	}
 	
@@ -230,11 +221,8 @@ public class ProjectDAO {
 				User u = new User(rs.getInt("id"), rs.getString("name"), rs.getString("password"), rs.getString("email"));
 				projectTodoUsers.add(u);
 			}
-			rs.close();
 			return projectTodoUsers; 
-		} catch (Exception e) {
-			throw e;
-		}
+		} 
 	}
 	
 	private List<User> getProjectUsers(int projectId) throws Exception{
@@ -244,15 +232,13 @@ public class ProjectDAO {
 		         PreparedStatement pstmt = con.prepareStatement(DBStatements.SELECT_PROJECT_USERS_BY_PROJECT_ID)) {
 			pstmt.setInt(1, projectId);
 			
-			ResultSet rs = pstmt.executeQuery();	
+			ResultSet rs = pstmt.executeQuery();
+			
 			while (rs.next()) {
 				User u = new User(rs.getInt("id"), rs.getString("name"), rs.getString("password"), rs.getString("email"));
 				projectUsers.add(u);
 			}
-			rs.close();
 			return projectUsers;
-		} catch(SQLException e) {
-			throw e;
 		}
 	}
 	
@@ -270,12 +256,7 @@ public class ProjectDAO {
 				Message m = new Message(rs.getInt("id"), rs.getString("message"), DateUtils.toDate(rs.getString("created")), u);
 				projectMessages.add(m);
 			}
-			rs.close();
-			return projectMessages;
-			
-		} catch (SQLException e) {
-			throw e;
-		}
-		
+			return projectMessages;		
+		}		
 	}
 }
