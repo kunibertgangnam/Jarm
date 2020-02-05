@@ -1,5 +1,7 @@
 package de.jarm.main.data;
 
+import java.util.List;
+
 import database.user.UserDAO;
 import de.jarm.main.interfaces.UserServiceInterface;
 import de.jarm.main.utils.ValidierungsException;
@@ -66,9 +68,20 @@ public class UserService implements UserServiceInterface {
 	}
 
 	@Override
-	public User getUser(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public User getUserById(int id) throws ValidierungsException {
+		try {
+			return userDAO.loadUserById(id);
+		} catch (Exception e) {
+			throw new ValidierungsException(e.getMessage());
+		}
 	}
 
+	@Override
+	public List<User> findUserByNameOrEmail(String input) throws ValidierungsException {
+		try {
+			return userDAO.searchUserByNameOrEmail(input);
+		} catch(Exception e) {
+			throw new ValidierungsException(e.getMessage());
+		}
+	}
 }

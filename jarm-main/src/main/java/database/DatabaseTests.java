@@ -202,6 +202,17 @@ public class DatabaseTests {
 			System.out.println("FEHLER " + e.getMessage());
 		}
 		
+		System.out.println("\n\nTEST 17 - FIND BY NAME OR EMAIL --------------------");
+		try {
+			List<User> users = userDao.searchUserByNameOrEmail("@web");
+			
+			if (users.size() != 4) throw new Exception("nicht genau 4 user gefunden!");
+			
+			System.out.println("ERFOLGREICH " + users);
+		} catch (Exception e) {
+			System.out.println("FEHLER " + e.getMessage());
+		}
+		
 		// BREAKPOINT TEST
 		try {
 			List<Project> projects = projectDao.loadAllProjects();

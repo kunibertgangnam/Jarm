@@ -24,6 +24,8 @@ public class DBStatements {
 	
 	public static final String SELECT_PROJECTS_BY_USER_ID = "SELECT * FROM project WHERE EXISTS (SELECT 1 FROM project_user WHERE user_id = ? AND project_id = project.id) UNION SELECT * FROM project WHERE owner_id = ?;";
 	
+	public static final String FIND_USER_BY_NAME_OR_EMAIL = "SELECT * FROM user WHERE name LIKE ? OR email LIKE ?;";
+	
 	//INSERT
 	
 	public static final String ADD_USER = "INSERT INTO user (name, password, created, email) VALUES (?,?,?,?);";

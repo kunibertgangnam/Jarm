@@ -92,4 +92,24 @@ public class UserDAO {
 			}
 		}
 	}	
+	
+	public List<User> searchUserByNameOrEmail(String input) throws Exception{
+		List<User> results = new ArrayList<>();
+		
+		try (Connection con = DBController.getInstance().getConnection();
+				PreparedStatement pstmt = con.prepareStatement(DBStatements.FIND_USER_BY_NAME_OR_EMAIL)){
+			
+			pstmt.setString(1, "%" + input + "%");
+			pstmt.setString(2, "%" + input + "%");
+	
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				User u = new User(rs.getInt("id"), rs.getString("name"), rs.getString("password"), rs.getString("email"));
+				results.add(u);
+			}
+			
+			return results;
+		}		
+	}
 }
