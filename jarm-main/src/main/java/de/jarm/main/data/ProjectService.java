@@ -98,16 +98,4 @@ public class ProjectService implements ProjectServiceInterface {
 		}
 	}
 
-	@Override
-	public Project getProject(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Project> getProjectList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

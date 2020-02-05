@@ -19,12 +19,6 @@ public interface ProjectServiceInterface {
 	public void removeToDo(Project project, ProjectToDo toDo);
 	public void deleteProject(Project project);
 	public void removeMessage(Project project, Message message);
-<<<<<<< HEAD
 	public void addToDo(Project project, ProjectToDo toDo) throws ValidierungsException;
-	
-=======
-	public Project getProject(int id);
-	public List<Project> getProjectList();
->>>>>>> refs/remotes/origin/master
 	
 }
