@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.oberflaeche.ForumController;
 import de.jarm.gui.oberflaeche.LoginController;
+import de.jarm.gui.oberflaeche.LogoutController;
 import de.jarm.gui.oberflaeche.RegisterController;
 import de.jarm.gui.oberflaeche.UserAreaController;
 
@@ -34,6 +35,7 @@ public class FrontController extends HttpServlet
 		controller.put("/de/jarm/gui/forum", new ForumController());
 		controller.put("/bv/login", new LoginController());
 		controller.put("/bv/register", new RegisterController());
+		controller.put("/bv/logout", new LogoutController());
 //		controller.put("/bv/login", new LoginController());
 //		controller.put("/bv/logout", new LogoutController());
 //		controller.put("/secured/userArea", new UserAreaController());

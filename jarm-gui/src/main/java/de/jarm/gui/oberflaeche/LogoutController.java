@@ -15,7 +15,7 @@ public class LogoutController implements Controller {
 		request.getSession().invalidate();
 		request.getSession().setAttribute("eingeloggt", null);
 		
-		//new InfoController().execute(request, response, message);
+		new LoginController().execute(request, response, message);
 		return "/bv/login";
 	}
 

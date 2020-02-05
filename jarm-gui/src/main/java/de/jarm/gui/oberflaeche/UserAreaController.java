@@ -1,9 +1,13 @@
 package de.jarm.gui.oberflaeche;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
+import de.jarm.main.data.DataController;
+import de.jarm.main.data.Project;
 import de.jarm.main.data.User;
 
 public class UserAreaController implements Controller {
@@ -17,6 +21,14 @@ public class UserAreaController implements Controller {
 		if (u == null) {
 			new LoginController().execute(request, response, message);
 			return "/bv/login";
+		}
+		
+		try {
+			//TODO: Get Project by user
+			List<Project> myProjects = DataController.getInstance().getProjectService().getProjectList();
+			request.setAttribute("myProjects", myProjects);
+		} catch(Exception e){
+			message.append(e.getMessage());
 		}
 		
 		return null;

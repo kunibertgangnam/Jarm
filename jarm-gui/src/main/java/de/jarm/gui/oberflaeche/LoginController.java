@@ -23,6 +23,7 @@ public class LoginController implements Controller {
 			if (u != null) {
 				message.append("Sie haben sich erfolgreich eingeloggt!");
 				request.getSession().setAttribute("user", u);
+				new UserAreaController().execute(request, response, message);
 				return "/secured/userArea";
 			}
 			else {

@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
 import de.jarm.gui.utils.ValidierungsException;
+import de.jarm.main.data.DataController;
+import de.jarm.main.data.User;
 
 public class RegisterController implements Controller {
 
@@ -21,13 +23,11 @@ public class RegisterController implements Controller {
 			try {			
 				if (!passwort.equals(passwortNochmal)) {
 					throw new ValidierungsException("Die Passwörter müssen übereinstimmen");
-				}
-				
-				BenutzerServiceImpl.getInstance().comparePasswords(passwort, passwortNochmal);
-//				Benutzer b = new Benutzer(name,email,passwort,vorname);
-//				BenutzerServiceImpl.getInstance().neu(b);
-//				NotificationBuilder.createSuccessNotification("Sie haben sich erfolgreich registriert!", request);
-				//request.getSession().setAttribute("user", b);
+				}			
+				User u = DataController.getInstance().getUserService().create(name, passwort, email);
+				message.append("Sie haben sich erfolgreich registriert!");
+				request.getSession().setAttribute("user", u);
+				new UserAreaController().execute(request, response, message);
 				return "/secured/userArea";
 			} catch(ValidierungsException e) {
 				message.append(e.getMessage());
