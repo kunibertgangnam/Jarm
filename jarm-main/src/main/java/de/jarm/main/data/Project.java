@@ -13,6 +13,23 @@ public class Project {
 	private List<User> subscribers;
 	private List<Message> messages;
 	
+	public Project(int id, String title, User owner, LocalDate creationDate) {
+		this.id = id;
+		this.title = title;
+		this.owner = owner;
+		this.creationDate = creationDate;
+	}
+	
+	public Project(String title, User owner, LocalDate creationDate) {
+		setTitle(title);
+		setOwner(owner);
+		setCreationDate(creationDate);
+	}
+	
+	public Project(String title, User owner) {
+		this(title, owner, LocalDate.now());
+	}
+	
 	public List<ProjectToDo> getToDos() {
 		return toDos;
 	}
@@ -37,23 +54,11 @@ public class Project {
 		this.messages = messages;
 	}
 
-	public Project(String title, User owner, LocalDate creationDate) {
-		setTitle(title);
-		setOwner(owner);
-		setCreationDate(creationDate);
-	}
-	
-	
-	public Project(String title, User owner) {
-		this(title, owner, LocalDate.now());
-	}
-	
-
 	public int getId() {
 		return id;
 	}
 	
-	private void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
