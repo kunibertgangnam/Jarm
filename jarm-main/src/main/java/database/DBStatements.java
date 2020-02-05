@@ -22,7 +22,7 @@ public class DBStatements {
 	
 	public static final String SELECT_USER_BY_ID = "SELECT * FROM user WHERE id = ?;";
 	
-	public static final String SELECT_PROJECTS_BY_USER_ID = "SELECT * FROM project WHERE EXISTS (SELECT 1 FROM project_user WHERE user_id = ? AND project_id = project.id);";
+	public static final String SELECT_PROJECTS_BY_USER_ID = "SELECT * FROM project WHERE EXISTS (SELECT 1 FROM project_user WHERE user_id = ? AND project_id = project.id) UNION SELECT * FROM project WHERE owner_id = ?;";
 	
 	//INSERT
 	

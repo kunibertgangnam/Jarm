@@ -20,7 +20,6 @@ public class UserServiceDummy implements UserServiceInterface {
 		return newUser;
 	}
 	
-	@Override
 	public User create(String name, String password) throws ValidierungsException {
 		return create(name, password, null);
 	}

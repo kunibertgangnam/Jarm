@@ -40,7 +40,7 @@ public class ForumController implements Controller {
 	}
 
 	private void nachrichtEinfuegen(String nachricht, HttpServletRequest request) {
-		//DataController.getInstance().getProjectService().writeMessage((Project)request.getSession().getAttribute("projektName"), nachricht, (User) request.getSession().getAttribute("eingeloggt"));
+
 	}
 
 	private void nachrichtPruefen(String nachricht) throws Exception {
