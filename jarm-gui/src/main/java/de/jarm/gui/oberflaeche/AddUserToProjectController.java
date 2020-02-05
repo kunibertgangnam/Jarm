@@ -14,11 +14,11 @@ public class AddUserToProjectController implements Controller{
 		int userId = (int) request.getAttribute("userId");
 		int projectId = (int) request.getAttribute("projektId");
 		try {
-			DataController.getInstance().getProjectService().addSubscriber(DataController.getInstance().getProjectService().getProjectById(projectId), DataController.getInstance().getUserService().getUser(userId));
-			new ProjectController().execute(request, response, message);
+			DataController.getInstance().getProjectService().addSubscriber(DataController.getInstance().getProjectService().getProjectById(projectId), DataController.getInstance().getUserService().getUserById(userId));
 		}catch (Exception e) {
 			message.append(e.getMessage());
 		}
+		new ProjectController().execute(request, response, message);
 		return "/projects/project";
 	}
 }
