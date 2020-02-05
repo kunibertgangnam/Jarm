@@ -64,4 +64,16 @@ public class UserService implements UserServiceInterface {
         return m.matches();
 	}
 
+	@Override
+	public User getUser(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User getUser(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

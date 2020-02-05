@@ -1,5 +1,7 @@
 package de.jarm.main.data;
 
+import java.util.List;
+
 import database.project.ProjectDAO;
 import de.jarm.main.interfaces.ProjectServiceInterface;
 import de.jarm.main.utils.ValidierungsException;
@@ -11,7 +13,7 @@ public class ProjectService implements ProjectServiceInterface {
 	@Override
 	public Project create(String projectTitle, User projectOwner) throws ValidierungsException {
 		if (projectOwner == null) {
-			throw new ValidierungsException("Dafür müssen sie eingeloggt sein!");
+			throw new ValidierungsException("Dafï¿½r mï¿½ssen sie eingeloggt sein!");
 		} else if (projectTitle.equals("")) {
 			throw new ValidierungsException("Bitte einen Titel festlegen!");
 		}
@@ -94,6 +96,18 @@ public class ProjectService implements ProjectServiceInterface {
 		} catch(Exception e) {
 			throw new ValidierungsException(e.getMessage());
 		}
+	}
+
+	@Override
+	public Project getProject(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Project> getProjectList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

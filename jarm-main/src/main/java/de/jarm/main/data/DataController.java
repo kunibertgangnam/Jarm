@@ -11,14 +11,8 @@ public class DataController {
 	private static DataController instance;
 
 	private DataController () {
-<<<<<<< HEAD
 		projectService = new ProjectService();
 		userService = new UserService();
-=======
-		projectService = new ProjectServiceDummy(new ArrayList<Project>());
-		userService = new UserServiceDummy(new ArrayList<User>());
-		TestDatenBestand.test();
->>>>>>> refs/remotes/origin/master
 	}
 	
 	public ProjectServiceInterface getProjectService() {
