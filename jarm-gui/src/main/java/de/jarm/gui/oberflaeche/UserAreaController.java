@@ -24,7 +24,8 @@ public class UserAreaController implements Controller {
 		}
 		
 		try {
-			List<Project> myProjects = DataController.getInstance().getProjectService().getProjectsByUser((User) request.getSession().getAttribute("user"));
+			List<Project> myProjects = DataController.getInstance().getProjectService().getProjectsByUser(u);
+			System.out.println(myProjects);
 			request.setAttribute("myProjects", myProjects);
 		} catch(Exception e){
 			message.append(e.getMessage());
