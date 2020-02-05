@@ -10,6 +10,7 @@ import de.jarm.gui.navi.Controller;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Project;
 import de.jarm.main.data.User;
+import de.jarm.main.utils.ValidierungsException;
 
 public class InfokastenController implements Controller {
 
@@ -17,24 +18,22 @@ public class InfokastenController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
 		String projektName = (String) request.getSession().getAttribute("imProjekt");
-		List<String> mitglieder = nutzerAuslesen(projektName);
+		List<String> mitglieder = nutzerAuslesen(projektName, (User)request.getSession().getAttribute("eingeloggt"));
 		request.getSession().setAttribute("mitglieder", mitglieder);
 		return null;
 	}
 
-	private List<String> nutzerAuslesen(String projektName) {
-		 List<Project> projekte = DataController.getInstance().getProjectService().
-		 List<String> namenMitglieder = new ArrayList<>();
-		 for (Project p : projekte) {
-			 if(p.getTitle().equals(projektName)) {
-				int id = p.getId();
-				List<User> user = DataController.getInstance().getProjectService().getProject(id).getSubscribers();
-				for(User u : user) {
+	private List<String> nutzerAuslesen(String projektName, User user) throws ValidierungsException {
+		List<Project> projekte = DataController.getInstance().getProjectService().getProjectsByUser(user);
+		List<String> namenMitglieder = new ArrayList<>();;
+		for(Project p : projekte) {
+			if(p.getTitle().equals(projektName)) {
+				List<User> mitglieder = p.getSubscribers();
+				for(User u : mitglieder) {
 					namenMitglieder.add(u.getName());
-				 }
-				break;
-			 }
-		 } 
+				}
+			}
+		}
 		return namenMitglieder;
 	}
 }
