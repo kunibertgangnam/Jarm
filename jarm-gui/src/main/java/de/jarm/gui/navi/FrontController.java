@@ -36,6 +36,7 @@ public class FrontController extends HttpServlet
 		controller.put("/bv/login", new LoginController());
 		controller.put("/bv/register", new RegisterController());
 		controller.put("/bv/logout", new LogoutController());
+		controller.put("/bv/logout", new LogoutController());
 //		controller.put("/bv/login", new LoginController());
 //		controller.put("/bv/logout", new LogoutController());
 //		controller.put("/secured/userArea", new UserAreaController());
