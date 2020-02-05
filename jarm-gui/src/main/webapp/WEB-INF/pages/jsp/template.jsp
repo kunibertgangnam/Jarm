@@ -49,7 +49,11 @@
 			</div>
 		</nav>
 	</div>
-
+	
+	<div id="message">
+		<c:out value="${meldung}"/>
+	</div>
+	
 	<div id="inhalt">
 		<c:import url="${url}"></c:import>
 	</div>

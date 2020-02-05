@@ -51,7 +51,9 @@ public class FrontController extends HttpServlet
 		String navi = request.getRequestURI().substring( // /mvc/test/eins.do
 				request.getContextPath().length(),		// /mvc
 				request.getRequestURI().length() -3);	// .do
-
+		
+		System.out.println("REQUESTED: " + navi + "----------------------******************------------------------");
+		
 		try
 		{
 			Controller c = controller.get(navi);
@@ -60,6 +62,7 @@ public class FrontController extends HttpServlet
 				String neueNavi = c.execute(request, response, meldung);
 				if (neueNavi != null) {
 					navi = neueNavi;
+					System.out.println("NEU: " + navi + "----------------------******************------------------------");
 				}
 			}
 		}
@@ -69,7 +72,7 @@ public class FrontController extends HttpServlet
 			e.printStackTrace();
 		}
 
-		//request.setAttribute("meldung", meldung.toString());
+		request.setAttribute("meldung", meldung.toString());
 		String requestedUrl = "/WEB-INF/pages/jsp" + navi + ".jsp";
 		
 		if (isValidUrl(navi)) {
@@ -77,7 +80,7 @@ public class FrontController extends HttpServlet
 		} else {
 			request.setAttribute("url", "/WEB-INF/pages/jsp/error/error.jsp");
 		}
-
+		
 		RequestDispatcher rd = request.getRequestDispatcher(LAYOUT_SEITE);
 		rd.forward(request, response);
 	}

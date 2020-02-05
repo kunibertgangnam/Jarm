@@ -24,7 +24,7 @@ public class LoginController implements Controller {
 				message.append("Sie haben sich erfolgreich eingeloggt!");
 				request.getSession().setAttribute("user", u);
 				new UserAreaController().execute(request, response, message);
-				return "/secured/userArea";
+				return "/secured/projekt";
 			}
 			else {
 				message.append("Benutzername oder Passwort falsch!");
