@@ -1,6 +1,5 @@
 package de.jarm.main.data;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import de.jarm.main.interfaces.ProjectServiceInterface;
@@ -9,10 +8,10 @@ import de.jarm.main.utils.ValidierungsException;
 public class ProjectServiceDummy implements ProjectServiceInterface{
 	private List<Project> projectList;
 
-	
-	private Project create(String projectTitle, User projectOwner, LocalDate creationDate)
+	@Override
+	public Project create(String projectTitle, User projectOwner)
 			throws ValidierungsException {
-		Project newProject = new Project(projectTitle, projectOwner, creationDate);
+		Project newProject = new Project(projectTitle, projectOwner);
 		projectList.add(newProject);
 		return newProject;
 	}
@@ -25,11 +24,6 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 		this.projectList = projectList;
 	}
 
-	@Override
-	public Project create(String projectTitle, User projectOwner)
-			throws ValidierungsException {
-		return create(projectTitle, projectOwner, LocalDate.now());
-	}
 	
 	public ProjectServiceDummy(List<Project> projectList) {
 		this.projectList = projectList;

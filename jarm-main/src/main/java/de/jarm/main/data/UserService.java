@@ -1,7 +1,6 @@
 package de.jarm.main.data;
 
 import database.user.UserDAO;
-import de.jarm.main.database.exceptions.UserExistsException;
 import de.jarm.main.interfaces.UserServiceInterface;
 import de.jarm.main.utils.ValidierungsException;
 
@@ -61,7 +60,7 @@ public class UserService implements UserServiceInterface {
 	}
 
 	@Override
-	public User getUser(String string) {
+	public User getUser(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
