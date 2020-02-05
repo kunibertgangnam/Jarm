@@ -10,9 +10,9 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 	private List<Project> projectList;
 
 	
-	private Project create(int projectId, String projectTitle, User projectOwner, LocalDate creationDate)
+	private Project create(String projectTitle, User projectOwner, LocalDate creationDate)
 			throws ValidierungsException {
-		Project newProject = new Project(projectId, projectTitle, projectOwner, creationDate);
+		Project newProject = new Project(projectTitle, projectOwner, creationDate);
 		projectList.add(newProject);
 		return newProject;
 	}
@@ -26,19 +26,28 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 	}
 
 	@Override
-	public Project create(int projectId, String projectTitle, User projectOwner)
+	public Project create(String projectTitle, User projectOwner)
 			throws ValidierungsException {
-		return create(projectId, projectTitle, projectOwner, LocalDate.now());
+		return create(projectTitle, projectOwner, LocalDate.now());
 	}
 	
 	public ProjectServiceDummy(List<Project> projectList) {
 		this.projectList = projectList;
 		
 	}
+	
+	public Project getProject(int id) {
+		for (Project project : projectList) {
+			if(project.getId() == id) {
+				return project;
+			}
+		}
+		return null;
+	}
 
 	@Override
-	public void writeMessage(Project project, int id, String message, User author) {
-		project.getMessages().add(new Message(id, message, author));
+	public void writeMessage(Project project, String message, User author) {
+		project.getMessages().add(new Message(message, author));
 	}
 
 	@Override
@@ -66,7 +75,7 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 	}
 
 	@Override
-	public void deletProject(Project project) {
+	public void deleteProject(Project project) {
 		projectList.remove(project);
 		
 	}
@@ -75,6 +84,18 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 	public void removeMessage(Project project, Message message) {
 		project.getMessages().remove(message);
 		
+	}
+
+	@Override
+	public void addToDo(Project project, ProjectToDo toDo) throws ValidierungsException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Project> getProjectsByUser(User user) throws ValidierungsException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

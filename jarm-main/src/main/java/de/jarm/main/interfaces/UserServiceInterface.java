@@ -5,11 +5,13 @@ import de.jarm.main.utils.ValidierungsException;
 
 public interface UserServiceInterface {
 
-	public User create(int id, String name, String password, String email) throws ValidierungsException;
+	public User create(String name, String password, String email) throws ValidierungsException;
 	
-	public User create(int id, String name, String password) throws ValidierungsException;
-	
-	public User login(String user, String password);
+	public User login(String user, String password) throws ValidierungsException;
 	
 	public void remove(User user);
+
+	public User getUser(String string);
+	
+	public User getUser(int id);
 }
