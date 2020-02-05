@@ -20,17 +20,25 @@ public class FindUserServlet extends HttpServlet {
 		
 		String userName = request.getParameter("userName").trim().toLowerCase();
 		String projectIdString = request.getParameter("projectId");
-		int projectId;
+		int projectId = -1;
+		boolean requestForTodo = false;
 		
 		if (projectIdString != null) {
 			projectId = new Integer(projectIdString.trim());
+			requestForTodo = true;
+			System.out.println("Request for todo in project with id " + projectId);
 		}
-		
 		
 		StringBuilder responseString = new StringBuilder();
 		
 		try {
-			List<User> usersFound = DataController.getInstance().getUserService().findUserByNameOrEmail(userName);
+			List<User> usersFound;
+			
+			if (requestForTodo) {
+				usersFound = DataController.getInstance().getUserService().findUserInProjectByNameOrEmail(userName, projectId);
+			} else {
+				usersFound = DataController.getInstance().getUserService().findUserByNameOrEmail(userName);
+			}
 			
 			System.out.println("found " + usersFound.size() + " users for queryString: " + userName);
 			

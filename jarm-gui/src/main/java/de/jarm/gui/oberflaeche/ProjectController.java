@@ -23,7 +23,7 @@ public class ProjectController implements Controller {
 			message.append(e.getMessage());
 		}
 		
-		request.setAttribute("script", JavaScriptFunctions.FIND_USER_FOR_TODO);
+		request.setAttribute("script", JavaScriptFunctions.FIND_USER_FOR_TODO + " " + JavaScriptFunctions.FIND_USER_FOR_PROEJCT);
 		
 		return null;
 	}
