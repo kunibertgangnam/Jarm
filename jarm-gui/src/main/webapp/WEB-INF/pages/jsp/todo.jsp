@@ -70,6 +70,8 @@
 						<div class="float-right">
 							<i class="fas fa-edit orange"></i> <i
 								class="fas fa-check-circle green"></i> <i
+								class="fas fa-question darkblue"></i> <i
+								class="fas fa-hourglass-start"></i> <i
 								class="fas fa-trash-alt grey"></i>
 						</div></li>
 				</c:forEach>
