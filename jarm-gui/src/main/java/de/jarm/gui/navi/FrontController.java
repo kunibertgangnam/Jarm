@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
 import de.jarm.gui.oberflaeche.ForumController;
+import de.jarm.gui.oberflaeche.InfokastenController;
 import de.jarm.gui.oberflaeche.UserAreaController;
 
 
@@ -70,6 +71,11 @@ public class FrontController extends HttpServlet
 			request.setAttribute("url", "/pages/jsp/error/error.jsp");
 		}
 
+		//Damit die Infobox mit den Mitgliedern in einem Projekt angezeigt werden
+		if(request.getSession().getAttribute("imProjekt")!= null) {
+			new InfokastenController();
+		}
+		
 		RequestDispatcher rd = request.getRequestDispatcher(LAYOUT_SEITE);
 		rd.forward(request, response);
 	}
