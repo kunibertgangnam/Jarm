@@ -19,12 +19,12 @@ public class CreateProjectController implements Controller {
 			
 			try {
 				DataController.getInstance().getProjectService().create(projectName, (User) request.getSession().getAttribute("user") );
+				message.append("Projekt " + projectName + " erfolgreich erstellt!");
 			} catch(Exception e) {
 				message.append(e.getMessage());
 			}			
 		}
-		
-		return null;
+		return "/secured/projekt";
 	}
 
 }
