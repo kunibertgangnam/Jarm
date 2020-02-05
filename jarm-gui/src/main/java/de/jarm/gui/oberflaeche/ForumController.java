@@ -32,7 +32,7 @@ public class ForumController implements Controller {
 	private Map<String, String> nachrichtenAusgeben() {
 		Map<String, String> nachrichtenMitName = new HashMap<String, String>();
 		List<Message> ausgelesen = new ArrayList<>();
-		ausgelesen = DataController.getInstance().getProjectService().getProjectList().get(2).getMessages();
+		//ausgelesen = DataController.getInstance().getProjectService().getProjectList().get(2).getMessages();
 		//nur zu Testzwecken
 		nachrichtenMitName.put(ausgelesen.get(ausgelesen.size()-1).getAuthor().toString(),ausgelesen.get(ausgelesen.size()-1).getMessage());
 		
@@ -40,7 +40,7 @@ public class ForumController implements Controller {
 	}
 
 	private void nachrichtEinfuegen(String nachricht, HttpServletRequest request) {
-		DataController.getInstance().getProjectService().writeMessage((Project)request.getSession().getAttribute("projektName"), nachricht, (User) request.getSession().getAttribute("eingeloggt"));
+	//	DataController.getInstance().getProjectService().writeMessage((Project)request.getSession().getAttribute("projektName"), nachricht, (User) request.getSession().getAttribute("eingeloggt"));
 	}
 
 	private void nachrichtPruefen(String nachricht) throws Exception {

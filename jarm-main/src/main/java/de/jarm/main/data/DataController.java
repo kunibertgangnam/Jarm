@@ -2,9 +2,37 @@ package de.jarm.main.data;
 
 import de.jarm.main.interfaces.ProjectServiceInterface;
 import de.jarm.main.interfaces.UserServiceInterface;
+import de.jarm.main.utils.ValidierungsException;
 
 public class DataController {
 	
+	public static void main(String[] args) {
+		String password = "25";
+		try {
+			for(int i = 0; i<= 100; i++) {
+				
+				DataController.getInstance().getUserService().create("moin"+i, password, "xaver.lol"+i+"@gmx.de");				
+			}
+		} catch (ValidierungsException e) {
+			System.out.println("Fehler");
+			e.printStackTrace();
+		}
+		try {
+			for(int i = 0; i<= 100; i++) {
+				DataController.getInstance().getProjectService().create("project title"+i, DataController.getInstance().getUserService().login("xaver.lol"+i+"@gmx.de", "25"));
+			}
+			System.out.println(DataController.getInstance().getUserService().login("xaver.lol0@gmx.de", "25").getId());
+			
+			User u = DataController.getInstance().getUserService().login("xaver.lol0@gmx.de", "25");
+			ProjectServiceInterface pro = DataController.getInstance().getProjectService();
+			pro.writeMessage(pro.getProjectsByUser(u).get(0), "hi", u);
+			
+		} catch (ValidierungsException e) {
+			System.out.println("Fehler");
+			e.printStackTrace();
+		}
+		System.out.println("fertig");
+	}
 	private ProjectServiceInterface projectService;
 	private UserServiceInterface userService;
 	private static DataController instance;
