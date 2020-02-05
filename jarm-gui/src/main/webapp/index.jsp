@@ -1,2 +1,2 @@
 <%-- Weiterleitung zum Controller --%>
-<jsp:forward page="/pages/main.do"/>
+<jsp:forward page="/secured/projekt.do"/>
