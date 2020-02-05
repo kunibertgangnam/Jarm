@@ -11,11 +11,12 @@ public class LogoutController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
 		
-		//NotificationBuilder.createNotification("Sie haben sich erfolgreich ausgeloggt!", request);
+		message.append("Sie haben sich erfolgreich ausgeloggt!");
 		request.getSession().invalidate();
 		request.getSession().setAttribute("eingeloggt", null);
-		//new InfoController().execute(request, response, message);
-		return "/test/info";
+		
+		new LoginController().execute(request, response, message);
+		return "/bv/login";
 	}
 
 }

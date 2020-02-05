@@ -11,8 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.jarm.gui.navi.Controller;
+import de.jarm.gui.oberflaeche.CreateProjectController;
 import de.jarm.gui.oberflaeche.ForumController;
+import de.jarm.gui.oberflaeche.LoginController;
+import de.jarm.gui.oberflaeche.LogoutController;
+import de.jarm.gui.oberflaeche.ProjectController;
+import de.jarm.gui.oberflaeche.RegisterController;
 import de.jarm.gui.oberflaeche.UserAreaController;
 
 
@@ -23,14 +27,22 @@ public class FrontController extends HttpServlet
 {
 
 	private static final long serialVersionUID = 1L;
-	private static final String LAYOUT_SEITE = "/pages/jsp/template.jsp";
+	private static final String LAYOUT_SEITE = "/WEB-INF/pages/jsp/template.jsp";
 	private Map<String, Controller> controller;
 	
 	@Override
 	public void init() throws ServletException {
 		controller = new HashMap<String, Controller>();
-		controller.put("/test/main", new UserAreaController());
+		controller.put("/secured/projektList", new UserAreaController());
 		controller.put("/forum/forum", new ForumController());
+		controller.put("/bv/login", new LoginController());
+		controller.put("/bv/register", new RegisterController());
+		controller.put("/bv/logout", new LogoutController());
+		controller.put("/projects/create", new CreateProjectController());
+		controller.put("/projects/project", new ProjectController());
+//		controller.put("/bv/login", new LoginController());
+//		controller.put("/bv/logout", new LogoutController());
+//		controller.put("/secured/userArea", new UserAreaController());
 
 		System.out.println("Frontcontroller initialisiert");
 		System.out.println(LAYOUT_SEITE);
@@ -43,7 +55,9 @@ public class FrontController extends HttpServlet
 		String navi = request.getRequestURI().substring( // /mvc/test/eins.do
 				request.getContextPath().length(),		// /mvc
 				request.getRequestURI().length() -3);	// .do
-
+		
+		System.out.println("REQUESTED: " + navi + "----------------------******************------------------------");
+		
 		try
 		{
 			Controller c = controller.get(navi);
@@ -52,6 +66,7 @@ public class FrontController extends HttpServlet
 				String neueNavi = c.execute(request, response, meldung);
 				if (neueNavi != null) {
 					navi = neueNavi;
+					System.out.println("NEU: " + navi + "----------------------******************------------------------");
 				}
 			}
 		}
@@ -61,15 +76,15 @@ public class FrontController extends HttpServlet
 			e.printStackTrace();
 		}
 
-		//request.setAttribute("meldung", meldung.toString());
-		String requestedUrl = "/pages/jsp" + navi + ".jsp";
+		request.setAttribute("meldung", meldung.toString());
+		String requestedUrl = "/WEB-INF/pages/jsp" + navi + ".jsp";
 		
 		if (isValidUrl(navi)) {
 			request.setAttribute("url", requestedUrl);
 		} else {
-			request.setAttribute("url", "/pages/jsp/error/error.jsp");
+			request.setAttribute("url", "/WEB-INF/pages/jsp/error/error.jsp");
 		}
-
+		
 		RequestDispatcher rd = request.getRequestDispatcher(LAYOUT_SEITE);
 		rd.forward(request, response);
 	}
