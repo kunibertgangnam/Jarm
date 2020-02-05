@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.oberflaeche.ForumController;
 import de.jarm.gui.oberflaeche.InfokastenController;
+import de.jarm.gui.oberflaeche.AddTodoController;
 import de.jarm.gui.oberflaeche.CreateProjectController;
 import de.jarm.gui.oberflaeche.LoginController;
 import de.jarm.gui.oberflaeche.LogoutController;
@@ -42,6 +43,7 @@ public class FrontController extends HttpServlet
 		controller.put("/projects/create", new CreateProjectController());
 		controller.put("/projects/project", new ProjectController());
 		controller.put("/bv/infoPojekt", new InfokastenController());
+		controller.put("/projects/addTodo", new AddTodoController());
 //		controller.put("/bv/login", new LoginController());
 //		controller.put("/bv/logout", new LogoutController());
 //		controller.put("/secured/userArea", new UserAreaController());

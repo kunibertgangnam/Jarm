@@ -111,4 +111,13 @@ public class ProjectService implements ProjectServiceInterface {
 
 	}
 
+	@Override
+	public Project getProjectById(int projectId) throws ValidierungsException {
+		try {
+			return projectDAO.loadProjectById(projectId);
+		} catch (Exception e) {
+			throw new ValidierungsException(e.getMessage());
+		}
+	}
+
 }
