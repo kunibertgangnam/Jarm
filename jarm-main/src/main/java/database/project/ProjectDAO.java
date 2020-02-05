@@ -72,6 +72,33 @@ public class ProjectDAO {
 		}
 	}	
 	
+	public List<Project> loadProjectsByUser(int userId) throws Exception {
+		
+		List<Project> userProjects = new ArrayList<Project>();
+		
+		try (Connection con = DBController.getInstance().getConnection();
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.SELECT_PROJECTS_BY_USER_ID)) {
+			
+			pstmt.setInt(1, userId);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				int ownerId = rs.getInt("owner_id");	
+				int projectId = rs.getInt("id");
+				User u = getUserById(ownerId);
+				Project p = new Project(projectId, rs.getString("name"), u, DateUtils.toDate(rs.getString("created")));
+				
+				p.setMessages(getProjectMessages(projectId));
+				p.setToDos(getProjectTodos(projectId));
+				p.setSubscribers(getProjectUsers(projectId));
+				
+				userProjects.add(p);
+			} 
+			
+			return userProjects;
+		}
+	}
+	
 	public Project addProject(Project p) throws Exception {
 		
 		try (Connection con = DBController.getInstance().getConnection();

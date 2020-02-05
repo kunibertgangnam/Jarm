@@ -98,4 +98,17 @@ public class ProjectService implements ProjectServiceInterface {
 		}
 	}
 
+	@Override
+	public List<Project> getProjectsByUser(User user) throws ValidierungsException {
+		if (user == null) {
+			throw new ValidierungsException("Dazu musst du eingeloggt sein!");
+		}
+		try {
+			return projectDAO.loadProjectsByUser(user.getId());
+		} catch(Exception e) {
+			throw new ValidierungsException(e.getMessage());
+		}
+
+	}
+
 }
