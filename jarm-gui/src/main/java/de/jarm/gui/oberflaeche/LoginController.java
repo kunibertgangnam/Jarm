@@ -3,8 +3,9 @@ package de.jarm.gui.oberflaeche;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.jarm.gui.daten.Benutzer;
 import de.jarm.gui.navi.Controller;
+import de.jarm.main.data.DataController;
+import de.jarm.main.data.User;
 
 public class LoginController implements Controller {
 
@@ -16,24 +17,19 @@ public class LoginController implements Controller {
 		if (request.getMethod().equals("POST")) {
 			String email = request.getParameter("Email");
 			String passwort = request.getParameter("Passwort");
-			// wenn man sich erfolgreich eingeloggt hat ---> damit der Header richtig angezeigt wird
-			request.getSession().setAttribute("eingeloggt", true);
+
+			User u = DataController.getInstance().getUserService().login(email, passwort);
 			
-			
-			
-//			Benutzer b = BenutzerServiceImpl.getInstance().login(email, passwort);
-//			
-//			if (b != null) {
-//				message.append("Sie haben sich erfolgreich eingeloggt!");
-//				//NotificationBuilder.createSuccessNotification("Sie haben sich erfolgreich eingeloggt!", request);
-//				request.getSession().setAttribute("user", b);
-//				return "/secured/userArea";
-//			}
-//			else {
-//				message.append("Benutzername oder Passwort falsch!");
-//				//NotificationBuilder.createErrorNotification("Benutzername oder Passwort falsch!", request);
-//				request.setAttribute("emailValue", email);
-//			}
+			if (u != null) {
+				message.append("Sie haben sich erfolgreich eingeloggt!");
+				request.getSession().setAttribute("user", u);
+				new UserAreaController().execute(request, response, message);
+				return "/secured/projekt";
+			}
+			else {
+				message.append("Benutzername oder Passwort falsch!");
+				request.setAttribute("emailValue", email);
+			}
 		}
 		return null;
 	}
