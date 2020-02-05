@@ -58,11 +58,16 @@ public class JavaScriptFunctions {
 			"$('#query-input-todo').keyup(findUserForTodo);";
 	
 	public static final String FIND_USER_FOR_PROEJCT = "var elementsAddedToProject = [];\r\n" + 
+			"var alreadyAddedToProject = [];\r\n" + 
+			"\r\n" + 
+			"$(\".current-project-subscribers\").each(function(){\r\n" + 
+			"	alreadyAddedToProject.push($(this).html());\r\n" + 
+			"});\r\n" + 
 			"\r\n" + 
 			"function addUserToProject(element){\r\n" + 
 			"	\r\n" + 
 			"	$(\"#project-users-added\").append(\"<div>\" + $(element).html() + \"</div>\");\r\n" + 
-			"	$('#query-input-project').val(\"\");\r\n" + 
+			"	$('#query-input-user').val(\"\");\r\n" + 
 			"	$('#query-output-user').empty();\r\n" + 
 			"	elementsAddedToProject.push(element.value);\r\n" + 
 			"}\r\n" + 
@@ -90,7 +95,7 @@ public class JavaScriptFunctions {
 			"					\r\n" + 
 			"						var userId = user[0];\r\n" + 
 			"						\r\n" + 
-			"						if (!elementsAddedToProject.includes(userId)){\r\n" + 
+			"						if (!elementsAddedToProject.includes(userId) && !alreadyAddedToProject.includes(userId)){\r\n" + 
 			"							var userEmail = user[1];\r\n" + 
 			"							var userName = user[2];\r\n" + 
 			"						\r\n" + 

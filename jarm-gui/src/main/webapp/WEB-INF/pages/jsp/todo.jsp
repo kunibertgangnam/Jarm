@@ -17,10 +17,10 @@
 				<br />
 				<h5>
 					Mitglieder:
-					<c:out value="${user.name}" />(owner) ,
+					<c:out value="${user.name}" />(owner) ,<span class="current-project-subscribers" style="visibility: hidden;"><c:out value="${user.id}"/></span>
 					<c:forEach var="projectUser" items="${currentProject.subscribers}">
 						<c:out value="${projectUser.name}" />
-						<i class="fas fa-user-minus fa-xs darkblue"></i> , </c:forEach>
+						<i class="fas fa-user-minus fa-xs darkblue"></i> , <span class="current-project-subscribers" style="visibility: hidden;"><c:out value="${projectUser.id}"/></span></c:forEach>
 				</h5>
 				<br />
 				<button type="button" class="btn btn-info" data-toggle="modal"
