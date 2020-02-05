@@ -31,7 +31,7 @@ public class UserAreaController implements Controller {
 			message.append(e.getMessage());
 		}
 		
-		return null;
+		return "/secured/projektList";
 	}
 
 }

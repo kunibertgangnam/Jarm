@@ -19,9 +19,9 @@
 			<c:forEach var="project" items="${myProjects}">
 				<li 
 					class=" list list-group-item d-flex justify-content-between align-items-center"><a href="<c:url value='/projects/project.do?id='/><c:out value="${project.id }"/>">
-					<c:out value="${project.title}" /> <span
+					<c:out value="${project.title}" /></a> <span
 					class="badge badge-primary badge-pill"><c:out
-							value="${project.toDos.size()}" /></span></a>
+							value="${project.toDos.size()}" /></span>
 				</li>
 			</c:forEach>
 		</ul>
