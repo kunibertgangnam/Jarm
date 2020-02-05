@@ -14,4 +14,6 @@ public interface UserServiceInterface {
 	public User getUser(String string);
 	
 	public User getUserById(int id) throws ValidierungsException;
+	
+	public List<User> findUserByNameOrEmail(String input) throws ValidierungsException;
 }

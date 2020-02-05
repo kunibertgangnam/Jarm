@@ -15,7 +15,6 @@ public class AddUserToProjectController implements Controller{
 		int projectId = (int) request.getAttribute("projektId");
 		try {
 			DataController.getInstance().getProjectService().addSubscriber(DataController.getInstance().getProjectService().getProjectById(projectId), DataController.getInstance().getUserService().getUserById(userId));
-			
 		}catch (Exception e) {
 			message.append(e.getMessage());
 		}
