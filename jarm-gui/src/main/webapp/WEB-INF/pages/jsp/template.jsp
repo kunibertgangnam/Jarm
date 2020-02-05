@@ -43,7 +43,7 @@
 					</c:if>
 					<c:if test="${!empty user}">
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/login.do?logout=true'/>">Logout</a></li>
+							href="<c:url value='/bv/logout.do'/>">Logout</a></li>
 					</c:if>
 				</ul>
 			</div>
