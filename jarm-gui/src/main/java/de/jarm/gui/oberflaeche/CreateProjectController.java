@@ -24,6 +24,7 @@ public class CreateProjectController implements Controller {
 				message.append(e.getMessage());
 			}			
 		}
+		new UserAreaController().execute(request, response, message);
 		return "/secured/projektList";
 	}
 
