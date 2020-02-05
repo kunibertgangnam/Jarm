@@ -14,7 +14,7 @@ import database.DBStatements;
 import de.jarm.main.data.User;
 import de.jarm.main.database.exceptions.UserExistsException;
 import de.jarm.main.database.exceptions.WrongUserOrPasswordException;
-import utils.DateUtils;
+import de.jarm.main.utils.DateUtils;
 
 public class UserDAO {
 	

@@ -7,6 +7,8 @@ import de.jarm.gui.navi.Controller;
 import de.jarm.gui.utils.ValidierungsException;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.User;
+import de.jarm.gui.utils.Util;
+
 
 public class RegisterController implements Controller {
 
@@ -24,6 +26,9 @@ public class RegisterController implements Controller {
 				if (!passwort.equals(passwortNochmal)) {
 					throw new ValidierungsException("Die Passwörter müssen übereinstimmen");
 				}			
+				if(!Util.isValidEmailAddress(email)) {
+					throw new ValidierungsException("Bitte eine gültige Email eingeben");
+				}
 				User u = DataController.getInstance().getUserService().create(name, passwort, email);
 				message.append("Sie haben sich erfolgreich registriert!");
 				request.getSession().setAttribute("user", u);
