@@ -19,6 +19,10 @@
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+	crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/0be993e115.js"
 	crossorigin="anonymous"></script>
 <title>Jarm</title>
@@ -35,21 +39,25 @@
 					<li class="nav-item active"><a class="nav-link"
 						href="<c:url value='/home.do'/>"><font color="white">Home</font><span class="sr-only">(current)</span></a>
 					</li>
-					<c:if test="${eingeloggt == null}">
+					<c:if test="${empty user}">
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/login.do'/>"><font color="white">Login</font></a></li>
+							href="<c:url value='/login.do'/>"><font color="white">Login</font></a></li>						
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value='/register.do'/>"><font color="white">Registrieren</font></a></li>
 					</c:if>
-					<c:if test="${eingeloggt != null}">
+					<c:if test="${!empty user}">
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/login.do?logout=true'/>"><font color="white">Logout</font></a></li>
+							href="<c:url value='/bv/logout.do'/>"><font color="white">Logout</font></a></li>
 					</c:if>
 				</ul>
 			</div>
 		</nav>
 	</div>
-
+	
+	<div id="message">
+		<c:out value="${meldung}"/>
+	</div>
+	
 	<div id="inhalt">
 		<c:import url="${url}"></c:import>
 	</div>

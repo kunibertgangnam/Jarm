@@ -9,20 +9,28 @@ public class ProjectToDo {
 	String description;
 	int state; //0 == unbearbeitet, 1 == in Arbei, 2 == fertig
 	//Automatisch
-	public enum state{
+	public enum State{
 		UNBEAEBEITET, IN_ARBEIT, FERTIG
 	}
 	List<User> instructedUsers;
-	LocalDate crationDate;
+	LocalDate creationDate;
 	
-	public ProjectToDo(int id, String name, String description, List<User> instructedUsers, int state, LocalDate crationDate) {
+	public ProjectToDo(String name, String description) {
+		this.name = name;
+		this.description = description;
+		state = 0;
+		creationDate = LocalDate.now();
+	}
+	
+	public ProjectToDo(int id, String name, String description, List<User> instructedUsers, int state, LocalDate creationDate) {
 		setId(id);
 		setName(name);
 		setDescription(description);
 		setState(state);
 		setInstructedUsers(instructedUsers);
-		setCrationDate(crationDate);
+		setCrationDate(creationDate);
 	}
+	
 	public ProjectToDo(int id, String name, String description, List<User> instructedUsers) {
 		this(id, name, description, instructedUsers, 0, LocalDate.now());
 	}
@@ -41,7 +49,7 @@ public class ProjectToDo {
 		return id;
 	}
 
-	private void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -71,11 +79,11 @@ public class ProjectToDo {
 
 
 	public LocalDate getCrationDate() {
-		return crationDate;
+		return creationDate;
 	}
 
-	private void setCrationDate(LocalDate crationDate) {
-		this.crationDate = crationDate;
+	public void setCrationDate(LocalDate crationDate) {
+		this.creationDate = crationDate;
 	}
 
 
