@@ -80,6 +80,7 @@ public class ProjectDAO {
 		         PreparedStatement pstmt = con.prepareStatement(DBStatements.SELECT_PROJECTS_BY_USER_ID)) {
 			
 			pstmt.setInt(1, userId);
+			pstmt.setInt(2, userId);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {

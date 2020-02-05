@@ -6,6 +6,31 @@ import de.jarm.main.utils.ValidierungsException;
 
 public class DataController {
 	
+	
+	private ProjectServiceInterface projectService;
+	private UserServiceInterface userService;
+	private static DataController instance;
+
+	private DataController () {
+		projectService = new ProjectService();
+		userService = new UserService();
+	}
+	
+	public ProjectServiceInterface getProjectService() {
+		return projectService;
+	}
+	
+	public UserServiceInterface getUserService() {
+		return userService;
+	}
+	
+	public static DataController getInstance () {
+		if (DataController.instance == null) {
+			DataController.instance = new DataController ();
+		}
+		return DataController.instance;
+	}
+	
 	public static void main(String[] args) {
 		String password = "25";
 		try {
@@ -32,28 +57,5 @@ public class DataController {
 			e.printStackTrace();
 		}
 		System.out.println("fertig");
-	}
-	private ProjectServiceInterface projectService;
-	private UserServiceInterface userService;
-	private static DataController instance;
-
-	private DataController () {
-		projectService = new ProjectService();
-		userService = new UserService();
-	}
-	
-	public ProjectServiceInterface getProjectService() {
-		return projectService;
-	}
-	
-	public UserServiceInterface getUserService() {
-		return userService;
-	}
-	
-	public static DataController getInstance () {
-		if (DataController.instance == null) {
-			DataController.instance = new DataController ();
-		}
-		return DataController.instance;
 	}
 }
