@@ -38,9 +38,15 @@ public class ForumController implements Controller {
 		}
 		return nachrichtenMitName;
 	}
+<<<<<<< HEAD
 
 	private void nachrichtEinfuegen(String nachricht, HttpServletRequest request) throws ValidierungsException {
 		DataController.getInstance().getProjectService().writeMessage((Project) request.getAttribute("projekt"), nachricht, (User) request.getSession().getAttribute("user"));
+=======
+
+	private void nachrichtEinfuegen(String nachricht, HttpServletRequest request) {
+
+>>>>>>> refs/remotes/origin/master
 	}
 
 	private void nachrichtPruefen(String nachricht) throws Exception {

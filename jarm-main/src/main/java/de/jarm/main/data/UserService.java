@@ -20,11 +20,7 @@ public class UserService implements UserServiceInterface {
 		}
 	}
 
-	@Override
-	public User create(String name, String password) throws ValidierungsException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public User login(String email, String password) throws ValidierungsException {
