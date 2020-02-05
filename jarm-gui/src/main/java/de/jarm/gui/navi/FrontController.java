@@ -60,6 +60,9 @@ public class FrontController extends HttpServlet
 				request.getContextPath().length(),		// /mvc
 				request.getRequestURI().length() -3);	// .do
 		
+		if(request.getSession().getAttribute("user") == null && !navi.equals("/bv/register")) {
+			navi = "/bv/login";
+		}
 		System.out.println("REQUESTED: " + navi + "----------------------******************------------------------");
 		
 		try
