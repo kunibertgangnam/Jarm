@@ -37,17 +37,17 @@
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="nav nav-tabs">
 					<li class="nav-item active"><a class="nav-link"
-						href="<c:url value='/home.do'/>"><font color="white">Home</font><span class="sr-only">(current)</span></a>
+						href="<c:url value='/secured/projektList.do'/>">Home <span class="sr-only">(current)</span></a>
 					</li>
 					<c:if test="${empty user}">
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/login.do'/>"><font color="white">Login</font></a></li>						
+							href="<c:url value='/bv/login.do'/>">Login</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/register.do'/>"><font color="white">Registrieren</font></a></li>
+							href="<c:url value='/bv/register.do'/>">Registrieren</a></li>
 					</c:if>
 					<c:if test="${!empty user}">
 						<li class="nav-item"><a class="nav-link"
-							href="<c:url value='/bv/logout.do'/>"><font color="white">Logout</font></a></li>
+							href="<c:url value='/bv/logout.do'/>">Logout</a></li>
 					</c:if>
 				</ul>
 			</div>
