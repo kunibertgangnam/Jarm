@@ -17,8 +17,7 @@
 				<br />
 				<h5>
 					Mitglieder:
-					<c:out value="${user.name}" />
-						<i class="fas fa-user-minus fa-xs darkblue"></i>(owner) ,
+					<c:out value="${user.name}" />(owner) ,
 					<c:forEach var="projectUser" items="${currentProject.subscribers}">
 						<c:out value="${projectUser.name}" />
 						<i class="fas fa-user-minus fa-xs darkblue"></i> , </c:forEach>
@@ -79,6 +78,8 @@
 			<br />
 			<button type="button" class="btn btn-info" data-toggle="modal"
 				data-target="#staticBackdrop">Neues To-Do</button>
+		<form method="post" action="<c:url value='/projects/addTodo.do'/>">
+			<input type="hidden" name="id" value="<c:out value="${currentProject.id}"/>" />
 			<div class="modal fade" id="staticBackdrop" data-backdrop="static"
 				tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel"
 				aria-hidden="true">
@@ -99,13 +100,13 @@
 								</div>
 								<input type="text" class="form-control"
 									aria-label="Sizing example input"
-									aria-describedby="inputGroup-sizing-default">
+									aria-describedby="inputGroup-sizing-default" name="Titel">
 							</div>
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">Info</span>
 								</div>
-								<textarea class="form-control" aria-label="With textarea"></textarea>
+								<textarea class="form-control" aria-label="With textarea"  name="Description"></textarea>
 							</div>
 							<br /> User zuweisen:
 							<div class="input-group md-form form-sm form-1 pl-0">
@@ -119,11 +120,12 @@
 						</div>
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-info">Speichern</button>
-							<button type="submit" class="btn btn-light" data-dismiss="modal">Abbrechen</button>
+							<button type="button" class="btn btn-light" data-dismiss="modal">Abbrechen</button>
 						</div>
 					</div>
 				</div>
 			</div>
+			</form>
 		</div>
 	</div>
 </div>

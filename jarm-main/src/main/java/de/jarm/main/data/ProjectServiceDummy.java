@@ -92,4 +92,10 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 		return null;
 	}
 
+	@Override
+	public Project getProjectById(int projectId) throws ValidierungsException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
