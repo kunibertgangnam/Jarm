@@ -24,7 +24,7 @@ public class CreateProjectController implements Controller {
 				message.append(e.getMessage());
 			}			
 		}
-		return "/secured/projekt";
+		return "/secured/projektList";
 	}
 
 }

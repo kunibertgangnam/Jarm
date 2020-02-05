@@ -28,7 +28,7 @@ public class RegisterController implements Controller {
 				message.append("Sie haben sich erfolgreich registriert!");
 				request.getSession().setAttribute("user", u);
 				new UserAreaController().execute(request, response, message);
-				return "/secured/projekt";
+				return "/secured/projektList";
 			} catch(ValidierungsException e) {
 				message.append(e.getMessage());
 				request.setAttribute("emailValue", email);

@@ -17,11 +17,11 @@
 		</div>
 		<ul class="list-group">
 			<c:forEach var="project" items="${myProjects}">
-				<li
-					class=" list list-group-item d-flex justify-content-between align-items-center">
-					<c:out value="${project.name}" /> <span
+				<li 
+					class=" list list-group-item d-flex justify-content-between align-items-center"><a href="<c:url value='/projects/project.do?id='/><c:out value="${project.id }"/>">
+					<c:out value="${project.title}" /> <span
 					class="badge badge-primary badge-pill"><c:out
-							value="${project.toDos.size()}" /></span>
+							value="${project.toDos.size()}" /></span></a>
 				</li>
 			</c:forEach>
 		</ul>

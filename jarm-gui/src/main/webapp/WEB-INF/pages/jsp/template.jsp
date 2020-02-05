@@ -33,7 +33,7 @@
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="nav nav-tabs">
 					<li class="nav-item active"><a class="nav-link"
-						href="<c:url value='/home.do'/>">Home <span class="sr-only">(current)</span></a>
+						href="<c:url value='/secured/projektList.do'/>">Home <span class="sr-only">(current)</span></a>
 					</li>
 					<c:if test="${empty user}">
 						<li class="nav-item"><a class="nav-link"
