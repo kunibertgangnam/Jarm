@@ -41,7 +41,9 @@
 							<div class="modal-body">
 								<br/>
 								<input type="hidden" value="" name="AddedUserIdsProject" id="added-user-ids-project" />
-								<div id="project-users-added"></div>
+								<div id="project-users-added">
+									<button id="proj4" type="button" value="4">Ronja - ronja@web.de</button>
+								</div>
 								<br/>
 								<div class="input-group md-form form-sm form-1 pl-0">
 									<div class="input-group-prepend">
@@ -77,11 +79,11 @@
 					<li class="list list-group-item"><c:out value="${todo.name}" />
 						<div class="float-right">
 							<a data-toggle="modal" data-target="#myModal"
-								class="button pointer"><i class="fas fa-edit orange"></i></a> <i
-								class="fas fa-check-circle green"></i> <i
-								class="fas fa-question darkblue"></i> <i
-								class="fas fa-hourglass-start"></i> <i
-								class="fas fa-trash-alt grey"></i>
+								class="button pointer"><i class="fas fa-edit orange"></i></a> 
+								<c:if test="${todo.state == 2}"> <i class="fas fa-check-circle green"></i> </c:if>
+							 	<c:if test="${todo.state == 1}"> <i class="fas fa-hourglass-start"></i> </c:if>
+							 	<c:if test="${todo.state == 0}"> <i class="fas fa-question darkblue"></i> </c:if>	 							
+							<i class="fas fa-trash-alt grey"></i>
 						</div></li>
 				</c:forEach>
 			</ul>
