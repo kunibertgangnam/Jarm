@@ -1,5 +1,8 @@
 package de.jarm.gui.oberflaeche;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,26 +17,44 @@ public class AddUserToTodoController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
-
 		
-		int userId = new Integer(request.getParameter("userToAdd"));
-		int todoId = new Integer(request.getParameter("todo"));
-		int currentProjectId = new Integer(request.getParameter("currentProject"));
+		Object userIdObjectToAdd = request.getParameter("AddedUserIdsProject");
 		
-		try {
-			Project currentProject = DataController.getInstance().getProjectService().getProjectById(currentProjectId);
-			User userToAdd = DataController.getInstance().getUserService().getUserById(userId);
+		
+		if (userIdObjectToAdd != null) {
+			String userIdsStringToAdd = userIdObjectToAdd.toString();
 			
-			for (ProjectToDo t : currentProject.getToDos()) {
-				if (t.getId() == todoId) {
-					DataController.getInstance().getProjectService().addUserToTodo(t, userToAdd);
-					break;
+			String[] userIdArray = userIdsStringToAdd.split(" ");
+
+			List<Integer> idListToAdd = new ArrayList<Integer>();
+			
+			for (String idString : userIdArray) {
+				if (!idString.equals("")) {
+					int thisId = new Integer(idString);
+					idListToAdd.add(thisId);
 				}
 			}
-			message.append("User erfolgreich zum Projekt hinzugefügt");
 			
-		} catch(Exception e) {
-			message.append(e.getMessage());
+			int todoId = new Integer(request.getParameter("todo"));
+			int currentProjectId = new Integer(request.getParameter("currentProject"));
+			
+			try {
+				Project currentProject = DataController.getInstance().getProjectService().getProjectById(currentProjectId);
+				
+				for (ProjectToDo t : currentProject.getToDos()) {
+					if (t.getId() == todoId) {					
+						for (Integer i : idListToAdd) {
+							User userToAdd = DataController.getInstance().getUserService().getUserById(i);
+							DataController.getInstance().getProjectService().addUserToTodo(t, userToAdd);
+						}		
+						break;
+					}
+				}
+				message.append("User erfolgreich zum Todo hinzugefügt");
+				
+			} catch(Exception e) {
+				message.append(e.getMessage());
+			}
 		}
 		
 		new ProjectController().execute(request, response, message);

@@ -35,13 +35,16 @@
 							<div class="modal-header">
 								<h5 class="modal-title" id="exampleModalLabel">Neues
 									Mitglied</h5>
-								<button type="button" class="close" data-dismiss="modal"
+								<button type="button" class="close close-modal-window-project" data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div class="modal-body">
+								<br/>
+								<input type="hidden" value="" name="AddedUserIdsProject" id="added-user-ids-project" />
 								<div id="project-users-added"></div>
+								<br/>
 								<div class="input-group md-form form-sm form-1 pl-0">
 									<div class="input-group-prepend">
 										<span class="input-group-text cyan lighten-2" id="basic-text1"><i
@@ -55,7 +58,7 @@
 							</div>
 							<div class="modal-footer">
 								<button type="submit" class="btn btn-info">Hinzufügen</button>
-								<button type="button" class="btn btn-light" data-dismiss="modal">Abbrechen</button>
+								<button type="button" class="btn btn-light close-modal-window-project" data-dismiss="modal">Abbrechen</button>
 							</div>
 						</div>
 					</div>
@@ -75,9 +78,11 @@
 				<c:forEach var="todo" items="${currentProject.toDos}">
 					<li class="list list-group-item"><c:out value="${todo.name}" />
 						<div class="float-right">
-							<i class="fas fa-edit orange"></i> <i
-								class="fas fa-check-circle green"></i> <i
-								class="fas fa-trash-alt grey"></i>
+							<i class="fas fa-edit orange"></i> 
+							<i class="fas fa-check-circle green"></i> 
+							<i class="fas fa-question darkblue"></i>
+							<i class="fas fa-hourglass-start"></i>
+							<i class="fas fa-trash-alt grey"></i>
 						</div></li>
 				</c:forEach>
 			</ul>
@@ -93,7 +98,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="staticBackdropLabel">Neues To-Do</h5>
-							<button type="button" class="close" data-dismiss="modal"
+							<button type="button" class="close close-modal-window-todo" data-dismiss="modal"
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
@@ -114,7 +119,10 @@
 								</div>
 								<textarea class="form-control" aria-label="With textarea"  name="Description"></textarea>
 							</div>
+							<br/>
 							<div id="todo-users-added"></div>
+							<input type="hidden" value="" name="AddedUserIdsTodo" id="added-user-ids-todo" />
+							<br/>
 							<br /> User zuweisen:
 							<div class="input-group md-form form-sm form-1 pl-0">
 								<div class="input-group-prepend">
@@ -132,7 +140,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-info">Speichern</button>
-							<button type="button" class="btn btn-light" data-dismiss="modal">Abbrechen</button>
+							<button type="button" class="btn btn-light close-modal-window-todo" data-dismiss="modal">Abbrechen</button>
 						</div>
 					</div>
 				</div>
