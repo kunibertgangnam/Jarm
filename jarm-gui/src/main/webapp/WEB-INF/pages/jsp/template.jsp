@@ -15,7 +15,7 @@
     <link rel="STYLESHEET" type="text/css" href="<c:url value="/include/stylesheet.css"/>">
   </head>
        <body> 
-       <header style="position: absolute; top: 0; left: 0; right: 0; background-color: #c0c0c0; font-weight: bold;">
+       <header style="position: fixed; top: 0; left: 0; right: 0; background-color: #c0c0c0; font-weight: bold;">
             <nav class="navbar navbar-expand-lg navbar-light">
             <h1>Jarm </h1>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
