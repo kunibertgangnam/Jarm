@@ -45,22 +45,14 @@
             <div id="inhalt">
                 <c:import url="${url}"></c:import>
             </div>
-            <div style = "position:absolute; bottom: 0; background-color: #c0c0c0; width: 100%">
+            <div style = " bottom: 0; background-color: #c0c0c0; width: 100%">
                 <nav class="navbar navbar-expand-lg navbar-light">
                       <div class="collapse navbar-collapse">
                             <ul class="nav nav-tabs">
                                 <li>Impresseum und Kontakt</li>
                             </ul>
                        </div>
-                </nav>
-            </div>
-            <c:if test ="${imProjekt != null}">
-                <div style = "float:right; width:15%; margin: 10px;color : black;background-color : #c0c0c0;border-color : #ff0000; border-style : solid; border-width: thin; text-align: center;">
-                    <h3>Mitglieder des Projekts</h3>
-                    <c:out value="${mitglieder}"/>
-                </div>
-            </c:if>
-            
+                </nav>          
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
