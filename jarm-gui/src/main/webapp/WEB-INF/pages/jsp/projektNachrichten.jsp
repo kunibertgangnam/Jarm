@@ -2,10 +2,13 @@
 
 <h1 style= "position:absolute; display:table-cell; vertical-align:middle; width:100%; bottom: 401px; background-color: #c0c0c0;">Projektinterne Nachrichten</h1>
      <div style= "position:absolute; display:table-cell; vertical-align:middle; width:500%; bottom: 400px;">
-			<c:out value="${nachrichten}"></c:out>
+     		<c:forEach var="thisMessage" items="${nachrichten}">
+     			<div><h4>Verfasser: <c:out value="${thisMessage.author.name}" /></h4> -  <c:out value="${thisMessage.message}" /></div>
+     		</c:forEach>
      </div>
 	 <div style = "position:absolute; display:table-cell; vertical-align:middle; width:100%; bottom: 50px; background-color: #c0c0c0;"> 
 		 <form action="<c:url value='/projects/addMessage.do'/>" method="post">
+		 		<input type="hidden" name="id" value="<c:out value="${currentProject.id}"/>" />
 				<table style= "margin-left: 10px; margin-right: 10px; margin-bottom: 5px;">
 					<tr>
 						<td style="width:99%">

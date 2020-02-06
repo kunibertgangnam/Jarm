@@ -15,7 +15,7 @@
 				<br />
 				<h5>
 					Mitglieder:
-					<c:out value="${user.name}" />(owner) ,<span class="current-project-subscribers" style="visibility: hidden;"><c:out value="${user.id}"/></span>
+					<c:out value="${currentProject.owner.name}" />(owner) ,<span class="current-project-subscribers" style="visibility: hidden;"><c:out value="${currentProject.owner.id}"/></span>
 					<c:forEach var="projectUser" items="${currentProject.subscribers}">
 						<c:out value="${projectUser.name}" />
 						<i class="fas fa-user-minus fa-xs darkblue"></i> , <span class="current-project-subscribers" style="visibility: hidden;"><c:out value="${projectUser.id}"/></span></c:forEach>
