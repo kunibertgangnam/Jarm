@@ -17,7 +17,7 @@
        <body> 
        <header style="position: fixed; top: 0; left: 0; right: 0; background-color: #c0c0c0; font-weight: bold;">
             <nav class="navbar navbar-expand-lg navbar-light">
-            <span class="navbar-brand mb-0 h1">Jarm</span>
+            <h1>Jarm </h1>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="nav nav-tabs">
                     <li class="nav-item active"><a class="nav-link"
