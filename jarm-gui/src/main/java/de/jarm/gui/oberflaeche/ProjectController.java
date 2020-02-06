@@ -31,10 +31,13 @@ public class ProjectController implements Controller {
 		Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
 		request.setAttribute("currentProject", p);
 		
-//		User u = (User)request.getAttribute("user");
-//		if(!(p.getOwner().getId()==u.getId()||p.getSubscribers().contains(u))) {
-//			return "/secured/projektList";
-//		}
+		User u = (User)request.getSession().getAttribute("user");
+
+		if(!(p.getOwner().getId()==u.getId()|| p.getSubscribers()!=null && p.getSubscribers().contains(u))) {
+			new UserAreaController().execute(request, response, message);
+			return "/secured/projektList";
+		}
+
 
 		
 		request.setAttribute("script", JavaScriptFunctions.FIND_USER_FOR_TODO + " " + JavaScriptFunctions.FIND_USER_FOR_PROEJCT);
