@@ -24,7 +24,7 @@ public class AddMessageController implements Controller {
 				request.setAttribute("currentProject", p);
 				if(!request.getParameter("message").equals("")){
 					DataController.getInstance().getProjectService().
-					writeMessage(p, ""+request.getAttribute("message"), (User) request.getSession().getAttribute("user"));					}
+					writeMessage(p, ""+request.getParameter("message"), (User) request.getSession().getAttribute("user"));					}
 			} catch(Exception e) {
 				message.append(e.getMessage());
 			}
