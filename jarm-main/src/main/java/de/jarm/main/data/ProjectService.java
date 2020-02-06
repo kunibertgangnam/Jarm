@@ -28,7 +28,7 @@ public class ProjectService implements ProjectServiceInterface {
 	public void writeMessage(Project project, String message, User author) throws ValidierungsException {
 		if (message.equals("")) {
 			throw new ValidierungsException("Bitte eine Nachricht eingeben!");
-		} else if (project.getOwner().getId() != author.getId() && !project.getSubscribers().contains(author)) {
+		} else if (project.getOwner().getId() != author.getId()) {
 			throw new ValidierungsException("Der Verfasser einer Nachricht muss dem Projekt zugeordnet sein!");
 		} else if (project == null || author == null) {
 			throw new ValidierungsException("Das Projekt oder der Autor konnten nicht gefunden werden!");

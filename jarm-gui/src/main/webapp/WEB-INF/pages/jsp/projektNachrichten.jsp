@@ -2,7 +2,9 @@
 
 <h1 style= "background-color: #c0c0c0">Projektinterne Nachrichten</h1>
      <div style= "margin-left: 10px; margin-right: 10px;">
-			<c:out value="${nachrichten}"></c:out>
+     		<c:forEach var="thisMessage" items="${nachrichten}">
+     			<div><h4>Verfasser: <c:out value="${thisMessage.author.name}" /></h4> -  <c:out value="${thisMessage.message}" /></div>
+     		</c:forEach>
      </div>
 	 <div style = "position:absolute; bottom: 0; background-color: gray;"> 
 		 <form action="<c:url value='/projects/addMessage.do'/>" method="post">
