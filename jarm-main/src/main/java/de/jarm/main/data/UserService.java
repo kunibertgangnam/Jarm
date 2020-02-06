@@ -1,10 +1,12 @@
 package de.jarm.main.data;
 
 import java.util.List;
+import de.jarm.main.database.exceptions.ValidierungsException;
+
 
 import database.user.UserDAO;
 import de.jarm.main.interfaces.UserServiceInterface;
-import de.jarm.main.utils.ValidierungsException;
+
 
 public class UserService implements UserServiceInterface {
 

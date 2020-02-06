@@ -2,8 +2,8 @@ package de.jarm.main.data;
 
 import java.util.List;
 
+import de.jarm.main.database.exceptions.ValidierungsException;
 import de.jarm.main.interfaces.ProjectServiceInterface;
-import de.jarm.main.utils.ValidierungsException;
 
 public class ProjectServiceDummy implements ProjectServiceInterface{
 	private List<Project> projectList;
