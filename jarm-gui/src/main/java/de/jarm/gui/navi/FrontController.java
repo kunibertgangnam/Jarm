@@ -1,6 +1,7 @@
 package de.jarm.gui.navi;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -84,7 +85,7 @@ public class FrontController extends HttpServlet
 			e.printStackTrace();
 		}
 
-		request.setAttribute("meldung", meldung.toString());
+		request.setAttribute("meldung", new String(meldung.toString().getBytes(), Charset.forName("UTF-8")));
 		String requestedUrl = "/WEB-INF/pages/jsp" + navi + ".jsp";
 		
 		if (isValidUrl(navi)) {
