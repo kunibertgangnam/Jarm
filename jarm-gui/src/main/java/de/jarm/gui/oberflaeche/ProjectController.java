@@ -33,7 +33,7 @@ public class ProjectController implements Controller {
 		
 		User u = (User)request.getAttribute("user");
 		System.out.println("teste jetzt");
-		if(!(p.getOwner().getId()==u.getId()|| p.getSubscribers().contains(u))) {
+		if(!(p.getOwner().getId()==u.getId()|| p.getSubscribers()!=null && p.getSubscribers().contains(u))) {
 			return "/secured/projektList";
 		}
 
