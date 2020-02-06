@@ -38,6 +38,7 @@ public class ProjectController implements Controller {
 			return "/secured/projektList";
 		}
 
+
 		
 		request.setAttribute("script", JavaScriptFunctions.FIND_USER_FOR_TODO + " " + JavaScriptFunctions.FIND_USER_FOR_PROEJCT);
 		

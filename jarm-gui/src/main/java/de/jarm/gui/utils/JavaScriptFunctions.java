@@ -48,7 +48,7 @@ public class JavaScriptFunctions {
 			"                            var userEmail = user[1];\r\n" + 
 			"                            var userName = user[2];\r\n" + 
 			"                        \r\n" + 
-			"                            $('#query-output-todo').append(\"<div><button id='todoU\" + userId + \"' type='button' value='\" + userId + \"'>\" + userName + \" - \" + userEmail + \"</button></div>\");\r\n" + 
+			"                            $('#query-output-todo').append(\"<div><button style='border:none;' class='dropdown-content-item' id='todoU\" + userId + \"' type='button' value='\" + userId + \"'>\" + userName + \" - \" + userEmail + \"</button></div>\");\r\n" + 
 			"                            $('#todoU' + userId).click(function(){\r\n" + 
 			"                                addUserToTodo(this);\r\n" + 
 			"                            });\r\n" + 
@@ -111,7 +111,7 @@ public class JavaScriptFunctions {
 			"                            var userEmail = user[1];\r\n" + 
 			"                            var userName = user[2];\r\n" + 
 			"                        \r\n" + 
-			"                            $('#query-output-user').append(\"<div><button id='proj\" + userId + \"' type='button' value='\" + userId + \"'>\" + userName + \" - \" + userEmail + \"</button></div>\");\r\n" + 
+			"                            $('#query-output-user').append(\"<div><button style='border:none;' class='dropdown-content-item' id='proj\" + userId + \"' type='button' value='\" + userId + \"'>\" + userName + \" - \" + userEmail + \"</button></div>\");\r\n" + 
 			"                            $('#proj' + userId).click(function(){\r\n" + 
 			"                                addUserToProject(this);\r\n" + 
 			"                            });\r\n" + 

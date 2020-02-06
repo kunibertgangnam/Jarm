@@ -88,6 +88,8 @@ public class ProjectService implements ProjectServiceInterface {
 	public void addToDo(Project project, ProjectToDo toDo) throws ValidierungsException {
 		if (project == null || toDo == null) {
 			throw new ValidierungsException("Projekt oder Todo nicht gefunden!");
+		} else if (toDo.getName().equals("")) {
+			throw new ValidierungsException("Bitte einen Namen festlegen!");
 		}
 		try {
 			projectDAO.addTodoToProject(project, toDo);
