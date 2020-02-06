@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
+import de.jarm.gui.utils.NotificationBuilder;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Project;
 import de.jarm.main.data.User;
@@ -23,9 +24,12 @@ public class AddMessageController implements Controller {
 				request.setAttribute("currentProject", p);
 				if(!request.getParameter("message").equals("")){
 					DataController.getInstance().getProjectService().
-					writeMessage(p, ""+request.getParameter("message"), (User) request.getSession().getAttribute("user"));					}
+					writeMessage(p, ""+request.getParameter("message"), (User) request.getSession().getAttribute("user"));					
+				}
+				NotificationBuilder.addSuccessNotification(message, "Nachricht erfolgreich hinzugefügt!");
+				
 			} catch(Exception e) {
-				message.append(e.getMessage());
+				NotificationBuilder.addErrorNotification(message, e.getMessage());
 			}
 		} 
 		

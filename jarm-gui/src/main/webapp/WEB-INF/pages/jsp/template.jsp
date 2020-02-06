@@ -62,7 +62,10 @@
     <script
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>       
+        crossorigin="anonymous"></script>   
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>
+
+	<script type='text/javascript'>$(document).ready(function(){ <c:out value="${notifications}" escapeXml="false" /> });</script>       
         
     <script>$(document).ready(function() { <c:out escapeXml="false" value="${script}"/> });</script>     
     </body>

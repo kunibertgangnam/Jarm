@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
+import de.jarm.gui.utils.NotificationBuilder;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Project;
 import de.jarm.main.data.ProjectToDo;
@@ -21,12 +22,12 @@ public class AddTodoController implements Controller {
 		try {
 			Project currentProject = DataController.getInstance().getProjectService().getProjectById(projectId);
 			DataController.getInstance().getProjectService().addToDo(currentProject, new ProjectToDo(titel, description));
-			message.append("Todo hinzugefügt!");
+			NotificationBuilder.addSuccessNotification(message, "Todo hinzugefügt!");
 			
 			new AddUserToTodoController().execute(request, response, message);
 			
 		} catch(Exception e){
-			message.append(e.getMessage());
+			NotificationBuilder.addErrorNotification(message, e.getMessage());
 		}
 		
 		new ProjectController().execute(request, response, message);
