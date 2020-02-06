@@ -166,6 +166,17 @@ public class ProjectDAO {
 		}		
 	}
 	
+	public void addUserToTodoById(int todoId, int userId) throws Exception {
+		
+		try (Connection con = DBController.getInstance().getConnection();
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_USER_TO_TODO)) {
+			
+			pstmt.setInt(1, todoId);
+			pstmt.setInt(2, userId);
+			pstmt.execute();		
+		}		
+	}
+	
 	public Message addMessageToProject(Project p, Message m) throws Exception {
 		
 		try (Connection con = DBController.getInstance().getConnection();
@@ -194,6 +205,32 @@ public class ProjectDAO {
 			
 			pstmt.setInt(1, state);
 			pstmt.setInt(2, t.getId());
+			pstmt.execute();
+			
+		}	
+	}
+	
+	public void setTodoInformation(int todoId, String title, String description, int state) throws Exception {
+		
+		try (Connection con = DBController.getInstance().getConnection();
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.SET_TODO_INFOS_BY_ID)) {
+			
+			pstmt.setInt(1, state);
+			pstmt.setString(2, title);
+			pstmt.setString(3, description);
+			pstmt.setInt(4, todoId);
+			pstmt.execute();
+			
+		}	
+	}
+	
+	public void removeUserFromTodo(int todoId, int userId) throws Exception {
+		
+		try (Connection con = DBController.getInstance().getConnection();
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.REMOVE_USER_FROM_TODO)) {
+			
+			pstmt.setInt(1, todoId);
+			pstmt.setInt(2, userId);
 			pstmt.execute();
 			
 		}	

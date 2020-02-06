@@ -130,6 +130,36 @@ public class JavaScriptFunctions {
 	public static final String EDIT_TODO = 
 			"var elementsAddedToEditTodo = []; \r\n" + 
 			"var userObjectsAddedToEditTodo = [];\r\n" + 
+			"\r\n" + 
+			"function closeModalEditTodo(){\r\n" + 
+			"    elementsAddedToEditTodo.splice(0,elementsAddedToEditTodo.length);\r\n" + 
+			"    $(\"#edit-todo-users-added\").empty();\r\n" + 
+			"    $(\"#added-user-ids-edit-todo\").attr(\"value\", \"\");\r\n" + 
+			"}\r\n" + 
+			"\r\n" + 
+			"function addUserToEditTodo(element){\r\n" + 
+			"    \r\n" + 
+			"    $(\"#edit-todo-users-added\").append(\"<div id='remove-value-\" + element.value + \"'>\" + $(element).html() + \" <button type='button' id='remove-user-button-\" + element.value + \"' value='\" + element.value + \"'>x</button></div>\");\r\n" + 
+			"	$(\"#remove-user-button-\" + element.value).click(function(){\r\n" + 
+			"		removeAddedUser(this);\r\n" + 
+			"	});\r\n" + 
+			"    $('#query-input-edit-todo').val(\"\");\r\n" + 
+			"    $('#query-output-edit-todo').empty();\r\n" + 
+			"    elementsAddedToEditTodo.push(element.value);\r\n" + 
+			"    $(\"#added-user-ids-edit-todo\").attr(\"value\", $(\"#added-user-ids-edit-todo\").val() + \" \" + element.value + \" \");\r\n" + 
+			"}\r\n" + 
+			"\r\n" + 
+			"function removeAddedUser(element){\r\n" + 
+			"	\r\n" + 
+			"	var index = elementsAddedToEditTodo.indexOf(element.value);\r\n" + 
+			"	if (index > -1) {\r\n" + 
+			"	  elementsAddedToEditTodo.splice(index, 1);\r\n" + 
+			"	}\r\n" + 
+			"	var oldValue = $(\"#added-user-ids-edit-todo\").val();\r\n" + 
+			"	oldValue = oldValue.replace(\" \" + element.value + \" \", \"\");\r\n" + 
+			"	$(\"#added-user-ids-edit-todo\").attr(\"value\", oldValue);\r\n" + 
+			"	$( \"#remove-value-\" + element.value).remove();\r\n" + 
+			"}\r\n" + 
 			" \r\n" + 
 			"function fetchDataForEditTodo(){\r\n" + 
 			"	\r\n" + 
@@ -171,8 +201,10 @@ public class JavaScriptFunctions {
 			"					elementsAddedToEditTodo.push(userId);\r\n" + 
 			"\r\n" + 
 			"					userObjectsAddedToEditTodo.push(userEmail + \" - \" + userName);\r\n" + 
-			"					$(\"#edit-todo-users-added\").append(\"<div>\" + userName + \" - \" + userEmail + \"</div>\");\r\n" + 
-			"					\r\n" + 
+			"					$(\"#edit-todo-users-added\").append(\"<div id='remove-value-\" + userId + \"'>\" + userName + \" - \" + userEmail + \" <button type='button' id='remove-user-button-\" + userId + \"' value='\" + userId + \"'>x</button></div>\");\r\n" + 
+			"					$(\"#remove-user-button-\" + userId).click(function(){\r\n" + 
+			"						removeAddedUser(this);\r\n" + 
+			"					});\r\n" + 
 			"					$(\"#added-user-ids-edit-todo\").attr(\"value\", $(\"#added-user-ids-edit-todo\").val() + \" \" + userId + \" \");\r\n" + 
 			"				}\r\n" + 
 			"				\r\n" + 
@@ -190,21 +222,6 @@ public class JavaScriptFunctions {
 			"			$(\"#inputGroupSelect01\").val(\"\");\r\n" + 
 			"		}\r\n" + 
 			"	});	\r\n" + 
-			"}\r\n" + 
-			"\r\n" + 
-			"function closeModalEditTodo(){\r\n" + 
-			"    elementsAddedToEditTodo.splice(0,elementsAddedToEditTodo.length);\r\n" + 
-			"    $(\"#edit-todo-users-added\").empty();\r\n" + 
-			"    $(\"#added-user-ids-edit-todo\").attr(\"value\", \"\");\r\n" + 
-			"}\r\n" + 
-			"\r\n" + 
-			"function addUserToEditTodo(element){\r\n" + 
-			"    \r\n" + 
-			"    $(\"#edit-todo-users-added\").append(\"<div>\" + $(element).html() + \"</div>\");\r\n" + 
-			"    $('#query-input-edit-todo').val(\"\");\r\n" + 
-			"    $('#query-output-edit-todo').empty();\r\n" + 
-			"    elementsAddedToEditTodo.push(element.value);\r\n" + 
-			"    $(\"#added-user-ids-edit-todo\").attr(\"value\", $(\"#added-user-ids-edit-todo\").val() + \" \" + element.value);\r\n" + 
 			"}\r\n" + 
 			"\r\n" + 
 			"function findUserForEditTodo(){\r\n" + 

@@ -24,5 +24,8 @@ public interface ProjectServiceInterface {
 	public List<Project> getProjectsByUser(User user) throws ValidierungsException;
 	public Project getProjectById(int projectId) throws ValidierungsException;
 	public void addUserToTodo(ProjectToDo todo, User user) throws ValidierungsException;
+	public void addUserToTodo(int todoId, int userId) throws ValidierungsException;
+	public void removeUserFromTodo(int userId, int todoId) throws ValidierungsException;
+	public void updateTodoInformation(int todoId, String title, String description, int state) throws ValidierungsException;
 	
 }
