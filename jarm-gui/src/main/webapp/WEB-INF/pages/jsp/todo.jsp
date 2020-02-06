@@ -51,6 +51,8 @@
 									<input class="form-control my-0 py-1" type="text" id="query-input-user"
 										placeholder="Search" aria-label="Search" autocomplete="off">
 								</div>
+								<div id="query-output-user">		
+								</div>
 							</div>
 							<div class="modal-footer">
 								<button type="submit" class="btn btn-info">Hinzufügen</button>
