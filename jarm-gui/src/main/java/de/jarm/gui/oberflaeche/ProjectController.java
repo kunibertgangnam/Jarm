@@ -31,11 +31,8 @@ public class ProjectController implements Controller {
 		Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
 		request.setAttribute("currentProject", p);
 		
-		User u = (User)request.getAttribute("user");
-		System.out.println("\n");
-		System.out.println(u.getId()+p.getOwner().getEmail());
-		System.out.println("\n");
-		System.out.println(p.getSubscribers());
+		User u = (User)request.getSession().getAttribute("user");
+
 		if(!(p.getOwner().getId()==u.getId()|| p.getSubscribers()!=null && p.getSubscribers().contains(u))) {
 			return "/secured/projektList";
 		}
