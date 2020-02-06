@@ -7,7 +7,7 @@
 			<c:out value="${nachrichten}"></c:out>
      </div>
 	 <div style = "position:absolute; bottom: 0; background-color: gray;"> 
-		 <form action="<c:url value='/projects/project.do'/>" method="post">
+		 <form action="<c:url value='/projects/addMessage.do'/>" method="post">
 				<table style= "margin-left: 10px; margin-right: 10px; margin-bottom: 80px;">
 					<tr>
 						<td style="width:99%">
