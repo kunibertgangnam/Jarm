@@ -37,7 +37,7 @@
             </div>
         	</nav>
        </header>       
-	   <main >
+	   <main style="bottum: 25px">
             <div id="message">
                 <c:out value="${meldung}"/>
             </div>
@@ -46,7 +46,7 @@
                 <c:import url="${url}"></c:import>
             </div>
 		</main>
-    <footer style = "padding: 10px; bottom: 0; left: 0; right: 0; background-color: #c0c0c0; text-align: center">
+    <footer style = "position:fixed; padding: 10px; bottom: 0; left: 0; right: 0; background-color: #c0c0c0; text-align: center">
                   Impresseum und Kontakt
     </footer>
             
