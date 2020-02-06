@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import de.jarm.gui.oberflaeche.AddMessageController;
 import de.jarm.gui.oberflaeche.AddTodoController;
 import de.jarm.gui.oberflaeche.AddUserToProjectController;
 import de.jarm.gui.oberflaeche.CreateProjectController;

@@ -1,10 +1,9 @@
-package de.jarm.gui.navi;
+package de.jarm.gui.oberflaeche;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.jarm.gui.oberflaeche.ProjectController;
-import de.jarm.gui.oberflaeche.UserAreaController;
+import de.jarm.gui.navi.Controller;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Project;
 import de.jarm.main.data.User;
