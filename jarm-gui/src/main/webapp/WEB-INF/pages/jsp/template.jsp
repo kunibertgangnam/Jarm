@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/0be993e115.js" crossorigin="anonymous"></script>
     <title>Jarm</title>
-    <link rel="STYLESHEET" type="text/css" href="${pageContext.request.contextPath}/include/stylesheet.css" >
+    <link rel="STYLESHEET" type="text/css" href="<c:url value="/include/stylesheet.css"/>">
   </head>
        <body> 
        <header style="position: fixed; top: 0; left: 0; right: 0; background-color: #c0c0c0; font-weight: bold;">
@@ -37,6 +37,7 @@
             </div>
         	</nav>
        </header>       
+	   <main style="position: fixed; top: 100px; left: 0; right: 0;">
             <div id="message">
                 <c:out value="${meldung}"/>
             </div>
@@ -44,6 +45,7 @@
             <div id="inhalt">
                 <c:import url="${url}"></c:import>
             </div>
+		</main>
     <footer style = "position: fixed; padding: 10px; bottom: 0; left: 0; right: 0; background-color: #c0c0c0; text-align: center">
                   Impresseum und Kontakt
     </footer>
