@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
+import de.jarm.gui.utils.JavaScriptFunctions;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Message;
 import de.jarm.main.data.Project;
@@ -36,6 +37,10 @@ public class ProjectController implements Controller {
 			message.append(e.getMessage());
 		}
 		
+<<<<<<< HEAD
+=======
+		request.setAttribute("script", JavaScriptFunctions.FIND_USER_FOR_TODO + " " + JavaScriptFunctions.FIND_USER_FOR_PROEJCT);
+>>>>>>> refs/remotes/origin/master
 		
 		return null;
 	}
