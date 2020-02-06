@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <h1 style= "position:absolute; display:table-cell; vertical-align:middle; width:100%; bottom: 401px; background-color: #c0c0c0;">Projektinterne Nachrichten</h1>
-     <div style= "position:absolute; display:table-cell; vertical-align:middle; width:500%; bottom: 400px;">
+     <div style= "position:absolute; display:table-cell; vertical-align:middle; width:100%; bottom: 400px;">
      		<c:forEach var="thisMessage" items="${nachrichten}">
      			<div><h4>Verfasser: <c:out value="${thisMessage.author.name}" /></h4> -  <c:out value="${thisMessage.message}" /></div>
      		</c:forEach>
