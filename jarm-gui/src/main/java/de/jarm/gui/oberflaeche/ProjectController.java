@@ -19,14 +19,9 @@ public class ProjectController implements Controller {
 		try {
 			Object id = request.getAttribute("id");
 			int projectId;
-<<<<<<< HEAD
 			if(id!=null) {
 				System.out.println("Fehler");
-				projectId = (int)id;
-=======
-			if (id != null) {
-				projectId = (int) id;
->>>>>>> branch 'Jarm-64-Nachrichten-eines-Projekts' of https://github.com/kunibertgangnam/Jarm.git
+				projectId = (int)id
 				Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
 
 				List<Message> messagesList = p.getMessages();
