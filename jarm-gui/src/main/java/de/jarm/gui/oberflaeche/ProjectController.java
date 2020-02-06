@@ -11,6 +11,7 @@ import de.jarm.gui.utils.JavaScriptFunctions;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Message;
 import de.jarm.main.data.Project;
+import de.jarm.main.data.User;
 
 public class ProjectController implements Controller {
 
@@ -18,7 +19,7 @@ public class ProjectController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
 		
-		request.setAttribute("script", JavaScriptFunctions.FIND_USER_FOR_TODO + " " + JavaScriptFunctions.FIND_USER_FOR_PROEJCT);
+		
 		String projectIdString;
 		
 		if (request.getMethod().equals("GET")) {
@@ -26,14 +27,21 @@ public class ProjectController implements Controller {
 		} else {
 			projectIdString = request.getParameter("id");
 		}
-		System.out.println(projectIdString);
-		
 		int projectId = new Integer(projectIdString);
+		Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
+		request.setAttribute("currentProject", p);
+		
+		User u = (User)request.getAttribute("user");
+		if(!(p.getOwner().getId()==u.getId()||p.getSubscribers().contains(u))) {
+			return "/secured/projektList";
+		}
+
+		
+		request.setAttribute("script", JavaScriptFunctions.FIND_USER_FOR_TODO + " " + JavaScriptFunctions.FIND_USER_FOR_PROEJCT);
 		
 		try {
 
-			Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
-			request.setAttribute("currentProject", p);
+			
 			
 			List<Message> messagesList = p.getMessages();
 			Collections.reverse(messagesList);
