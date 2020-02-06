@@ -46,10 +46,13 @@ public class DBStatements {
 	
 	public static final String SET_TODO_STATE_BY_ID = "UPDATE project_todo SET state = ? WHERE id = ?;";
 	
+	public static final String SET_TODO_INFOS_BY_ID = "UPDATE project_todo SET state = ?, name = ?, description = ? WHERE id = ?;";
+	
 	//DELETE 
-	//NOT IMPLEMENTED
 
 	public static final String REMOVE_USER_FROM_TODO = "DELETE FROM project_todo_user WHERE project_todo_id = ? AND user_id = ?;";
+	
+	//NOT IMPLEMENTED
 	
 	public static final String REMOVE_USER_FROM_PROJECT = "DELETE FROM project_user WHERE project_id = ? AND user_id = ?;";
 	

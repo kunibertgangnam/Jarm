@@ -129,4 +129,33 @@ public class ProjectService implements ProjectServiceInterface {
 		}
 	}
 
+	@Override
+	public void removeUserFromTodo(int userId, int todoId) throws ValidierungsException {
+		try {
+			projectDAO.removeUserFromTodo(todoId, userId);
+		} catch(Exception e) {
+			throw new ValidierungsException(e.getMessage());
+		}
+	}
+
+	@Override
+	public void updateTodoInformation(int todoId, String title, String description, int state)
+			throws ValidierungsException {
+		try {
+			projectDAO.setTodoInformation(todoId, title, description, state);
+		} catch(Exception e) {
+			throw new ValidierungsException(e.getMessage());
+		}
+		
+	}
+
+	@Override
+	public void addUserToTodo(int todoId, int userId) throws ValidierungsException {
+		try {
+			projectDAO.addUserToTodoById(todoId, userId);
+		} catch(Exception e) {
+			throw new ValidierungsException(e.getMessage());
+		}
+	}
+
 }
