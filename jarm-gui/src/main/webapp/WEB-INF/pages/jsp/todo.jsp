@@ -15,20 +15,14 @@
 				<br />
 				<h5>
 					Mitglieder:
-					<c:out value="${user.name}" />(owner) ,<span class="current-project-subscribers" style="visibility: hidden;"><c:out value="${user.id}"/></span>
+					<c:out value="${user.name}" />(owner) ,
 					<c:forEach var="projectUser" items="${currentProject.subscribers}">
 						<c:out value="${projectUser.name}" />
-						<i class="fas fa-user-minus fa-xs darkblue"></i> , <span class="current-project-subscribers" style="visibility: hidden;"><c:out value="${projectUser.id}"/></span></c:forEach>
+						<i class="fas fa-user-minus fa-xs darkblue"></i> , </c:forEach>
 				</h5>
 				<br />
 				<button type="button" class="btn btn-info" data-toggle="modal"
-<<<<<<< HEAD
 					data-target="#exampleModal">Mitglied hinzufügen</button>
-=======
-					data-target="#exampleModal">Mitglied hinzufÃ¼gen</button>
-				<form method="post" action="<c:url value='/projects/addUserToProject.do'/>">	
-				<input type="hidden" name="id" value="<c:out value="${currentProject.id}"/>" />
->>>>>>> refs/remotes/origin/master
 				<div class="modal fade" id="exampleModal" tabindex="-1"
 					role="dialog" aria-labelledby="exampleModalLabel"
 					aria-hidden="true">

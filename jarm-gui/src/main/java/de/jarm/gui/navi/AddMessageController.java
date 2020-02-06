@@ -22,11 +22,9 @@ public class AddMessageController implements Controller {
 			projectId = (int)id;
 			Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
 			request.setAttribute("currentProject", p);
-			if(request.getMethod().equals("POST")) {
-				if(!request.getParameter("message").equals("")){
-					DataController.getInstance().getProjectService().
-					writeMessage(p, ""+request.getAttribute("message"), (User) request.getSession().getAttribute("user"));					}
-			}
+			if(!request.getParameter("message").equals("")){
+				DataController.getInstance().getProjectService().
+				writeMessage(p, ""+request.getAttribute("message"), (User) request.getSession().getAttribute("user"));					}
 		}
 		
 		new ProjectController().execute(request, response, message);
