@@ -15,17 +15,20 @@ public class AddMessageController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
 		
-		Object id = request.getAttribute("id");
-		int projectId;
+		String id = request.getParameter("id");
 		
 		if(id!=null) {
-			projectId = (int)id;
-			Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
-			request.setAttribute("currentProject", p);
-			if(!request.getParameter("message").equals("")){
-				DataController.getInstance().getProjectService().
-				writeMessage(p, ""+request.getAttribute("message"), (User) request.getSession().getAttribute("user"));					}
-		}
+			try {
+				int projectId = new Integer(id);
+				Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
+				request.setAttribute("currentProject", p);
+				if(!request.getParameter("message").equals("")){
+					DataController.getInstance().getProjectService().
+					writeMessage(p, ""+request.getAttribute("message"), (User) request.getSession().getAttribute("user"));					}
+			} catch(Exception e) {
+				message.append(e.getMessage());
+			}
+		} 
 		
 		new ProjectController().execute(request, response, message);
 		return "/projects/project";

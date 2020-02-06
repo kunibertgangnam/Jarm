@@ -6,6 +6,7 @@
      </div>
 	 <div style = "position:absolute; bottom: 0; background-color: gray;"> 
 		 <form action="<c:url value='/projects/addMessage.do'/>" method="post">
+		 		<input type="hidden" name="id" value="<c:out value="${currentProject.id}"/>" />
 				<table style= "margin-left: 10px; margin-right: 10px; margin-bottom: 80px;">
 					<tr>
 						<td style="width:99%">
