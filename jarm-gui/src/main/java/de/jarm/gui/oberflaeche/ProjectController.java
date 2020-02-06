@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
 import de.jarm.gui.utils.JavaScriptFunctions;
+import de.jarm.gui.utils.ValidierungsException;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Message;
 import de.jarm.main.data.Project;
@@ -27,16 +28,18 @@ public class ProjectController implements Controller {
 		} else {
 			projectIdString = request.getParameter("id");
 		}
-		int projectId = new Integer(projectIdString);
-		Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
-		request.setAttribute("currentProject", p);
+		try {
+			int projectId = new Integer(projectIdString);
+			Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
+			request.setAttribute("currentProject", p);
+			
+			User u = (User)request.getSession().getAttribute("user");
+			if(!(p.getOwner().getId()==u.getId()|| p.getSubscribers()!=null && 
+					p.getSubscribers().contains(u))) {
+				new UserAreaController().execute(request, response, message);
+				return "/secured/projektList";
+			}
 		
-		User u = (User)request.getSession().getAttribute("user");
-
-		if(!(p.getOwner().getId()==u.getId()|| p.getSubscribers()!=null && p.getSubscribers().contains(u))) {
-			new UserAreaController().execute(request, response, message);
-			return "/secured/projektList";
-		}
 
 
 		
@@ -60,6 +63,10 @@ public class ProjectController implements Controller {
 			
 		} catch (Exception e) {
 			message.append(e.getMessage());
+		}
+		}catch (ValidierungsException e){
+			new UserAreaController().execute(request, response, message);
+			return "/secured/projektList";
 		}
 		
 		return null;
