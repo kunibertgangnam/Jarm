@@ -51,7 +51,7 @@
 											class="fas fa-search text-white" aria-hidden="true"></i></span>
 									</div>
 									<input class="form-control my-0 py-1" type="text" id="query-input-user"
-										placeholder="Search" aria-label="Search">
+										placeholder="Search" aria-label="Search" autocomplete="off">
 								</div>
 							</div>
 							<div class="modal-footer">
@@ -199,7 +199,7 @@
 										class="fas fa-search text-white" aria-hidden="true"></i></span>
 								</div>
 								<input class="form-control my-0 py-1" type="text"
-									placeholder="Search" aria-label="Search">
+									placeholder="Search" aria-label="Search" autocomplete="off">
 							</div>
 						</div>
 						<div class="modal-footer">
