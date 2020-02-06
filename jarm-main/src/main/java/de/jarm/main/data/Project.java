@@ -1,6 +1,7 @@
 package de.jarm.main.data;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
@@ -31,6 +32,9 @@ public class Project {
 	}
 	
 	public List<ProjectToDo> getToDos() {
+		if(toDos==null) {
+			toDos = new ArrayList<>();
+		}
 		return toDos;
 	}
 
@@ -39,6 +43,9 @@ public class Project {
 	}
 
 	public List<User> getSubscribers() {
+		if(subscribers==null) {
+			subscribers = new ArrayList<>();
+		}
 		return subscribers;
 	}
 
@@ -47,6 +54,9 @@ public class Project {
 	}
 
 	public List<Message> getMessages() {
+		if(messages==null) {
+			messages = new ArrayList<>();
+		}
 		return messages;
 	}
 
