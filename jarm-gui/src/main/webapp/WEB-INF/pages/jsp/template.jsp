@@ -45,15 +45,8 @@
             <div id="inhalt">
                 <c:import url="${url}"></c:import>
             </div>
-            <div style = "bottom: 0; background-color: #c0c0c0; width: 100%">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                      <div class="collapse navbar-collapse">
-                            <ul class="nav nav-tabs">
-                                <li>Impresseum und Kontakt</li>
-                            </ul>
-                       </div>
-
-                </nav>
+            <div style = "position:absolute; display:table-cell; vertical-align:middle; text-align: center; width:100%; bottom: 0px; background-color: #c0c0c0; height: 30px">
+                  Impresseum und Kontakt
             </div>
             
     <script
