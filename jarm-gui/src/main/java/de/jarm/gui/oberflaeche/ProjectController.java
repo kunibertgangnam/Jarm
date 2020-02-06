@@ -73,8 +73,8 @@ public class ProjectController implements Controller {
 				message.append(e.getMessage());
 			}
 		}catch (ValidierungsException e){
-			new UserAreaController().execute(request, response, message);
-			return "/secured/projektList";
+			
+			return new UserAreaController().execute(request, response, message);
 		}
 		
 		return null;
