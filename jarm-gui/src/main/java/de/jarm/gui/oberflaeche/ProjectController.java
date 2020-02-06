@@ -9,7 +9,6 @@ import de.jarm.gui.navi.Controller;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Message;
 import de.jarm.main.data.Project;
-import de.jarm.main.data.User;
 
 public class ProjectController implements Controller {
 
