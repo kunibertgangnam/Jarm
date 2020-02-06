@@ -15,7 +15,7 @@
     <link rel="STYLESHEET" type="text/css" href="<c:url value="/include/stylesheet.css"/>">
   </head>
        <body> 
-            <div style="background-color: #c0c0c0; margin-top: 0px; margin-left: 0px; color: #ffffff; font-weight: bold;">
+       <header style="position: fixed; top: 0; left: 0; right: 0; background-color: #c0c0c0; font-weight: bold;">
             <nav class="navbar navbar-expand-lg navbar-light">
             <span class="navbar-brand mb-0 h1">Jarm</span>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -35,9 +35,8 @@
                     </c:if>
                 </ul>
             </div>
-        </nav>
-    </div>
-            
+        	</nav>
+       </header>       
             <div id="message">
                 <c:out value="${meldung}"/>
             </div>
@@ -45,9 +44,9 @@
             <div id="inhalt">
                 <c:import url="${url}"></c:import>
             </div>
-           <div style = "position:absolute; display:table-cell; vertical-align:middle; text-align: center; width:100%; bottom: 0px; background-color: #c0c0c0;"> 
+    <footer style = "position: fixed; padding: 10px; bottom: 0; left: 0; right: 0; background-color: #c0c0c0; text-align: center">
                   Impresseum und Kontakt
-            </div>
+    </footer>
             
     <script
 	  src="https://code.jquery.com/jquery-3.4.1.min.js"
