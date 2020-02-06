@@ -21,6 +21,7 @@ public class ProjectController implements Controller {
 			Object id = request.getAttribute("id");
 			int projectId;
 			if(id!=null) {
+				System.out.println("Fehler");
 				projectId = (int)id;
 				Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
 				
