@@ -54,12 +54,12 @@
                        </div>
                 </nav>
             </div>
-            <c:if test ="${imProjekt != null}">
-                <div style = "float:right; width:15%; margin: 10px;color : black;background-color : #c0c0c0;border-color : #ff0000; border-style : solid; border-width: thin; text-align: center;">
-                    <h3>Mitglieder des Projekts</h3>
-                    <c:out value="${mitglieder}"/>
-                </div>
-            </c:if>
+<%--             <c:if test ="${imProjekt != null}"> --%>
+<!--                 <div style = "float:right; width:15%; margin: 10px;color : black;background-color : #c0c0c0;border-color : #ff0000; border-style : solid; border-width: thin; text-align: center;"> -->
+<!--                     <h3>Mitglieder des Projekts</h3> -->
+<%--                     <c:out value="${mitglieder}"/> --%>
+<!--                 </div> -->
+<%--             </c:if> --%>
             
     <script
 	  src="https://code.jquery.com/jquery-3.4.1.min.js"
