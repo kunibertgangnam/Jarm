@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
+import de.jarm.gui.utils.JavaScriptFunctions;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Project;
 
@@ -21,6 +22,8 @@ public class ProjectController implements Controller {
 		} catch(Exception e) {
 			message.append(e.getMessage());
 		}
+		
+		request.setAttribute("script", JavaScriptFunctions.FIND_USER_FOR_TODO + " " + JavaScriptFunctions.FIND_USER_FOR_PROEJCT);
 		
 		return null;
 	}

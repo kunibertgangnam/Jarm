@@ -8,14 +8,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
 import de.jarm.main.data.DataController;
+import de.jarm.main.data.Project;
+import de.jarm.main.data.ProjectToDo;
+import de.jarm.main.data.User;
 
-public class AddUserToProjectController implements Controller{
+public class AddUserToTodoController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
 		
 		Object userIdObjectToAdd = request.getParameter("AddedUserIdsProject");
+		
 		
 		if (userIdObjectToAdd != null) {
 			String userIdsStringToAdd = userIdObjectToAdd.toString();
@@ -31,18 +35,30 @@ public class AddUserToProjectController implements Controller{
 				}
 			}
 			
-			int projectId = new Integer( request.getParameter("id"));
-			try {			
-				for (Integer i : idListToAdd) {
-					DataController.getInstance().getProjectService().addSubscriber(DataController.getInstance().getProjectService().getProjectById(projectId), DataController.getInstance().getUserService().getUserById(i));
+			int todoId = new Integer(request.getParameter("todo"));
+			int currentProjectId = new Integer(request.getParameter("currentProject"));
+			
+			try {
+				Project currentProject = DataController.getInstance().getProjectService().getProjectById(currentProjectId);
+				
+				for (ProjectToDo t : currentProject.getToDos()) {
+					if (t.getId() == todoId) {					
+						for (Integer i : idListToAdd) {
+							User userToAdd = DataController.getInstance().getUserService().getUserById(i);
+							DataController.getInstance().getProjectService().addUserToTodo(t, userToAdd);
+						}		
+						break;
+					}
 				}
-			}catch (Exception e) {
+				message.append("User erfolgreich zum Todo hinzugefügt");
+				
+			} catch(Exception e) {
 				message.append(e.getMessage());
 			}
 		}
 		
-		
 		new ProjectController().execute(request, response, message);
 		return "/projects/project";
 	}
+
 }
