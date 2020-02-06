@@ -37,10 +37,7 @@ public class ProjectController implements Controller {
 			message.append(e.getMessage());
 		}
 		
-<<<<<<< HEAD
-=======
 		request.setAttribute("script", JavaScriptFunctions.FIND_USER_FOR_TODO + " " + JavaScriptFunctions.FIND_USER_FOR_PROEJCT);
->>>>>>> refs/remotes/origin/master
 		
 		return null;
 	}
