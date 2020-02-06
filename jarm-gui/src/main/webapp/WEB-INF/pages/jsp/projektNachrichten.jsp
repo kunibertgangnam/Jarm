@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <h1 style = "padding: 5px; background-color: #c0c0c0;">Projektinterne Nachrichten
-<i style="font-size:24px" class="fa">&#xf0e6;</i></h1>
+<i class="far fa-comments"></i></h1>
      <div style = "padding: 5px; background-color: #eefafd;">
      		<c:forEach var="thisMessage" items="${nachrichten}">
      			<div><h4>Verfasser: <c:out value="${thisMessage.author.name}" /></h4> -  <c:out value="${thisMessage.message}" /></div>
@@ -22,3 +22,4 @@
 				</table>
 		 </form>
 	 </div>
+	 
