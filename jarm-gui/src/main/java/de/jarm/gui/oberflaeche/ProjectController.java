@@ -34,7 +34,7 @@ public class ProjectController implements Controller {
 		User u = (User)request.getSession().getAttribute("user");
 
 		if(!(p.getOwner().getId()==u.getId()|| p.getSubscribers()!=null && p.getSubscribers().contains(u))) {
-			new UserAreaController();
+			new UserAreaController().execute(request, response, message);
 			return "/secured/projektList";
 		}
 
