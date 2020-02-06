@@ -17,18 +17,21 @@ public class LoginController implements Controller {
 		if (request.getMethod().equals("POST")) {
 			String email = request.getParameter("Email");
 			String passwort = request.getParameter("Passwort");
-
-			User u = DataController.getInstance().getUserService().login(email, passwort);
 			
-			if (u != null) {
-				message.append("Sie haben sich erfolgreich eingeloggt!");
-				request.getSession().setAttribute("user", u);
-				new UserAreaController().execute(request, response, message);
-				return "/secured/projekt";
-			}
-			else {
-				message.append("Benutzername oder Passwort falsch!");
-				request.setAttribute("emailValue", email);
+			try {
+				User u = DataController.getInstance().getUserService().login(email, passwort);
+				if (u != null) {
+					message.append("Sie haben sich erfolgreich eingeloggt!");
+					request.getSession().setAttribute("user", u);
+					new UserAreaController().execute(request, response, message);
+					return "/secured/projektList";
+				}
+				else {
+					message.append("Benutzername oder Passwort falsch!");
+					request.setAttribute("emailValue", email);
+				}
+			} catch(Exception e) {
+				message.append(e.getMessage());
 			}
 		}
 		return null;

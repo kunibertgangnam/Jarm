@@ -18,7 +18,7 @@ import de.jarm.main.data.Project;
 import de.jarm.main.data.ProjectToDo;
 import de.jarm.main.data.User;
 import de.jarm.main.database.exceptions.NoDataFoundException;
-import utils.DateUtils;
+import de.jarm.main.utils.DateUtils;
 
 public class ProjectDAO {
 	
@@ -80,6 +80,7 @@ public class ProjectDAO {
 		         PreparedStatement pstmt = con.prepareStatement(DBStatements.SELECT_PROJECTS_BY_USER_ID)) {
 			
 			pstmt.setInt(1, userId);
+			pstmt.setInt(2, userId);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {

@@ -20,7 +20,6 @@ public class UserServiceDummy implements UserServiceInterface {
 		return newUser;
 	}
 	
-	@Override
 	public User create(String name, String password) throws ValidierungsException {
 		return create(name, password, null);
 	}
@@ -65,6 +64,24 @@ public class UserServiceDummy implements UserServiceInterface {
 	public void remove(User user) {
 		userList.remove(user);
 		
+	}
+
+	@Override
+	public List<User> findUserByNameOrEmail(String input) throws ValidierungsException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User getUserById(int id) throws ValidierungsException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> findUserInProjectByNameOrEmail(String input, int projectId) throws ValidierungsException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

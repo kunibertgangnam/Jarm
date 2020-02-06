@@ -5,6 +5,7 @@ import java.util.List;
 
 import database.project.ProjectDAO;
 import database.user.UserDAO;
+import de.jarm.main.data.DataController;
 import de.jarm.main.data.Message;
 import de.jarm.main.data.Project;
 import de.jarm.main.data.ProjectToDo;
@@ -198,6 +199,17 @@ public class DatabaseTests {
 		try {
 			projectDao.setTodoState(p1.getToDos().get(0), 1);
 			System.out.println("ERFOLGREICH");
+		} catch (Exception e) {
+			System.out.println("FEHLER " + e.getMessage());
+		}
+		
+		System.out.println("\n\nTEST 17 - FIND BY NAME OR EMAIL --------------------");
+		try {
+			List<User> users = userDao.searchUserByNameOrEmail("@web");
+			
+			if (users.size() != 4) throw new Exception("nicht genau 4 user gefunden!");
+			
+			System.out.println("ERFOLGREICH " + users);
 		} catch (Exception e) {
 			System.out.println("FEHLER " + e.getMessage());
 		}
