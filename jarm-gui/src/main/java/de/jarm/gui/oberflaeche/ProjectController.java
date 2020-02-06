@@ -17,13 +17,9 @@ public class ProjectController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
 		
-		
-		
-		
 		try {
 			Object id = request.getAttribute("id");
 			int projectId;
-			
 			if(id!=null) {
 				projectId = (int)id;
 				Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
