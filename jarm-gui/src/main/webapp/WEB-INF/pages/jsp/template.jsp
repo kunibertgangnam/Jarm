@@ -45,7 +45,7 @@
             <div id="inhalt">
                 <c:import url="${url}"></c:import>
             </div>
-            <div style = "position:relative; display:table-cell; vertical-align:middle; text-align: center; width:100%; bottom: 0px; background-color: #c0c0c0; height: 30px">
+           <div style = "position:absolute; display:table-cell; vertical-align:middle; text-align: center; width:100%; bottom: 0px; background-color: #c0c0c0;"> 
                   Impresseum und Kontakt
             </div>
             
