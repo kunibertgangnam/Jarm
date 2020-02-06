@@ -1,9 +1,4 @@
-<%@page import="java.util.Map.Entry"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.Map"%>
-<%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-<!doctype html>
 
   <h1 style= "background-color: #c0c0c0">Projektinternes Forum</h1>
      <div style= "margin-left: 10px; margin-right: 10px;">
