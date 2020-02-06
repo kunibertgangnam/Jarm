@@ -38,6 +38,10 @@
 	color: rgba(0, 150, 136, 0.7) ;
 }
 
+.yellow {
+	color: #ffd700;
+}
+
 .border {
     display: inline-block;
     width: 400px;
