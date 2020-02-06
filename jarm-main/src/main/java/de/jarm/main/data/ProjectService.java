@@ -13,28 +13,28 @@ public class ProjectService implements ProjectServiceInterface {
 	@Override
 	public Project create(String projectTitle, User projectOwner) throws ValidierungsException {
 		if (projectOwner == null) {
-			throw new de.jarm.main.database.exceptions.ValidierungsException("Daf�r m�ssen sie eingeloggt sein!");
+			throw new ValidierungsException("Dafuer muessen sie eingeloggt sein!");
 		} else if (projectTitle.equals("")) {
-			throw new de.jarm.main.database.exceptions.ValidierungsException("Bitte einen Titel festlegen!");
+			throw new ValidierungsException("Bitte einen Titel festlegen!");
 		}
 		try {
 			return projectDAO.addProject(new Project(projectTitle, projectOwner));
 		} catch(Exception e) {
-			throw new de.jarm.main.database.exceptions.ValidierungsException(e.getMessage());
+			throw new ValidierungsException(e.getMessage());
 		}
 	}
 
 	@Override
 	public void writeMessage(Project project, String message, User author) throws ValidierungsException {
 		if (message.equals("")) {
-			throw new de.jarm.main.database.exceptions.ValidierungsException("Bitte eine Nachricht eingeben!");
+			throw new ValidierungsException("Bitte eine Nachricht eingeben!");
 		} else if (project == null || author == null) {
-			throw new de.jarm.main.database.exceptions.ValidierungsException("Das Projekt oder der Autor konnten nicht gefunden werden!");
+			throw new ValidierungsException("Das Projekt oder der Autor konnten nicht gefunden werden!");
 		}
 		try {
 			projectDAO.addMessageToProject(project, new Message(message, author));
 		} catch(Exception e) {
-			throw new de.jarm.main.database.exceptions.ValidierungsException(e.getMessage());
+			throw new ValidierungsException(e.getMessage());
 		}
 	}
 

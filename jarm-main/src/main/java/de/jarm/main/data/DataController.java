@@ -53,7 +53,7 @@ public class DataController {
 			ProjectServiceInterface pro = DataController.getInstance().getProjectService();
 			pro.writeMessage(pro.getProjectsByUser(u).get(0), "hi", u);
 			
-		} catch (de.jarm.main.database.exceptions.ValidierungsException e) {
+		} catch (ValidierungsException e) {
 			System.out.println("Fehler");
 			e.printStackTrace();
 		}
