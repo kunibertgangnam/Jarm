@@ -9,6 +9,7 @@ import de.jarm.gui.navi.Controller;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Message;
 import de.jarm.main.data.Project;
+import de.jarm.main.data.User;
 
 public class ProjectController implements Controller {
 
@@ -21,14 +22,15 @@ public class ProjectController implements Controller {
 		try {
 			Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
 			request.setAttribute("currentProject", p);
+			List<Message> messagesList = p.getMessages();
 			if(request.getMethod().equals("POST")) {
 				if(!request.getParameter("message").equals("")){
-					
+					messagesList.add(new Message(request.getParameter("message"), (User)request.getSession().getAttribute("user")));
+					p.setMessages(messagesList);
 				}
 			}
 			
 			String messages = "";
-			List<Message> messagesList = p.getMessages();
 			for(int i = messagesList.size()-1; i > messagesList.size()-51 && i > 0; i--) {
 				messages += "<font style=\"font-weight=bold\">"+ messagesList.get(i).getAuthor().getName()+ "</font><br>" + 
 				messagesList.get(i).getMessage()+ "<br><br>";
