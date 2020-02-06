@@ -18,7 +18,7 @@ import de.jarm.main.data.Project;
 import de.jarm.main.data.ProjectToDo;
 import de.jarm.main.data.User;
 import de.jarm.main.database.exceptions.NoDataFoundException;
-import utils.DateUtils;
+import de.jarm.main.utils.DateUtils;
 
 public class ProjectDAO {
 	

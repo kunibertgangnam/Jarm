@@ -1,5 +1,7 @@
 package de.jarm.main.interfaces;
 
+import java.util.List;
+
 import de.jarm.main.data.User;
 import de.jarm.main.utils.ValidierungsException;
 
@@ -13,5 +15,7 @@ public interface UserServiceInterface {
 
 	public User getUser(String string);
 	
-	public User getUser(int id);
+	public User getUserById(int id) throws ValidierungsException;
+	
+	public List<User> findUserByNameOrEmail(String input) throws ValidierungsException;
 }
