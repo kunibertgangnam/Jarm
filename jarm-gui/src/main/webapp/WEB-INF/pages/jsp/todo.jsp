@@ -178,19 +178,16 @@
 								<textarea class="form-control" aria-label="With textarea"></textarea>
 							</div>
 							<br />
-							<div class="dropdown">
-								<button class="btn btn-light dropdown-toggle" type="button"
-									id="dropdownMenuButton" data-toggle="dropdown"
-									aria-haspopup="true" aria-expanded="false">Status</button>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="#"> <i
-										class="fas fa-check-circle green"></i></a> <a
-										class="dropdown-item" href="#"> <i
-										class="fas fa-question darkblue"></i>
-									</a> <a class="dropdown-item" href="#"> <i
-										class="fas fa-hourglass-start "></i>
-									</a>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<label class="input-group-text" for="inputGroupSelect01">Status</label>
 								</div>
+								<select class="custom-select" id="inputGroupSelect01">
+									<option selected>Wähle...</option>
+									<option value="1">Fertig</option>
+									<option value="2">In Bearbeitung</option>
+									<option value="3">Unbekannt</option>
+								</select>
 							</div>
 							<br /> User zuweisen:
 							<div class="input-group md-form form-sm form-1 pl-0">
