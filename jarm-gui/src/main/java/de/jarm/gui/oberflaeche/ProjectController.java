@@ -28,14 +28,13 @@ public class ProjectController implements Controller {
 				projectId = (int)id;
 				Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
 				request.setAttribute("currentProject", p);
-				List<Message> messagesList = p.getMessages();
 				if(request.getMethod().equals("POST")) {
 					if(!request.getParameter("message").equals("")){
-						messagesList.add(new Message(request.getParameter("message"), (User)request.getSession().getAttribute("user")));
-						p.setMessages(messagesList);
-					}
+						DataController.getInstance().getProjectService().
+						writeMessage(p, ""+request.getAttribute("message"), (User) request.getSession().getAttribute("user"));					}
 				}
 				
+				List<Message> messagesList = p.getMessages();
 				String messages = "";
 				for(int i = messagesList.size()-1; i > messagesList.size()-51 && i > 0; i--) {
 					messages += "<font style=\"font-weight=bold\">"+ messagesList.get(i).getAuthor().getName()+ "</font><br>" + 
