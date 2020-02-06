@@ -9,36 +9,39 @@ import de.jarm.gui.navi.Controller;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Message;
 import de.jarm.main.data.Project;
-import de.jarm.main.data.User;
 
 public class ProjectController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
-		
+
 		try {
 			Object id = request.getAttribute("id");
 			int projectId;
+<<<<<<< HEAD
 			if(id!=null) {
 				System.out.println("Fehler");
 				projectId = (int)id;
+=======
+			if (id != null) {
+				projectId = (int) id;
+>>>>>>> branch 'Jarm-64-Nachrichten-eines-Projekts' of https://github.com/kunibertgangnam/Jarm.git
 				Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
-				
+
 				List<Message> messagesList = p.getMessages();
 				String messages = "";
-				for(int i = messagesList.size()-1; i > messagesList.size()-51 && i > 0; i--) {
-					messages += "<font style=\"font-weight=bold\">"+ messagesList.get(i).getAuthor().getName()+ "</font><br>" + 
-					messagesList.get(i).getMessage()+ "<br><br>";
+				for (int i = messagesList.size() - 1; i > messagesList.size() - 51 && i > 0; i--) {
+					messages += "<font style=\"font-weight=bold\">" + messagesList.get(i).getAuthor().getName()
+							+ "</font><br>" + messagesList.get(i).getMessage() + "<br><br>";
+				}
+
+				request.setAttribute("nachrichten", messages);
 			}
-			
-			request.setAttribute("nachrichten", messages);
-			}	
-		} catch(Exception e) {
+		} catch (Exception e) {
 			message.append(e.getMessage());
 		}
-		
-		
+
 		return null;
 	}
 

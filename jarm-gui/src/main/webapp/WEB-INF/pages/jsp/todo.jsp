@@ -51,7 +51,7 @@
 								<button type="button" class="btn btn-light" data-dismiss="modal">Abbrechen</button>
 							</div>
 						</div>
-					</div>
+					</div> 
 
 				</div>
 			</div>
