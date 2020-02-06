@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
@@ -15,14 +17,16 @@
 				<br />
 				<h5>
 					Mitglieder:
-					<c:out value="${user.name}" />(owner) ,
+					<c:out value="${user.name}" />(owner) ,<span class="current-project-subscribers" style="visibility: hidden;"><c:out value="${user.id}"/></span>
 					<c:forEach var="projectUser" items="${currentProject.subscribers}">
 						<c:out value="${projectUser.name}" />
-						<i class="fas fa-user-minus fa-xs darkblue"></i> , </c:forEach>
+						<i class="fas fa-user-minus fa-xs darkblue"></i> , <span class="current-project-subscribers" style="visibility: hidden;"><c:out value="${projectUser.id}"/></span></c:forEach>
 				</h5>
 				<br />
 				<button type="button" class="btn btn-info" data-toggle="modal"
-					data-target="#exampleModal">Mitglied hinzufügen</button>
+					data-target="#exampleModal">Mitglied hinzufÃ¼gen</button>
+				<form method="post" action="<c:url value='/projects/addUserToProject.do'/>">	
+				<input type="hidden" name="id" value="<c:out value="${currentProject.id}"/>" />
 				<div class="modal fade" id="exampleModal" tabindex="-1"
 					role="dialog" aria-labelledby="exampleModalLabel"
 					aria-hidden="true">
@@ -51,13 +55,8 @@
 								</div>
 							</div>
 							<div class="modal-footer">
-<<<<<<< HEAD
-								<button type="button" class="btn btn-info">Hinzufügen</button>
-								<button type="button" class="btn btn-light" data-dismiss="modal">Abbrechen</button>
-=======
 								<button type="submit" class="btn btn-info">HinzufÃ¼gen</button>
 								<button type="button" class="btn btn-light close-modal-window-project" data-dismiss="modal">Abbrechen</button>
->>>>>>> refs/remotes/origin/master
 							</div>
 						</div>
 					</div>
