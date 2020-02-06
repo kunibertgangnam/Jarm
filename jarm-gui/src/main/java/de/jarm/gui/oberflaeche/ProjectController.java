@@ -43,27 +43,27 @@ public class ProjectController implements Controller {
 
 
 		
-		request.setAttribute("script", JavaScriptFunctions.FIND_USER_FOR_TODO + " " + JavaScriptFunctions.FIND_USER_FOR_PROEJCT);
-		
-		try {
-
+			request.setAttribute("script", JavaScriptFunctions.FIND_USER_FOR_TODO + " " + JavaScriptFunctions.FIND_USER_FOR_PROEJCT);
 			
-			
-			List<Message> messagesList = p.getMessages();
-			Collections.reverse(messagesList);
-			
-			request.setAttribute("nachrichten", messagesList);
-//			String messages = "";
-//			for (int i = messagesList.size() - 1; i > messagesList.size() - 51 && i > 0; i--) {
-//				messages += "<font style=\"font-weight=bold\">" + messagesList.get(i).getAuthor().getName()
-//						+ "</font><br>" + messagesList.get(i).getMessage() + "<br><br>";
-//			}
-
-			//request.setAttribute("nachrichten", messages);
-			
-		} catch (Exception e) {
-			message.append(e.getMessage());
-		}
+			try {
+	
+				
+				
+				List<Message> messagesList = p.getMessages();
+				Collections.reverse(messagesList);
+				
+				request.setAttribute("nachrichten", messagesList);
+	//			String messages = "";
+	//			for (int i = messagesList.size() - 1; i > messagesList.size() - 51 && i > 0; i--) {
+	//				messages += "<font style=\"font-weight=bold\">" + messagesList.get(i).getAuthor().getName()
+	//						+ "</font><br>" + messagesList.get(i).getMessage() + "<br><br>";
+	//			}
+	
+				//request.setAttribute("nachrichten", messages);
+				
+			} catch (Exception e) {
+				message.append(e.getMessage());
+			}
 		}catch (ValidierungsException e){
 			new UserAreaController().execute(request, response, message);
 			return "/secured/projektList";
