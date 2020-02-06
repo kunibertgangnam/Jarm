@@ -24,48 +24,50 @@
 				<c:if test="${user.id == currentProject.owner.id}">
 				<button type="button" class="btn btn-info" data-toggle="modal"
 					data-target="#exampleModal">Mitglied hinzufügen</button></c:if>
+					
+					
 				<form method="post" action="<c:url value='/projects/addUserToProject.do'/>">	
-				<input type="hidden" name="id" value="<c:out value="${currentProject.id}"/>" />
-				<div class="modal fade" id="exampleModal" tabindex="-1"
-					role="dialog" aria-labelledby="exampleModalLabel"
-					aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Neues
-									Mitglied</h5>
-								<button type="button" class="close close-modal-window-project" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<br/>
-								<input type="hidden" value="" name="AddedUserIdsProject" id="added-user-ids-project" />
-								<div id="project-users-added">
-									
+					<input type="hidden" name="id" value="<c:out value="${currentProject.id}"/>" />
+					<div class="modal fade" id="exampleModal" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Neues
+										Mitglied</h5>
+									<button type="button" class="close close-modal-window-project" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
 								</div>
-								<br/>
-								<div class="input-group md-form form-sm form-1 pl-0">
-									<div class="input-group-prepend">
-										<span class="input-group-text cyan lighten-2" id="basic-text1"><i
-											class="fas fa-search text-white" aria-hidden="true"></i></span>
+								<div class="modal-body">
+									<br/>
+									<input type="hidden" value="" name="AddedUserIdsProject" id="added-user-ids-project" />
+									<div id="project-users-added">
+										
 									</div>
-									<input class="form-control my-0 py-1" type="text" id="query-input-user"
-										placeholder="Search" aria-label="Search" autocomplete="off">
+									<br/>
+									<div class="input-group md-form form-sm form-1 pl-0">
+										<div class="input-group-prepend">
+											<span class="input-group-text cyan lighten-2" id="basic-text1"><i
+												class="fas fa-search text-white" aria-hidden="true"></i></span>
+										</div>
+										<input class="form-control my-0 py-1" type="text" id="query-input-user"
+											placeholder="Search" aria-label="Search" autocomplete="off">
+									</div>
+									<div id="query-output-user" class="dropdown-content">		
+									</div>
 								</div>
-								<div id="query-output-user" class="dropdown-content">		
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-info">Hinzufügen</button>
+									<button type="button" class="btn btn-light close-modal-window-project" data-dismiss="modal">Abbrechen</button>
 								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="submit" class="btn btn-info">Hinzufügen</button>
-								<button type="button" class="btn btn-light close-modal-window-project" data-dismiss="modal">Abbrechen</button>
 							</div>
 						</div>
 					</div>
-
-				</div>
 				</form>
+				
 			</div>
 		</div>
 	</div>
@@ -79,18 +81,22 @@
 				<c:forEach var="todo" items="${currentProject.toDos}">
 					<li class="list list-group-item"><c:out value="${todo.name}" />
 						<div class="float-right">
-							<a data-toggle="modal" data-target="#myModal"
-								class="button pointer"><i class="fas fa-edit orange"></i></a> 
-								<c:if test="${todo.state == 2}"> <i class="fas fa-check-circle green"></i> </c:if>
-							 	<c:if test="${todo.state == 1}"> <i class="fas fa-hourglass-start yellow"></i> </c:if>
-							 	<c:if test="${todo.state == 0}"> <i class="fas fa-question darkblue"></i> </c:if>	 							
+							<a data-toggle="modal" data-target="#myModal" data-todo-id="<c:out value="${todo.id}" />" class="button pointer edit-todo"><i class="fas fa-edit orange"></i></a> 
+							<c:if test="${todo.state == 2}"> <i class="fas fa-check-circle green"></i> </c:if>
+						 	<c:if test="${todo.state == 1}"> <i class="fas fa-hourglass-start yellow"></i> </c:if>
+						 	<c:if test="${todo.state == 0}"> <i class="fas fa-question darkblue"></i> </c:if>	 							
 							<i class="fas fa-trash-alt grey"></i>
-						</div></li>
+						</div>
+					</li>
 				</c:forEach>
 			</ul>
 			<br />
+			
+			
 			<button type="button" class="btn btn-info" data-toggle="modal"
 				data-target="#staticBackdrop">Neues To-Do</button>
+				
+				
 		<form method="post" action="<c:url value='/projects/addTodo.do'/>">
 			<input type="hidden" name="id" value="<c:out value="${currentProject.id}"/>" />
 			<div class="modal fade" id="staticBackdrop" data-backdrop="static"
@@ -100,8 +106,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="staticBackdropLabel">Neues To-Do</h5>
-							<button type="button" class="close close-modal-window-todo" data-dismiss="modal"
-								aria-label="Close">
+							<button type="button" class="close close-modal-window-todo" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
@@ -111,15 +116,13 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="inputGroup-sizing-default">Titel</span>
 								</div>
-								<input type="text" class="form-control"
-									aria-label="Sizing example input"
-									aria-describedby="inputGroup-sizing-default" name="Titel">
+								<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="Titel">
 							</div>
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">Info</span>
 								</div>
-								<textarea class="form-control" aria-label="With textarea"  name="Description"></textarea>
+								<textarea class="form-control" aria-label="With textarea" name="Description"></textarea>
 							</div>
 							<br/>
 							<div id="todo-users-added"></div>
@@ -128,12 +131,12 @@
 							<br /> User zuweisen:
 							<div class="input-group md-form form-sm form-1 pl-0">
 								<div class="input-group-prepend">
-									<span class="input-group-text cyan lighten-2" id="basic-text1"><i
-										class="fas fa-search text-white" aria-hidden="true"></i></span>
+									<span class="input-group-text cyan lighten-2" id="basic-text1">
+										<i class="fas fa-search text-white" aria-hidden="true"></i>
+									</span>	
 								</div>
 								
-								<input id="query-input-todo" class="form-control my-0 py-1" type="text"
-									placeholder="Search" aria-label="Search" autocomplete="off">
+								<input id="query-input-todo" class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" autocomplete="off">
 								
 							</div>
 							<div id="query-output-todo" class="dropdown-content">		
@@ -149,67 +152,72 @@
 			</div>
 			</form>
 
-
-			<!--  <button type="button" class="btn btn-info" data-toggle="modal"
-				data-target="#myModal">Neues To-Do</button> -->
-
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-				aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">To-Do bearbeiten</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<p>
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="inputGroup-sizing-default">Titel</span>
-								</div>
-								<input type="text" class="form-control"
-									aria-label="Sizing example input"
-									aria-describedby="inputGroup-sizing-default">
+			
+			<form method="post" action="<c:url value='/projects/editTodo.do'/>">
+				<input type="hidden" name="id" value="<c:out value="${currentProject.id}"/>" />
+				<input id="todo-id-input" type="hidden" name="todoId" value="" />
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">To-Do bearbeiten</h5>
+								<button type="button" class="close close-modal-window-edit-todo" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
 							</div>
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">Info</span>
+							<div class="modal-body">
+								<p>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-default">Titel</span>
+									</div>
+									<input id="title-textfield" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="todoTitle">
 								</div>
-								<textarea class="form-control" aria-label="With textarea"></textarea>
-							</div>
-							<br />
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<label class="input-group-text" for="inputGroupSelect01">Status</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text">Info</span>
+									</div>
+									<textarea id="description-textfield" class="form-control" aria-label="With textarea" name="todoDescription" ></textarea>
 								</div>
-								<select class="custom-select" id="inputGroupSelect01">
-									<option selected>Wähle...</option>
-									<option value="1">Fertig</option>
-									<option value="2">In Bearbeitung</option>
-									<option value="3">Unbekannt</option>
-								</select>
-							</div>
-							<br /> User zuweisen:
-							<div class="input-group md-form form-sm form-1 pl-0">
-								<div class="input-group-prepend">
-									<span class="input-group-text cyan lighten-2" id="basic-text1"><i
-										class="fas fa-search text-white" aria-hidden="true"></i></span>
+								<br />
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect01">Status</label>
+									</div>
+									<select class="custom-select" id="inputGroupSelect01" name="todoState">
+										<option selected>Wähle...</option>
+										<option value="0">Unbearbeitet</option>
+										<option value="1">In Bearbeitung</option>
+										<option value="2">Fertig</option>
+									</select>
 								</div>
-								<input class="form-control my-0 py-1" type="text"
-									placeholder="Search" aria-label="Search" autocomplete="off">
+								<br/>
+								<div id="edit-todo-users-added"></div>
+								<input type="hidden" value="" name="AddedUserIdsEditTodo" id="added-user-ids-edit-todo" />
+								<br/>
+								<br /> User zuweisen:
+								<div class="input-group md-form form-sm form-1 pl-0">
+									<div class="input-group-prepend">
+										<span class="input-group-text cyan lighten-2" id="basic-text1"><i
+											class="fas fa-search text-white" aria-hidden="true"></i></span>
+									</div>
+									<input class="form-control my-0 py-1" type="text"  id="query-input-edit-todo"
+										placeholder="Search" aria-label="Search" autocomplete="off">
+								</div>
+								<div id="query-output-edit-todo" class="dropdown-content">		
+								</div>	
+								
 							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-info">Speichern</button>
-							<button type="submit" class="btn btn-light" data-dismiss="modal">Abbrechen</button>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-info">Speichern</button>
+								<button type="button" class="btn btn-light close-modal-window-edit-todo" data-dismiss="modal">Abbrechen</button>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-
+			</form>
 
 
 

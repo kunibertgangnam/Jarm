@@ -16,6 +16,7 @@ import de.jarm.gui.oberflaeche.AddMessageController;
 import de.jarm.gui.oberflaeche.AddTodoController;
 import de.jarm.gui.oberflaeche.AddUserToProjectController;
 import de.jarm.gui.oberflaeche.CreateProjectController;
+import de.jarm.gui.oberflaeche.EditTodoController;
 import de.jarm.gui.oberflaeche.LoginController;
 import de.jarm.gui.oberflaeche.LogoutController;
 import de.jarm.gui.oberflaeche.RegisterController;
@@ -45,6 +46,7 @@ public class FrontController extends HttpServlet
 		controller.put("/projects/addTodo", new AddTodoController());
 		controller.put("/projects/addMessage", new AddMessageController());
 		controller.put("/projects/addUserToProject", new AddUserToProjectController());
+		controller.put("/projects/editTodo", new EditTodoController());
 		//controller.put("/projects/addMessage", new AddUserToTodoController());
 //		controller.put("/bv/login", new LoginController());
 //		controller.put("/bv/logout", new LogoutController());
