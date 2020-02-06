@@ -29,7 +29,6 @@ public class AddTodoController implements Controller {
 			message.append(e.getMessage());
 		}
 		
-		System.out.println(titel + " " + description);
 		new ProjectController().execute(request, response, message);
 		return "/projects/project";
 	}
