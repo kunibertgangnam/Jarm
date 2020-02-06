@@ -21,7 +21,7 @@ public class ProjectController implements Controller {
 			int projectId;
 			if(id!=null) {
 				System.out.println("Fehler");
-				projectId = (int)id
+				projectId = (int)id;
 				Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
 
 				List<Message> messagesList = p.getMessages();
