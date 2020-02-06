@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="container">
@@ -53,7 +51,7 @@
 												aria-label="Sizing example input"
 												aria-describedby="inputGroup-sizing-default" name="ProjectTitle">
 										</div>
-										User hinzufÃ¼gen (optional):
+										User hinzufügen (optional):
 										<div class="input-group md-form form-sm form-1 pl-0">
 											<div class="input-group-prepend">
 												<span class="input-group-text cyan lighten-2" id="basic-text1"><i
