@@ -1,8 +1,9 @@
 package de.jarm.main.data;
 
 import de.jarm.main.interfaces.ProjectServiceInterface;
+import de.jarm.main.database.exceptions.ValidierungsException;
+
 import de.jarm.main.interfaces.UserServiceInterface;
-import de.jarm.main.utils.ValidierungsException;
 
 public class DataController {
 	
@@ -52,7 +53,7 @@ public class DataController {
 			ProjectServiceInterface pro = DataController.getInstance().getProjectService();
 			pro.writeMessage(pro.getProjectsByUser(u).get(0), "hi", u);
 			
-		} catch (ValidierungsException e) {
+		} catch (de.jarm.main.database.exceptions.ValidierungsException e) {
 			System.out.println("Fehler");
 			e.printStackTrace();
 		}

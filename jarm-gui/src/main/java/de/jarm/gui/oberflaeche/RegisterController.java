@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
-import de.jarm.gui.utils.ValidierungsException;
+import de.jarm.main.database.exceptions.ValidierungsException;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.User;
 import de.jarm.gui.utils.Util;

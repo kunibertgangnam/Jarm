@@ -7,7 +7,8 @@ import de.jarm.main.data.Message;
 import de.jarm.main.data.Project;
 import de.jarm.main.data.ProjectToDo;
 import de.jarm.main.data.User;
-import de.jarm.main.utils.ValidierungsException;
+import de.jarm.main.database.exceptions.ValidierungsException;
+
 
 public interface ProjectServiceInterface {
 
