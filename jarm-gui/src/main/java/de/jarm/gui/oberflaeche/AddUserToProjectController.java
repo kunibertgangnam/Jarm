@@ -15,10 +15,9 @@ public class AddUserToProjectController implements Controller{
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
 		
-		Object userIdObjectToAdd = request.getParameter("AddedUserIdsProject");
+		String userIdsStringToAdd = request.getParameter("AddedUserIdsProject");
 		
-		if (userIdObjectToAdd != null) {
-			String userIdsStringToAdd = userIdObjectToAdd.toString();
+		if (userIdsStringToAdd != null) {
 			
 			String[] userIdArray = userIdsStringToAdd.split(" ");
 
