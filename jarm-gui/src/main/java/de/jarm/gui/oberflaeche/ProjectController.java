@@ -21,6 +21,11 @@ public class ProjectController implements Controller {
 		try {
 			Project p = DataController.getInstance().getProjectService().getProjectById(projectId);
 			request.setAttribute("currentProject", p);
+			if(request.getMethod().equals("POST")) {
+				if(!request.getParameter("message").equals("")){
+					
+				}
+			}
 			
 			String messages = "";
 			List<Message> messagesList = p.getMessages();
