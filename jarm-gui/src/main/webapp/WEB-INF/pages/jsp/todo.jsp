@@ -42,7 +42,7 @@
 								<br/>
 								<input type="hidden" value="" name="AddedUserIdsProject" id="added-user-ids-project" />
 								<div id="project-users-added">
-									<button id="proj4" type="button" value="4">Ronja - ronja@web.de</button>
+									
 								</div>
 								<br/>
 								<div class="input-group md-form form-sm form-1 pl-0">
@@ -53,7 +53,7 @@
 									<input class="form-control my-0 py-1" type="text" id="query-input-user"
 										placeholder="Search" aria-label="Search" autocomplete="off">
 								</div>
-								<div id="query-output-user">		
+								<div id="query-output-user" class="dropdown-content">		
 								</div>
 							</div>
 							<div class="modal-footer">
@@ -135,7 +135,7 @@
 									placeholder="Search" aria-label="Search" autocomplete="off">
 								
 							</div>
-							<div id="query-output-todo">		
+							<div id="query-output-todo" class="dropdown-content">		
 							</div>	
 							
 						</div>
