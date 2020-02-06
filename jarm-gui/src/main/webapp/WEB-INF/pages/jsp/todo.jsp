@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
@@ -24,7 +22,7 @@
 				</h5>
 				<br />
 				<button type="button" class="btn btn-info" data-toggle="modal"
-					data-target="#exampleModal">Mitglied hinzufÃ¼gen</button>
+					data-target="#exampleModal">Mitglied hinzufügen</button>
 				<form method="post" action="<c:url value='/projects/addUserToProject.do'/>">	
 				<input type="hidden" name="id" value="<c:out value="${currentProject.id}"/>" />
 				<div class="modal fade" id="exampleModal" tabindex="-1"
@@ -55,7 +53,7 @@
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="submit" class="btn btn-info">HinzufÃ¼gen</button>
+								<button type="submit" class="btn btn-info">Hinzufügen</button>
 								<button type="button" class="btn btn-light close-modal-window-project" data-dismiss="modal">Abbrechen</button>
 							</div>
 						</div>
