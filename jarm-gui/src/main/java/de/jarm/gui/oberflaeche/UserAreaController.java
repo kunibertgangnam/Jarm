@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
+import de.jarm.gui.utils.NotificationBuilder;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Project;
 import de.jarm.main.data.User;
@@ -28,7 +29,7 @@ public class UserAreaController implements Controller {
 			System.out.println("Projekte von user " + u.getName() + ": " + myProjects);
 			request.setAttribute("myProjects", myProjects);
 		} catch(Exception e){
-			message.append(e.getMessage());
+			NotificationBuilder.addErrorNotification(message, e.getMessage());
 		}
 		
 		return "/secured/projektList";

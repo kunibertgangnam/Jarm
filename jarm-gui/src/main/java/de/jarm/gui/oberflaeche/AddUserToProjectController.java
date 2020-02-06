@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
+import de.jarm.gui.utils.NotificationBuilder;
 import de.jarm.main.data.DataController;
 
 public class AddUserToProjectController implements Controller{
@@ -35,8 +36,8 @@ public class AddUserToProjectController implements Controller{
 				for (Integer i : idListToAdd) {
 					DataController.getInstance().getProjectService().addSubscriber(DataController.getInstance().getProjectService().getProjectById(projectId), DataController.getInstance().getUserService().getUserById(i));
 				}
-			}catch (Exception e) {
-				message.append(e.getMessage());
+			} catch (Exception e) {
+				NotificationBuilder.addErrorNotification(message, e.getMessage());
 			}
 		}
 		

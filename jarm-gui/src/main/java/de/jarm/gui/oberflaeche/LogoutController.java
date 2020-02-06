@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
+import de.jarm.gui.utils.NotificationBuilder;
 
 public class LogoutController implements Controller {
 
@@ -11,7 +12,7 @@ public class LogoutController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
 		
-		message.append("Sie haben sich erfolgreich ausgeloggt!");
+		NotificationBuilder.addSuccessNotification(message, "Sie haben sich erfolgreich ausgeloggt!");
 		request.getSession().invalidate();
 		request.getSession().setAttribute("eingeloggt", null);
 		

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
+import de.jarm.gui.utils.NotificationBuilder;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.User;
 
@@ -21,17 +22,17 @@ public class LoginController implements Controller {
 			try {
 				User u = DataController.getInstance().getUserService().login(email, passwort);
 				if (u != null) {
-					message.append("Sie haben sich erfolgreich eingeloggt!");
+					NotificationBuilder.addSuccessNotification(message, "Sie haben sich erfolgreich eingeloggt!");
 					request.getSession().setAttribute("user", u);
 					new UserAreaController().execute(request, response, message);
 					return "/secured/projektList";
 				}
 				else {
-					message.append("Benutzername oder Passwort falsch!");
+					NotificationBuilder.addSuccessNotification(message, "Benutzername oder Passwort falsch!");
 					request.setAttribute("emailValue", email);
 				}
 			} catch(Exception e) {
-				message.append(e.getMessage());
+				NotificationBuilder.addErrorNotification(message, e.getMessage());
 			}
 		}
 		return null;
