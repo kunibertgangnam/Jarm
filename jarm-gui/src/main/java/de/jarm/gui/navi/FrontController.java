@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import de.jarm.gui.oberflaeche.ForumController;
 import de.jarm.gui.oberflaeche.InfokastenController;
 import de.jarm.gui.oberflaeche.AddTodoController;
+import de.jarm.gui.oberflaeche.AddUserToProjectController;
+import de.jarm.gui.oberflaeche.AddUserToTodoController;
 import de.jarm.gui.oberflaeche.CreateProjectController;
 import de.jarm.gui.oberflaeche.LoginController;
 import de.jarm.gui.oberflaeche.LogoutController;

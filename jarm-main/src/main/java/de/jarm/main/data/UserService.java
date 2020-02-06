@@ -84,4 +84,15 @@ public class UserService implements UserServiceInterface {
 			throw new ValidierungsException(e.getMessage());
 		}
 	}
+
+
+
+	@Override
+	public List<User> findUserInProjectByNameOrEmail(String input, int projectId) throws ValidierungsException {
+		try {
+			return userDAO.searchUserInProjectByNameOrEmail(input, projectId);
+		} catch(Exception e) {
+			throw new ValidierungsException(e.getMessage());
+		}
+	}
 }
