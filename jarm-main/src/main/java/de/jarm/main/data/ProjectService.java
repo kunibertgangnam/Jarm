@@ -13,7 +13,7 @@ public class ProjectService implements ProjectServiceInterface {
 	@Override
 	public Project create(String projectTitle, User projectOwner) throws ValidierungsException {
 		if (projectOwner == null) {
-			throw new ValidierungsException("Dafuer muessen sie eingeloggt sein!");
+			throw new ValidierungsException("Dafür müssen sie eingeloggt sein!");
 		} else if (projectTitle.equals("")) {
 			throw new ValidierungsException("Bitte einen Titel festlegen!");
 		}
