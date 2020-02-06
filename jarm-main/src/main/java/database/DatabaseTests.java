@@ -37,7 +37,7 @@ public class DatabaseTests {
 		try {
 			User u = userDao.logIn("jonas@web.de", "123");
 			if (u == null) {
-				throw new Exception("Kein User zurückgekommen");
+				throw new Exception("Kein User zurÃ¼ckgekommen");
 			}
 			if (!u.getName().equals("Jonas")) {
 				throw new Exception("Falscher name im User Objekt");
@@ -101,7 +101,7 @@ public class DatabaseTests {
 		}
 		
 		
-		// ID ZU USERN HINZUFÜGEN
+		// ID ZU USERN HINZUFï¿½GEN
 		try {
 			u1 = userDao.loadUserById(userDao.loadUsers().get(0).getId());
 			u2 = userDao.loadUserById(userDao.loadUsers().get(1).getId());
@@ -134,7 +134,7 @@ public class DatabaseTests {
 			System.out.println("FEHLER " + e.getMessage());
 		}
 		
-		System.out.println("\n\nTEST 11 - USER ZU PROJEKT HINZUFÜGEN --------------------");
+		System.out.println("\n\nTEST 11 - USER ZU PROJEKT HINZUFÃœGEN --------------------");
 		try {
 			projectDao.addUserToProject(p1, u2);
 			projectDao.addUserToProject(p1, u3);
@@ -146,7 +146,7 @@ public class DatabaseTests {
 		
 		ProjectToDo t1 = new ProjectToDo("Todo1", "description1");
 		
-		System.out.println("\n\nTEST 12 - TODO ZU PROJEKT HINZUFÜGEN --------------------");
+		System.out.println("\n\nTEST 12 - TODO ZU PROJEKT HINZUFÃœGEN --------------------");
 		try {
 			projectDao.addTodoToProject(p1, t1);
 			System.out.println("ERFOLGREICH");
@@ -161,7 +161,7 @@ public class DatabaseTests {
 			System.out.println("FEHLER " + e.getMessage());
 		}
 		
-		System.out.println("\n\nTEST 13 - USER ZU TODO HINZUFÜGEN --------------------");
+		System.out.println("\n\nTEST 13 - USER ZU TODO HINZUFÃœGEN --------------------");
 		try {
 			projectDao.addUserToTodo(t1, u2);
 			System.out.println("ERFOLGREICH");
@@ -169,7 +169,7 @@ public class DatabaseTests {
 			System.out.println("FEHLER " + e.getMessage());
 		}
 		
-		System.out.println("\n\nTEST 14 - ZWEITEN USER ZU TODO HINZUFÜGEN --------------------");
+		System.out.println("\n\nTEST 14 - ZWEITEN USER ZU TODO HINZUFÃœGEN --------------------");
 		try {
 			projectDao.addUserToTodo(t1, u3);
 			System.out.println("ERFOLGREICH");
@@ -180,7 +180,7 @@ public class DatabaseTests {
 		Message m1 = new Message("Message1", u1);
 		Message m2 = new Message("Message2", u2);
 		
-		System.out.println("\n\nTEST 15 - MESSAGE ZU PROJEKT HINZUFÜGEN --------------------");
+		System.out.println("\n\nTEST 15 - MESSAGE ZU PROJEKT HINZUFÃœGEN --------------------");
 		try {
 			projectDao.addMessageToProject(p1, m1);
 			projectDao.addMessageToProject(p1, m2);
@@ -195,7 +195,7 @@ public class DatabaseTests {
 			System.out.println("FEHLER " + e.getMessage());
 		}
 		
-		System.out.println("\n\nTEST 16 - TODO STATE ÄNDERN --------------------");
+		System.out.println("\n\nTEST 16 - TODO STATE Ã„NDERN --------------------");
 		try {
 			projectDao.setTodoState(p1.getToDos().get(0), 1);
 			System.out.println("ERFOLGREICH");

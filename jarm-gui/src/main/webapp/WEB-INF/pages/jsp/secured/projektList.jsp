@@ -5,8 +5,7 @@
 	<div class="col-sm-5">
 		<div id="zentriert" class="border border-white">
 			<h2>
-				<b>Hallo <c:out value="${user.name}" /> <i
-					class="fas fa-hippo blue"></i>
+				<b>Hallo <c:out value="${user.name}" /> 
 				</b>
 			</h2>
 			<br />

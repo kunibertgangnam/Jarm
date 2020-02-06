@@ -9,6 +9,8 @@ repositories {
     mavenCentral()
 }
 
+compileJava.options.encoding = "UTF-8"
+
 dependencies {
 
 	compile project(':jarm-main')

@@ -85,7 +85,7 @@ public class FrontController extends HttpServlet
 			e.printStackTrace();
 		}
 
-		request.setAttribute("meldung", new String(meldung.toString().getBytes(), Charset.forName("UTF-8")));
+		request.setAttribute("meldung", meldung.toString());
 		String requestedUrl = "/WEB-INF/pages/jsp" + navi + ".jsp";
 		
 		if (isValidUrl(navi)) {
