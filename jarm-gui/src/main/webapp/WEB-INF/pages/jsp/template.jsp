@@ -39,7 +39,7 @@
        </header>       
 	   <main style="margin-bottom: 50px; margin-top: 75px;">
             <div id="message">
-                <c:out value="${meldung}"/>Hi
+                <c:out value="${meldung}"/>
             </div>
             
             <div id="inhalt">
