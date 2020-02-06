@@ -37,7 +37,7 @@
             </div>
         	</nav>
        </header>       
-	   <main style="bottum: 50px">
+	   <main style="margin-bottom: 50px">
             <div id="message">
                 <c:out value="${meldung}"/>
             </div>
