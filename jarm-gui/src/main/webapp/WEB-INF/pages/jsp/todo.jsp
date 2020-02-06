@@ -21,8 +21,9 @@
 						<i class="fas fa-user-minus fa-xs darkblue"></i> , <span class="current-project-subscribers" style="visibility: hidden;"><c:out value="${projectUser.id}"/></span></c:forEach>
 				</h5>
 				<br />
+				<c:if test="${user.id == currentProject.owner.id}">
 				<button type="button" class="btn btn-info" data-toggle="modal"
-					data-target="#exampleModal">Mitglied hinzufügen</button>
+					data-target="#exampleModal">Mitglied hinzufügen</button></c:if>
 				<form method="post" action="<c:url value='/projects/addUserToProject.do'/>">	
 				<input type="hidden" name="id" value="<c:out value="${currentProject.id}"/>" />
 				<div class="modal fade" id="exampleModal" tabindex="-1"
@@ -81,7 +82,7 @@
 							<a data-toggle="modal" data-target="#myModal"
 								class="button pointer"><i class="fas fa-edit orange"></i></a> 
 								<c:if test="${todo.state == 2}"> <i class="fas fa-check-circle green"></i> </c:if>
-							 	<c:if test="${todo.state == 1}"> <i class="fas fa-hourglass-start"></i> </c:if>
+							 	<c:if test="${todo.state == 1}"> <i class="fas fa-hourglass-start yellow"></i> </c:if>
 							 	<c:if test="${todo.state == 0}"> <i class="fas fa-question darkblue"></i> </c:if>	 							
 							<i class="fas fa-trash-alt grey"></i>
 						</div></li>
