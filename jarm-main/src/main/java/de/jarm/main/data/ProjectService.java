@@ -120,4 +120,13 @@ public class ProjectService implements ProjectServiceInterface {
 		}
 	}
 
+	@Override
+	public void addUserToTodo(ProjectToDo todo, User user) throws ValidierungsException {
+		try {
+			projectDAO.addUserToTodo(todo, user);
+		} catch(Exception e) {
+			throw new ValidierungsException(e.getMessage());
+		}
+	}
+
 }

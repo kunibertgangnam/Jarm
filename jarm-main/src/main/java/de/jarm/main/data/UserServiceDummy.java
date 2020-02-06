@@ -78,4 +78,10 @@ public class UserServiceDummy implements UserServiceInterface {
 		return null;
 	}
 
+	@Override
+	public List<User> findUserInProjectByNameOrEmail(String input, int projectId) throws ValidierungsException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

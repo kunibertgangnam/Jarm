@@ -22,6 +22,9 @@ public class AddTodoController implements Controller {
 			Project currentProject = DataController.getInstance().getProjectService().getProjectById(projectId);
 			DataController.getInstance().getProjectService().addToDo(currentProject, new ProjectToDo(titel, description));
 			message.append("Todo hinzugefügt!");
+			
+			new AddUserToTodoController().execute(request, response, message);
+			
 		} catch(Exception e){
 			message.append(e.getMessage());
 		}
