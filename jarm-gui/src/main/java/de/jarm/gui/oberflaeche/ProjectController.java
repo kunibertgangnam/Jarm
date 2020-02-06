@@ -1,6 +1,7 @@
 package de.jarm.gui.oberflaeche;
 
 import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
 import de.jarm.gui.utils.JavaScriptFunctions;
-import de.jarm.gui.utils.ValidierungsException;
+import de.jarm.main.database.exceptions.ValidierungsException;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Message;
 import de.jarm.main.data.Project;
