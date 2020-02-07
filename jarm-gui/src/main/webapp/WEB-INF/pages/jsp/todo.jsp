@@ -187,8 +187,7 @@
 										<label class="input-group-text" for="inputGroupSelect01">Status</label>
 									</div>
 									<select class="custom-select" id="inputGroupSelect01" name="todoState">
-										<option selected value="-1">Wähle...</option>
-										<option value="0">Unbearbeitet</option>
+										<option selected value="0">Unbearbeitet</option>
 										<option value="1">In Bearbeitung</option>
 										<option value="2">Fertig</option>
 									</select>
