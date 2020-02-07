@@ -204,7 +204,6 @@
 								</div><br />
 								<div id="edit-todo-users-added"></div>
 								<input type="hidden" value="" name="AddedUserIdsEditTodo" id="added-user-ids-edit-todo" />
-								<br/>
 								<br /> User zuweisen:
 								<div class="input-group md-form form-sm form-1 pl-0">
 									<div class="input-group-prepend">
