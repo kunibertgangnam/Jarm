@@ -3,20 +3,33 @@ package de.jarm.gui.utils;
 public class JavaScriptFunctions {
 	
 	public static final String FIND_USER_FOR_TODO = "var elementsAddedToTodo = [];\r\n" + 
-			"\r\n" + 
 			"function addUserToTodo(element){\r\n" + 
 			"    \r\n" + 
-			"    $(\"#todo-users-added\").append(\"<div>\" + $(element).html() + \"</div>\");\r\n" + 
+			"    $(\"#todo-users-added\").append(\"<div id='remove-value-todo-\" + element.value + \"'>\" + $(element).html() + \" <button type='button' id='remove-user-todo-button-\" + element.value + \"' value='\" + element.value + \"'>x</button></div>\");\r\n" + 
+			"	$(\"#remove-user-todo-button-\" + element.value).click(function(){\r\n" + 
+			"        removeAddedTodoUser(this);\r\n" + 
+			"    });\r\n" + 
 			"    $('#query-input-todo').val(\"\");\r\n" + 
 			"    $('#query-output-todo').empty();\r\n" + 
 			"    elementsAddedToTodo.push(element.value);\r\n" + 
-			"	$(\"#added-user-ids-todo\").attr(\"value\", $(\"#added-user-ids-todo\").val() + \" \" + element.value);\r\n" + 
+			"    $(\"#added-user-ids-todo\").attr(\"value\", $(\"#added-user-ids-todo\").val() + \" \" + element.value + \" \");\r\n" + 
+			"}\r\n" + 
+			"function closeModalTodo(){\r\n" + 
+			"    elementsAddedToTodo.splice(0,elementsAddedToTodo.length);\r\n" + 
+			"    $(\"#todo-users-added\").empty();\r\n" + 
+			"    $(\"#added-user-ids-todo\").attr(\"value\", \"\");\r\n" + 
 			"}\r\n" + 
 			"\r\n" + 
-			"function closeModalTodo(){\r\n" + 
-			"	elementsAddedToTodo.splice(0,elementsAddedToTodo.length);\r\n" + 
-			"	$(\"#todo-users-added\").empty();\r\n" + 
-			"	$(\"#added-user-ids-todo\").attr(\"value\", \"\");\r\n" + 
+			"function removeAddedTodoUser(element){\r\n" + 
+			"    \r\n" + 
+			"    var index = elementsAddedToTodo.indexOf(element.value);\r\n" + 
+			"    if (index > -1) {\r\n" + 
+			"      elementsAddedToTodo.splice(index, 1);\r\n" + 
+			"    }\r\n" + 
+			"    var oldValue = $(\"#added-user-ids-todo\").val();\r\n" + 
+			"    oldValue = oldValue.replace(\" \" + element.value + \" \", \"\");\r\n" + 
+			"    $(\"#added-user-ids-todo\").attr(\"value\", oldValue);\r\n" + 
+			"    $( \"#remove-value-todo-\" + element.value).remove();\r\n" + 
 			"}\r\n" + 
 			"    \r\n" + 
 			"function findUserForTodo(){\r\n" + 

@@ -31,7 +31,7 @@ public class RegisterController implements Controller {
 					throw new ValidierungsException("Bitte eine gültige Email eingeben");
 				}
 				User u = DataController.getInstance().getUserService().create(name, passwort, email);
-				NotificationBuilder.addErrorNotification(message, "Sie haben sich erfolgreich registriert!");
+				NotificationBuilder.addSuccessNotification(message, "Sie haben sich erfolgreich registriert!");
 				request.getSession().setAttribute("user", u);
 				new UserAreaController().execute(request, response, message);
 				return "/secured/projektList";
