@@ -1,24 +1,24 @@
 package de.jarm.main.data;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Message {
 	private int id;
 	private String message;
-	private LocalDate creationDate;
+	private LocalDateTime creationDate;
 	private User author;
 	
 	public Message(String message, User author) {
-		this(message, LocalDate.now(), author);
+		this(message, LocalDateTime.now(), author);
 	}
 
-	public Message(String message, LocalDate creationDate, User author) {
+	public Message(String message, LocalDateTime creationDate, User author) {
 		setMessage(message);
 		setCreationDate(creationDate);
 		setAuthor(author);
 	}
 	
-	public Message(int id, String message, LocalDate creationDate, User author) {
+	public Message(int id, String message, LocalDateTime creationDate, User author) {
 		this.id = id;
 		this.message = message;
 		this.creationDate = creationDate;
@@ -41,11 +41,11 @@ public class Message {
 		this.message = message;
 	}
 
-	public LocalDate getCreationDate() {
+	public LocalDateTime getCreationDate() {
 		return creationDate;
 	}
 
-	public void setCreationDate(LocalDate crationDate) {
+	public void setCreationDate(LocalDateTime crationDate) {
 		this.creationDate = crationDate;
 	}
 
