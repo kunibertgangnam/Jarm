@@ -52,9 +52,13 @@ public class DBStatements {
 
 	public static final String REMOVE_USER_FROM_TODO = "DELETE FROM project_todo_user WHERE project_todo_id = ? AND user_id = ?;";
 	
-	//NOT IMPLEMENTED
+	public static final String REMOVE_TODO_BY_ID = "DELETE FROM project_todo WHERE id = ? AND project_id = ?;";
 	
 	public static final String REMOVE_USER_FROM_PROJECT = "DELETE FROM project_user WHERE project_id = ? AND user_id = ?;";
+	
+	//NOT IMPLEMENTED
+	
+	
 	
 	public static final String REMOVE_PROJECT_BY_ID = "DELETE FROM ";
 }

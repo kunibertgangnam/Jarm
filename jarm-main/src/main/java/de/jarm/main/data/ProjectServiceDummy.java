@@ -50,11 +50,11 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 		
 	}
 
-	@Override
-	public void removeSubscriber(Project project, User subscriber) {
-		project.getSubscribers().remove(subscriber);
-		
-	}
+//	@Override
+//	public void removeSubscriber(Project project, User subscriber) {
+//		project.getSubscribers().remove(subscriber);
+//		
+//	}
 
 	@Override
 	public void changeToDoState(ProjectToDo toDo, int newToDoState) {
@@ -119,6 +119,18 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 
 	@Override
 	public void addUserToTodo(int todoId, int userId) throws ValidierungsException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeTodoById(int todoId, int projectId) throws ValidierungsException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeSubscriber(int projectId, int userId) throws ValidierungsException {
 		// TODO Auto-generated method stub
 		
 	}

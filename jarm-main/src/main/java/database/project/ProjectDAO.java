@@ -236,6 +236,30 @@ public class ProjectDAO {
 		}	
 	}
 	
+	public void removeTodoById(int todoId, int projectId) throws Exception {
+		
+		try (Connection con = DBController.getInstance().getConnection();
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.REMOVE_TODO_BY_ID)) {
+			
+			pstmt.setInt(1, todoId);
+			pstmt.setInt(2, projectId);
+			pstmt.execute();
+			
+		}	
+	}
+	
+	public void removeUserFromProjectById(int userId, int projectId) throws Exception {
+		
+		try (Connection con = DBController.getInstance().getConnection();
+		         PreparedStatement pstmt = con.prepareStatement(DBStatements.REMOVE_USER_FROM_PROJECT)) {
+			
+			pstmt.setInt(1, projectId);
+			pstmt.setInt(2, userId);
+			pstmt.execute();
+			
+		}	
+	}
+	
 	//HELPERS
 	
 	private User getUserById(int userId) throws Exception{
