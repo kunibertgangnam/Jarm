@@ -1,6 +1,7 @@
 package de.jarm.main.data;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ProjectToDo {
@@ -13,16 +14,16 @@ public class ProjectToDo {
 		UNBEAEBEITET, IN_ARBEIT, FERTIG
 	}
 	List<User> instructedUsers;
-	LocalDate creationDate;
+	LocalDateTime creationDate;
 	
 	public ProjectToDo(String name, String description) {
 		this.name = name;
 		this.description = description;
 		state = 0;
-		creationDate = LocalDate.now();
+		creationDate = LocalDateTime.now();
 	}
 	
-	public ProjectToDo(int id, String name, String description, List<User> instructedUsers, int state, LocalDate creationDate) {
+	public ProjectToDo(int id, String name, String description, List<User> instructedUsers, int state, LocalDateTime creationDate) {
 		setId(id);
 		setName(name);
 		setDescription(description);
@@ -31,8 +32,8 @@ public class ProjectToDo {
 		setCrationDate(creationDate);
 	}
 	
-	public ProjectToDo(int id, String name, String description, List<User> instructedUsers) {
-		this(id, name, description, instructedUsers, 0, LocalDate.now());
+	private ProjectToDo(int id, String name, String description, List<User> instructedUsers) {
+		this(id, name, description, instructedUsers, 0, LocalDateTime.now());
 	}
 
 	public List<User> getInstructedUsers() {
@@ -78,11 +79,11 @@ public class ProjectToDo {
 	}
 
 
-	public LocalDate getCrationDate() {
+	public LocalDateTime getCrationDate() {
 		return creationDate;
 	}
 
-	public void setCrationDate(LocalDate crationDate) {
+	public void setCrationDate(LocalDateTime crationDate) {
 		this.creationDate = crationDate;
 	}
 

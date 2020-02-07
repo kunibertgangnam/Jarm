@@ -1,6 +1,6 @@
 package database;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import database.project.ProjectDAO;
@@ -112,10 +112,10 @@ public class DatabaseTests {
 			return;
 		}
 
-		Project p1 = new Project("Projekt1", u1, LocalDate.now());
-		Project p2 = new Project("Projekt2", u2, LocalDate.now());
-		Project p3 = new Project("Projekt3", u3, LocalDate.now());
-		Project p4 = new Project("Projekt4", u4, LocalDate.now());
+		Project p1 = new Project("Projekt1", u1);
+		Project p2 = new Project("Projekt2", u2);
+		Project p3 = new Project("Projekt3", u3);
+		Project p4 = new Project("Projekt4", u4);
 		
 		
 		System.out.println("\n\nTEST 9 - PROJEKT ANLEGEN --------------------");

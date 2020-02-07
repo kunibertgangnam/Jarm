@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -106,7 +106,7 @@ public class ProjectDAO {
 		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_PROJECT,Statement.RETURN_GENERATED_KEYS)) {
 			
 			pstmt.setInt(1, p.getOwner().getId());
-			pstmt.setString(2, DateUtils.toString(LocalDate.now()));
+			pstmt.setString(2, DateUtils.toString(LocalDateTime.now()));
 			pstmt.setString(3, p.getTitle());		
 			pstmt.execute();
 			
@@ -137,7 +137,7 @@ public class ProjectDAO {
 		try (Connection con = DBController.getInstance().getConnection();
 		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_TODO, Statement.RETURN_GENERATED_KEYS)) {
 			
-			pstmt.setString(1, DateUtils.toString(LocalDate.now()));
+			pstmt.setString(1, DateUtils.toString(LocalDateTime.now()));
 			pstmt.setInt(2, t.getState());
 			pstmt.setString(3, t.getName());
 			pstmt.setString(4, t.getDescription());
@@ -182,7 +182,7 @@ public class ProjectDAO {
 		try (Connection con = DBController.getInstance().getConnection();
 		         PreparedStatement pstmt = con.prepareStatement(DBStatements.ADD_MESSAGE, Statement.RETURN_GENERATED_KEYS)) {
 			
-			pstmt.setString(1, DateUtils.toString(LocalDate.now()));
+			pstmt.setString(1, DateUtils.toString(LocalDateTime.now()));
 			pstmt.setInt(2, m.getAuthor().getId());
 			pstmt.setString(3, m.getMessage());
 			pstmt.setInt(4, p.getId());
