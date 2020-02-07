@@ -13,7 +13,7 @@ public class Project {
 	private List<User> subscribers;
 	private List<Message> messages;
 	
-	private Project(int id, String title, User owner, LocalDateTime creationDate) {
+	public Project(int id, String title, User owner, LocalDateTime creationDate) {
 		this.id = id;
 		this.title = title;
 		this.owner = owner;
