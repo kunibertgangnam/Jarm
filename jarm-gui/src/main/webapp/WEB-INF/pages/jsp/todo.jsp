@@ -18,7 +18,7 @@
 					<c:out value="${currentProject.owner.name}" />(owner) ,<span class="current-project-subscribers" style="visibility: hidden;"><c:out value="${currentProject.owner.id}"/></span>
 					<c:forEach var="projectUser" items="${currentProject.subscribers}">
 						<c:out value="${projectUser.name}" />
-						<i class="fas fa-user-minus fa-xs darkblue"></i> , <span class="current-project-subscribers" style="visibility: hidden;"><c:out value="${projectUser.id}"/></span></c:forEach>
+						<a href="<c:url value='/projects/removeUserFromProject.do?projectId='/><c:out value="${currentProject.id}" />&userId=<c:out value="${projectUser.id}" />"><i class="fas fa-user-minus fa-xs darkblue"></i></a> <span class="current-project-subscribers" style="visibility: hidden;"><c:out value="${projectUser.id}"/></span></c:forEach>
 				</h5>
 				<br />
 				<c:if test="${user.id == currentProject.owner.id}">
@@ -85,7 +85,7 @@
 							<c:if test="${todo.state == 2}"> <i class="fas fa-check-circle green"></i> </c:if>
 						 	<c:if test="${todo.state == 1}"> <i class="fas fa-hourglass-start yellow"></i> </c:if>
 						 	<c:if test="${todo.state == 0}"> <i class="fas fa-question darkblue"></i> </c:if>	 							
-							<i class="fas fa-trash-alt grey"></i>
+							<a href="<c:url value='/projects/deleteTodo.do?todoId='/><c:out value="${todo.id}" />&projectId=<c:out value="${currentProject.id}" />"><i class="fas fa-trash-alt grey"></i></a>
 						</div>
 					</li>
 				</c:forEach>

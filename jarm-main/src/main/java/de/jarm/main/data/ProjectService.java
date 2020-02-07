@@ -54,11 +54,11 @@ public class ProjectService implements ProjectServiceInterface {
 		}
 	}
 
-	@Override
-	public void removeSubscriber(Project project, User subscriber) {
-		// TODO Auto-generated method stub
-
-	}
+//	@Override
+//	public void removeSubscriber(Project project, User subscriber) {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 	@Override
 	public void changeToDoState(ProjectToDo toDo, int newToDoState) {
@@ -153,6 +153,24 @@ public class ProjectService implements ProjectServiceInterface {
 	public void addUserToTodo(int todoId, int userId) throws ValidierungsException {
 		try {
 			projectDAO.addUserToTodoById(todoId, userId);
+		} catch(Exception e) {
+			throw new ValidierungsException(e.getMessage());
+		}
+	}
+
+	@Override
+	public void removeTodoById(int todoId, int projectId) throws ValidierungsException {
+		try {
+			projectDAO.removeTodoById(todoId, projectId);
+		} catch(Exception e) {
+			throw new ValidierungsException(e.getMessage());
+		}
+	}
+
+	@Override
+	public void removeSubscriber(int projectId, int userId) throws ValidierungsException {
+		try {
+			projectDAO.removeUserFromProjectById(userId, projectId);
 		} catch(Exception e) {
 			throw new ValidierungsException(e.getMessage());
 		}
