@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +79,7 @@ public class UserDAO {
 			
 			pstmt.setString(1, u.getName());
 			pstmt.setString(2, u.getPassword());
-			pstmt.setString(3, DateUtils.toString(LocalDate.now()));
+			pstmt.setString(3, DateUtils.toString(LocalDateTime.now()));
 			pstmt.setString(4, u.getEmail());	
 			pstmt.executeUpdate();
 			
