@@ -2,10 +2,14 @@
 
 <h1 style = "padding: 5px; background-color: #c0c0c0;">Projektinterne Nachrichten
 <i class="far fa-comments"></i></h1>
-     <div style = "padding: 5px; background-color: #eefafd;">
+     <div style = "padding: 5px; background-color: #eefafd;height: 300px; overflow:scroll;">
+     	<table>
      		<c:forEach var="thisMessage" items="${nachrichten}">
-     			<div><h4>Verfasser: <c:out value="${thisMessage.author.name}" /></h4> -  <c:out value="${thisMessage.message}" /></div>
+     			<tr><td><h5><c:out value="${thisMessage.author.name}:" /></h5></td>
+     			<td><c:out value="${thisMessage.message}" /></td>
+     			<td style="font-size: small; font-style: italic;"><font color= "#c0c0c0"><c:out value="${thisMessage.getCreationDate()}"></c:out></font></td></tr>
      		</c:forEach>
+     	</table>
      </div>
 	 <div style = "padding: 5px; background-color: #c0c0c0;"> 
 		 <form action="<c:url value='/projects/addMessage.do'/>" method="post">
