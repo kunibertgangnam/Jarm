@@ -30,6 +30,11 @@ public class ProjectController implements Controller {
 		} else {
 			projectIdString = request.getParameter("id");
 		}
+		
+		if (projectIdString == null) {
+			return new UserAreaController().execute(request, response, message);
+		}
+		
 		try {
 			int projectId = new Integer(projectIdString);
 			Project p = DataController.getInstance().getProjectService().getProjectById(projectId);

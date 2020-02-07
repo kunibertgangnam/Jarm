@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.jarm.gui.navi.Controller;
+import de.jarm.gui.utils.NotificationBuilder;
 import de.jarm.main.data.DataController;
 import de.jarm.main.data.Project;
 import de.jarm.main.data.ProjectToDo;
@@ -18,25 +19,26 @@ public class AddUserToTodoController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response, StringBuffer message)
 			throws Exception {
 		
-		Object userIdObjectToAdd = request.getParameter("AddedUserIdsProject");
+		String userIdsStringToAdd = request.getParameter("AddedUserIdsTodo");
+		System.out.println(userIdsStringToAdd);
 		
-		
-		if (userIdObjectToAdd != null) {
-			String userIdsStringToAdd = userIdObjectToAdd.toString();
+		if (userIdsStringToAdd != null) {
+			//String userIdsStringToAdd = userIdObjectToAdd.toString();
 			
 			String[] userIdArray = userIdsStringToAdd.split(" ");
 
 			List<Integer> idListToAdd = new ArrayList<Integer>();
 			
 			for (String idString : userIdArray) {
-				if (!idString.equals("")) {
+				if (!idString.equals("") && !idString.equals(" ")) {
 					int thisId = new Integer(idString);
 					idListToAdd.add(thisId);
+					System.out.println("Adding user with id " + thisId);
 				}
 			}
 			
-			int todoId = new Integer(request.getParameter("todo"));
-			int currentProjectId = new Integer(request.getParameter("currentProject"));
+			int todoId = new Integer(request.getAttribute("todoId").toString());
+			int currentProjectId = new Integer(request.getParameter("id"));
 			
 			try {
 				Project currentProject = DataController.getInstance().getProjectService().getProjectById(currentProjectId);
@@ -50,10 +52,10 @@ public class AddUserToTodoController implements Controller {
 						break;
 					}
 				}
-				message.append("User erfolgreich zum Todo hinzugefügt");
+				NotificationBuilder.addSuccessNotification(message, "User erfolgreich zum Todo hinzugefügt");
 				
 			} catch(Exception e) {
-				message.append(e.getMessage());
+				NotificationBuilder.addErrorNotification(message, e.getMessage());
 			}
 		}
 		

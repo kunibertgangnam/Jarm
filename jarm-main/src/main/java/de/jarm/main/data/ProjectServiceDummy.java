@@ -81,9 +81,9 @@ public class ProjectServiceDummy implements ProjectServiceInterface{
 	}
 
 	@Override
-	public void addToDo(Project project, ProjectToDo toDo) throws ValidierungsException {
+	public int addToDo(Project project, ProjectToDo toDo) throws ValidierungsException {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 
 	@Override

@@ -85,14 +85,14 @@ public class ProjectService implements ProjectServiceInterface {
 	}
 
 	@Override
-	public void addToDo(Project project, ProjectToDo toDo) throws ValidierungsException {
+	public int addToDo(Project project, ProjectToDo toDo) throws ValidierungsException {
 		if (project == null || toDo == null) {
 			throw new ValidierungsException("Projekt oder Todo nicht gefunden!");
 		} else if (toDo.getName().equals("")) {
 			throw new ValidierungsException("Bitte einen Namen festlegen!");
 		}
 		try {
-			projectDAO.addTodoToProject(project, toDo);
+			return projectDAO.addTodoToProject(project, toDo).getId();
 		} catch(Exception e) {
 			throw new ValidierungsException(e.getMessage());
 		}

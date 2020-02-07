@@ -21,8 +21,10 @@ public class AddTodoController implements Controller {
 		
 		try {
 			Project currentProject = DataController.getInstance().getProjectService().getProjectById(projectId);
-			DataController.getInstance().getProjectService().addToDo(currentProject, new ProjectToDo(titel, description));
+			int newTodoId = DataController.getInstance().getProjectService().addToDo(currentProject, new ProjectToDo(titel, description));
 			NotificationBuilder.addSuccessNotification(message, "Todo hinzugefügt!");
+			
+			request.setAttribute("todoId", newTodoId);
 			
 			new AddUserToTodoController().execute(request, response, message);
 			
