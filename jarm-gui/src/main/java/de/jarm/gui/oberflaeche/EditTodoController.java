@@ -34,7 +34,10 @@ public class EditTodoController implements Controller {
 			int todoState = new Integer(todoStateString);
 			
 			if (todoState != 0 && todoState != 1 && todoState != 2) {
-				throw new ValidierungsException("Bitte einen Status festlegen");
+				throw new ValidierungsException("Bitte einen Status festlegen!");
+			}
+			if (todoTitle.equals("")) {
+				throw new ValidierungsException("Bitte einen Titel festlegen!");
 			}
 			
 			Project currentProject = DataController.getInstance().getProjectService().getProjectById(projectId);
