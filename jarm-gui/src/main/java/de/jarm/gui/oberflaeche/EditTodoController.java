@@ -12,6 +12,7 @@ import de.jarm.main.data.DataController;
 import de.jarm.main.data.Project;
 import de.jarm.main.data.ProjectToDo;
 import de.jarm.main.data.User;
+import de.jarm.main.database.exceptions.ValidierungsException;
 
 public class EditTodoController implements Controller {
 
@@ -22,7 +23,7 @@ public class EditTodoController implements Controller {
 		String todoIdString = request.getParameter("todoId");
 		String todoTitle = request.getParameter("todoTitle");
 		String todoDescription = request.getParameter("todoDescription");
-		String todoState = request.getParameter("todoState");
+		String todoStateString = request.getParameter("todoState");
 		String usersAdded = request.getParameter("AddedUserIdsEditTodo");
 		String projectIdString = request.getParameter("id");
 		
@@ -30,6 +31,11 @@ public class EditTodoController implements Controller {
 			
 			int projectId = new Integer(projectIdString);
 			int todoId = new Integer(todoIdString);
+			int todoState = new Integer(todoStateString);
+			
+			if (todoState != 0 && todoState != 1 && todoState != 2) {
+				throw new ValidierungsException("Bitte einen Status festlegen");
+			}
 			
 			Project currentProject = DataController.getInstance().getProjectService().getProjectById(projectId);
 			List<ProjectToDo> currentProjectTodos = currentProject.getToDos();
