@@ -5,7 +5,7 @@
      <div style = "padding: 5px; background-color: #eefafd;height: 300px; overflow:scroll;">
      	<table>
      		<c:forEach var="thisMessage" items="${nachrichten}">
-     			<tr><td><h5><c:out value="${thisMessage.author.name}:" /></h5></td>
+     			<tr><td><h5><c:out value="${thisMessage.author.name}: " /></h5></td>
      			<td><c:out value="${thisMessage.message}" /></td>
      			<td style="font-size: small; font-style: italic;"><font color= "#c0c0c0"><c:out value="${thisMessage.creationDate}"></c:out></font></td></tr>
      		</c:forEach>
