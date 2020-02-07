@@ -80,9 +80,9 @@
 			<ul class="list-group">
 				<c:forEach var="todo" items="${currentProject.toDos}">
 					<li class="list list-group-item"><c:out value="${todo.name}" />
-						<c:forEach var="instructedUser" items="${todo.InstructedUsers }">
+						<c:forEach var="instructedUser" items="${todo.instructedUsers }">
 							<li>
-								<c:out value="${instructedUser }, "></c:out>
+								<c:out value="${instructedUser }"></c:out>, 
 							</li>
 						</c:forEach>
 						<div class="float-right">
