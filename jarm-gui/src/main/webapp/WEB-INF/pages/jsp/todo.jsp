@@ -193,7 +193,15 @@
 										<option value="2">Fertig</option>
 									</select>
 								</div>
-								<br/>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+									</div>
+									<div class="custom-file">
+										<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+										<label class="custom-file-label" for="inputGroupFile01"></label>
+									</div>
+								</div><br />
 								<div id="edit-todo-users-added"></div>
 								<input type="hidden" value="" name="AddedUserIdsEditTodo" id="added-user-ids-edit-todo" />
 								<br/>
