@@ -80,17 +80,19 @@
 			<ul class="list-group">
 				<c:forEach var="todo" items="${currentProject.toDos}">
 					<li class="list list-group-item"><c:out value="${todo.name}" />
+						<div class="float-right">
 						<c:forEach var="instructedUser" items="${todo.instructedUsers }">
 							<span>
 								<c:out value="${instructedUser.name }"></c:out>, 
 							</span>
 						</c:forEach>
-						<div class="float-right">
+						<c:out value="     "></c:out>
 							<a data-toggle="modal" data-target="#myModal" data-todo-id="<c:out value="${todo.id}" />" class="button pointer edit-todo"><i class="fas fa-edit orange"></i></a> 
 							<c:if test="${todo.state == 2}"> <i class="fas fa-check-circle green"></i> </c:if>
 						 	<c:if test="${todo.state == 1}"> <i class="fas fa-hourglass-start yellow"></i> </c:if>
 						 	<c:if test="${todo.state == 0}"> <i class="fas fa-question darkblue"></i> </c:if>	 							
 							<a href="<c:url value='/projects/deleteTodo.do?todoId='/><c:out value="${todo.id}" />&projectId=<c:out value="${currentProject.id}" />"><i class="fas fa-trash-alt grey"></i></a>
+							
 						</div>
 					</li>
 				</c:forEach>
