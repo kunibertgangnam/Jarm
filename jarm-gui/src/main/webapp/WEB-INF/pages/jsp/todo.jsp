@@ -73,19 +73,20 @@
 	</div>
 	<div class="form-group">
 		<div class="col-sm-7">
-			<h6>
+			<h4>
 				<br /> Deine To-Dos:
-			</h6>
+			</h4>
 
 			<ul class="list-group">
 				<c:forEach var="todo" items="${currentProject.toDos}">
-					<li class="list list-group-item"><c:out value="${todo.name}" />
-						<div class="float-right">
+					<li class="list list-group-item"><h6><c:out value="${todo.name}" /></h6>
+						
 						<c:forEach var="instructedUser" items="${todo.instructedUsers }">
 							<span>
 								<c:out value="${instructedUser.name }"></c:out>, 
 							</span>
 						</c:forEach>
+						<div class="float-right">
 							<a data-toggle="modal" data-target="#myModal" data-todo-id="<c:out value="${todo.id}" />" class="button pointer edit-todo"><i class="fas fa-edit orange"></i></a> 
 							<c:if test="${todo.state == 2}"> <i class="fas fa-check-circle green"></i> </c:if>
 						 	<c:if test="${todo.state == 1}"> <i class="fas fa-hourglass-start yellow"></i> </c:if>
