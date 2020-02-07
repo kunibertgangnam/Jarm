@@ -6,7 +6,8 @@
      	<table>
      		<c:forEach var="thisMessage" items="${nachrichten}">
      			<tr><td><h5><c:out value="${thisMessage.author.name}:" /></h5></td>
-     			<td>  <c:out value="${thisMessage.message}" /></td></tr>
+     			<td><c:out value="${thisMessage.message}" /></td>
+     			<td style="font-size: small; font-style: italic;"><font color= "#c0c0c0"><c:out value="${thisMessage.getCreationDate()}"></c:out>123</font></td></tr>
      		</c:forEach>
      	</table>
      </div>
