@@ -81,9 +81,9 @@
 				<c:forEach var="todo" items="${currentProject.toDos}">
 					<li class="list list-group-item"><c:out value="${todo.name}" />
 						<c:forEach var="instructedUser" items="${todo.instructedUsers }">
-							<li>
-								<c:out value="${instructedUser }"></c:out>, 
-							</li>
+							<span>
+								<c:out value="${instructedUser.name }"></c:out>, 
+							</span>
 						</c:forEach>
 						<div class="float-right">
 							<a data-toggle="modal" data-target="#myModal" data-todo-id="<c:out value="${todo.id}" />" class="button pointer edit-todo"><i class="fas fa-edit orange"></i></a> 
