@@ -1,6 +1,6 @@
 package de.jarm.main.data;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Project {
@@ -8,26 +8,26 @@ public class Project {
 	private int id;
 	private String title;
 	private User owner;
-	private LocalDate creationDate;
+	private LocalDateTime creationDate;
 	private List<ProjectToDo> toDos;
 	private List<User> subscribers;
 	private List<Message> messages;
 	
-	public Project(int id, String title, User owner, LocalDate creationDate) {
+	private Project(int id, String title, User owner, LocalDateTime creationDate) {
 		this.id = id;
 		this.title = title;
 		this.owner = owner;
 		this.creationDate = creationDate;
 	}
 	
-	public Project(String title, User owner, LocalDate creationDate) {
+	private Project(String title, User owner, LocalDateTime creationDate) {
 		setTitle(title);
 		setOwner(owner);
 		setCreationDate(creationDate);
 	}
 	
 	public Project(String title, User owner) {
-		this(title, owner, LocalDate.now());
+		this(title, owner, LocalDateTime.now());
 	}
 	
 	public List<ProjectToDo> getToDos() {
@@ -79,11 +79,11 @@ public class Project {
 		this.owner = owner;
 	}
 
-	public LocalDate getCreationDate() {
+	public LocalDateTime getCreationDate() {
 		return creationDate;
 	}
 
-	public void setCreationDate(LocalDate creatDate) {
+	public void setCreationDate(LocalDateTime creatDate) {
 		this.creationDate = creatDate;
 	}
 
