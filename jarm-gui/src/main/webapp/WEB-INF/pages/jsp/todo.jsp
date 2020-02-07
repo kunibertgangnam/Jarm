@@ -86,7 +86,6 @@
 								<c:out value="${instructedUser.name }"></c:out>, 
 							</span>
 						</c:forEach>
-						<c:out value="     "></c:out>
 							<a data-toggle="modal" data-target="#myModal" data-todo-id="<c:out value="${todo.id}" />" class="button pointer edit-todo"><i class="fas fa-edit orange"></i></a> 
 							<c:if test="${todo.state == 2}"> <i class="fas fa-check-circle green"></i> </c:if>
 						 	<c:if test="${todo.state == 1}"> <i class="fas fa-hourglass-start yellow"></i> </c:if>
