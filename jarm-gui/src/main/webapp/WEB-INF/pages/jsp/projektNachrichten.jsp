@@ -2,7 +2,7 @@
 
 <h1 style = "padding: 5px; background-color: #c0c0c0;">Projektinterne Nachrichten
 <i class="far fa-comments"></i></h1>
-     <div style = "padding: 5px; background-color: #eefafd;">
+     <div style = "padding: 5px; background-color: #eefafd; min-height: 300px;">
      		<c:forEach var="thisMessage" items="${nachrichten}">
      			<div><h4>Verfasser: <c:out value="${thisMessage.author.name}" /></h4> -  <c:out value="${thisMessage.message}" /></div>
      		</c:forEach>
