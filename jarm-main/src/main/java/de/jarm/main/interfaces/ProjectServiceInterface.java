@@ -15,7 +15,7 @@ public interface ProjectServiceInterface {
 	public Project create(String projectTitle, User projectOwner) throws ValidierungsException;
 	public void writeMessage(Project project, String message, User author) throws ValidierungsException;
 	public void addSubscriber(Project project, User subscriber) throws ValidierungsException;
-	public void removeSubscriber(Project project, User subscriber);
+	public void removeSubscriber(int projectId, int userId) throws ValidierungsException;
 	public void changeToDoState(ProjectToDo toDo, int newToDoState);
 	public void removeToDo(Project project, ProjectToDo toDo);
 	public void deleteProject(Project project);
@@ -27,5 +27,7 @@ public interface ProjectServiceInterface {
 	public void addUserToTodo(int todoId, int userId) throws ValidierungsException;
 	public void removeUserFromTodo(int userId, int todoId) throws ValidierungsException;
 	public void updateTodoInformation(int todoId, String title, String description, int state) throws ValidierungsException;
+	public void removeTodoById(int todoId, int projectId) throws ValidierungsException;
+	
 	
 }
