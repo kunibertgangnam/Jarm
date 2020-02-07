@@ -26,7 +26,7 @@ public class DBStatements {
 	
 	public static final String FIND_USER_BY_NAME_OR_EMAIL = "SELECT * FROM user WHERE name LIKE ? OR email LIKE ?;";
 	
-	public static final String FIND_USER_IN_PROJECT_BY_NAME_OR_EMAIL = "SELECT * FROM user WHERE name LIKE ? OR email LIKE ? AND EXISTS (SELECT 1 FROM project_user WHERE project_id = ? AND user_id = user.id) UNION SELECT * FROM user WHERE name LIKE ? OR email LIKE ? AND EXISTS (SELECT 1 FROM project WHERE id = ? AND owner_id = user.id);";
+	public static final String FIND_USER_IN_PROJECT_BY_NAME_OR_EMAIL = "SELECT u.id, u.email, u.name, u.password FROM user u, project_user p WHERE (u.name LIKE ? OR u.email LIKE ? ) AND p.project_id = ? AND u.id = p.user_id UNION SELECT u2.id, u2.email, u2.name, u2.password FROM user u2, project p2 WHERE (u2.name LIKE ? OR u2.email LIKE ? ) AND p2.id = ? AND u2.id = p2.owner_id;";
 	
 	//INSERT
 	

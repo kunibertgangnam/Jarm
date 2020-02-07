@@ -90,6 +90,8 @@ public class UserDAO {
 			} else {
 				throw new UserExistsException();
 			}
+		} catch (Exception e) {
+			throw new UserExistsException();
 		}
 	}	
 	
