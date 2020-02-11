@@ -1,7 +1,6 @@
 package de.jarm.gui.navi;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,18 +11,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.jarm.gui.oberflaeche.AddMessageController;
-import de.jarm.gui.oberflaeche.AddTodoController;
-import de.jarm.gui.oberflaeche.AddUserToProjectController;
-import de.jarm.gui.oberflaeche.CreateProjectController;
-import de.jarm.gui.oberflaeche.DeleteTodoController;
-import de.jarm.gui.oberflaeche.EditTodoController;
-import de.jarm.gui.oberflaeche.LoginController;
-import de.jarm.gui.oberflaeche.LogoutController;
-import de.jarm.gui.oberflaeche.RegisterController;
-import de.jarm.gui.oberflaeche.RemoveUserFromProjectController;
-import de.jarm.gui.oberflaeche.ProjectController;
-import de.jarm.gui.oberflaeche.UserAreaController;
+import de.jarm.gui.controller.AddMessageController;
+import de.jarm.gui.controller.AddTodoController;
+import de.jarm.gui.controller.AddUserToProjectController;
+import de.jarm.gui.controller.Controller;
+import de.jarm.gui.controller.CreateProjectController;
+import de.jarm.gui.controller.DeleteTodoController;
+import de.jarm.gui.controller.EditTodoController;
+import de.jarm.gui.controller.LoginController;
+import de.jarm.gui.controller.LogoutController;
+import de.jarm.gui.controller.RegisterController;
+import de.jarm.gui.controller.RemoveUserFromProjectController;
+import de.jarm.gui.controller.ProjectController;
+import de.jarm.gui.controller.ProjectListController;
 
 
 
@@ -33,16 +33,16 @@ public class FrontController extends HttpServlet
 {
 
 	private static final long serialVersionUID = 1L;
-	private static final String LAYOUT_SEITE = "/WEB-INF/pages/jsp/template.jsp";
+	private static final String LAYOUT_SEITE = "/WEB-INF/jsp/template.jsp";
 	private Map<String, Controller> controller;
 	
 	@Override
 	public void init() throws ServletException {
 		controller = new HashMap<String, Controller>();
-		controller.put("/secured/projektList", new UserAreaController());
 		controller.put("/bv/login", new LoginController());
 		controller.put("/bv/register", new RegisterController());
 		controller.put("/bv/logout", new LogoutController());
+		controller.put("/projects/projectList", new ProjectListController());
 		controller.put("/projects/create", new CreateProjectController());
 		controller.put("/projects/project", new ProjectController());
 		controller.put("/projects/addTodo", new AddTodoController());
@@ -51,10 +51,6 @@ public class FrontController extends HttpServlet
 		controller.put("/projects/editTodo", new EditTodoController());
 		controller.put("/projects/deleteTodo", new DeleteTodoController());
 		controller.put("/projects/removeUserFromProject", new RemoveUserFromProjectController());
-		//controller.put("/projects/addMessage", new AddUserToTodoController());
-//		controller.put("/bv/login", new LoginController());
-//		controller.put("/bv/logout", new LogoutController());
-//		controller.put("/secured/userArea", new UserAreaController());
 
 		System.out.println("Frontcontroller initialisiert");
 		System.out.println(LAYOUT_SEITE);
@@ -92,12 +88,12 @@ public class FrontController extends HttpServlet
 		}
 
 		request.setAttribute("notifications", meldung.toString());
-		String requestedUrl = "/WEB-INF/pages/jsp" + navi + ".jsp";
+		String requestedUrl = "/WEB-INF/jsp" + navi + ".jsp";
 		
 		if (isValidUrl(navi)) {
 			request.setAttribute("url", requestedUrl);
 		} else {
-			request.setAttribute("url", "/WEB-INF/pages/jsp/error/error.jsp");
+			request.setAttribute("url", "/WEB-INF/jsp/error/error.jsp");
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher(LAYOUT_SEITE);
