@@ -110,3 +110,7 @@
 .dropdown-content-item:hover {
 	background-color: #ddd;
 }
+
+.invisible {
+	display: none;
+}

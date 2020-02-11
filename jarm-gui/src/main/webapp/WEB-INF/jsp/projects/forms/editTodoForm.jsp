@@ -59,7 +59,7 @@
 						<input class="form-control my-0 py-1" type="text"  id="query-input-edit-todo"
 							placeholder="Search" aria-label="Search" autocomplete="off">
 					</div>
-					<div id="query-output-edit-todo" class="dropdown-content">		
+					<div id="query-output-edit-todo" class="dropdown-content invisible">		
 					</div>	
 					
 				</div>

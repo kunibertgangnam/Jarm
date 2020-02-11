@@ -42,7 +42,7 @@
 						<input id="query-input-todo" class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" autocomplete="off">
 						
 					</div>
-					<div id="query-output-todo" class="dropdown-content">		
+					<div id="query-output-todo" class="dropdown-content invisible">		
 					</div>	
 					
 				</div>

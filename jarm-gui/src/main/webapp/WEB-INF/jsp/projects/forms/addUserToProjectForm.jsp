@@ -30,7 +30,7 @@
 						<input class="form-control my-0 py-1" type="text" id="query-input-user"
 							placeholder="Search" aria-label="Search" autocomplete="off">
 					</div>
-					<div id="query-output-user" class="dropdown-content">		
+					<div id="query-output-user" class="dropdown-content invisible">		
 					</div>
 				</div>
 				<div class="modal-footer">
