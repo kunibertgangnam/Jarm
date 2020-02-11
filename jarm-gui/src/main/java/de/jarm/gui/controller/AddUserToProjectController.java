@@ -30,7 +30,7 @@ public class AddUserToProjectController implements Controller{
 				}
 			}
 			
-			int projectId = new Integer( request.getParameter("id"));
+			int projectId = new Integer( request.getParameter("projectId"));
 			try {			
 				for (Integer i : idListToAdd) {
 					DataController.getInstance().getProjectService().addSubscriber(DataController.getInstance().getProjectService().getProjectById(projectId), DataController.getInstance().getUserService().getUserById(i));
@@ -39,7 +39,6 @@ public class AddUserToProjectController implements Controller{
 				NotificationBuilder.addErrorNotification(message, e.getMessage());
 			}
 		}
-		
 		
 		new ProjectController().execute(request, response, message);
 		return "/projects/project";
