@@ -24,7 +24,7 @@ public class EditTodoController implements Controller {
 		String todoDescription = request.getParameter("todoDescription");
 		String todoStateString = request.getParameter("todoState");
 		String usersAdded = request.getParameter("AddedUserIdsEditTodo");
-		String projectIdString = request.getParameter("id");
+		String projectIdString = request.getParameter("projectId");
 		
 		try {
 			

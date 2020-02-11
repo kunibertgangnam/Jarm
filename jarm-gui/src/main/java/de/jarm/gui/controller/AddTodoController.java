@@ -16,7 +16,7 @@ public class AddTodoController implements Controller {
 		
 		String titel = request.getParameter("Titel");
 		String description = request.getParameter("Description");
-		int projectId = new Integer(request.getParameter("id"));
+		int projectId = new Integer(request.getParameter("projectId"));
 		
 		try {
 			Project currentProject = DataController.getInstance().getProjectService().getProjectById(projectId);

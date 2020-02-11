@@ -21,9 +21,7 @@ public class AddUserToTodoController implements Controller {
 		String userIdsStringToAdd = request.getParameter("AddedUserIdsTodo");
 		System.out.println(userIdsStringToAdd);
 		
-		if (userIdsStringToAdd != null) {
-			//String userIdsStringToAdd = userIdObjectToAdd.toString();
-			
+		if (userIdsStringToAdd != null) {			
 			String[] userIdArray = userIdsStringToAdd.split(" ");
 
 			List<Integer> idListToAdd = new ArrayList<Integer>();
@@ -37,10 +35,10 @@ public class AddUserToTodoController implements Controller {
 			}
 			
 			int todoId = new Integer(request.getAttribute("todoId").toString());
-			int currentProjectId = new Integer(request.getParameter("id"));
+			int projectId = new Integer(request.getParameter("projectId"));
 			
 			try {
-				Project currentProject = DataController.getInstance().getProjectService().getProjectById(currentProjectId);
+				Project currentProject = DataController.getInstance().getProjectService().getProjectById(projectId);
 				
 				for (ProjectToDo t : currentProject.getToDos()) {
 					if (t.getId() == todoId) {					

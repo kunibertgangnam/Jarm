@@ -22,13 +22,7 @@ public class ProjectController implements Controller {
 			throws Exception {
 		
 		
-		String projectIdString;
-		
-		if (request.getMethod().equals("GET")) {
-			projectIdString = request.getParameter("projectId");
-		} else {
-			projectIdString = request.getParameter("id");
-		}
+		String projectIdString = request.getParameter("projectId");
 		
 		if (projectIdString == null) {
 			return new ProjectListController().execute(request, response, message);
